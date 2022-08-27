@@ -1,6 +1,6 @@
 #!name=Tiktok Unlock 
-#!desc=解锁Tiktok
-#！需配合21.1.0版本的Tiktok使用，不知道原作者是谁
+#!desc=By Semporia
+#！需配合21.1.0版本的Tiktok使用
 [URL Rewrite]
 (?<=_region=)CN(?=&) JP 307
 (?<=&mcc_mnc=)4 2 307
