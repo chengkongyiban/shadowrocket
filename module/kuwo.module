@@ -1,5 +1,6 @@
 #!name=酷我音乐
 #!desc=获取更多资源👉https://t.me/yqc_123
+#!搬运自nameking77👉https://github.com/nameking77?tab=repositories
 [MITM]
 hostname = %APPEND% *.kuwo.cn, *.lrts.me
 
