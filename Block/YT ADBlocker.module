@@ -1,4 +1,4 @@
-#!name=YT AdBlocker
+#!name=YTAdBlocker
 #!desc=Block YT ads with MITM
 #！搬运自→https://github.com/YanbingJiang/Shadowrocket_diy_rules/blob/937c2339c2bc57c4e7e8f70989e39539a0f7bff1/Modules/YT-Adblocker.conf
 # Tested YouTube iOS version - 17.03
