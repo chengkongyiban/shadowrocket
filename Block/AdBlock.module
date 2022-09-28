@@ -6,6 +6,12 @@
 force-http-engine-hosts = %APPEND% *.cp31.ott.cibntv.net
 
 [Rule]
+#爱思去广告
+URL-REGEX,^https?:\/\/d\.image\.i4\.cn\/adInfo\/.+,REJECT
+#酷我9.1.0去广告
+#DOMAIN-SUFFIX,wapi.kuwo.cn,REJECT
+URL-REGEX,^https?:\/\/wapi\.kuwo\.cn\/api\/mobile\/index\/feed\?.+,REJECT
+DOMAIN-SUFFIX,fvedio.kuwo.cn,REJECT
 #美团
 URL-REGEX,^https?:\/\/(s3plus|flowplus)\.meituan\.net\/v\d\/\w+\/linglong\/\w+\.(gif|jpg|mp4),REJECT
 # 有兔阅读
