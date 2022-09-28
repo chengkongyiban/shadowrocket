@@ -104,7 +104,7 @@ DOMAIN,sf3-fe-tos.pglstatp-toutiao.com,REJECT
 DOMAIN,qzs.gdtimg.com,REJECT
 
 [URL Rewrite]
-#买单吧开屏去升级提示
+#买单吧4.7.2开屏去升级提示
 ^https:\/\/creditcardapp\.bankcomm\.com\/mappweb_interaction\/common\/queryGuidePageAds\.do - REJECT
 ^https:\/\/creditcardapp\.bankcomm\.com\/mappweb_interaction\/common\/getPopAds\.do - REJECT
 ^https:\/\/creditcardapp\.bankcomm\.com\/mappweb_interaction\/json\/app\/appManage\/getApkUpdateInfo\.do - REJECT
