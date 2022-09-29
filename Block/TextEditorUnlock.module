@@ -1,9 +1,6 @@
-#!name=TextEditor
-#!desc=解锁TextEditor
-
-
+#!name=TextEditor解锁
+#!desc=TextEditor解锁
 [Script]
-文本编辑器 = type=http-response,script-path=https://raw.githubusercontent.com/I-am-R-E/QuantumultX/main/JavaScript/TextEditor.js,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,max-size=0,requires-body=true,timeout=10,enable=true
-
+TextEditor解锁=type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,script-path=https://raw.githubusercontent.com/I-am-R-E/QuantumultX/main/JavaScript/TextEditor.js
 [MITM]
-hostname = %APPEND% buy.itunes.apple.com
+hostname= %APPEND% buy.itunes.apple.com
