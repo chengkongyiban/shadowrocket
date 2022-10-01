@@ -44,14 +44,6 @@ DOMAIN-SUFFIX,jcollection.shuqireader.com,REJECT
 DOMAIN-SUFFIX,stats.jpush.cn,REJECT
 DOMAIN-SUFFIX,sdk.kaijiawan.com,REJECT
 
-# 腾讯视频
-AND,((PROTOCOL,HTTPS), (DOMAIN,iacc.qq.com)),REJECT-NO-DROP
-DOMAIN-SUFFIX,tetrack.qq.com,REJECT
-DOMAIN-SUFFIX,tpns.tencent.com,REJECT
-DOMAIN-SUFFIX,api.poll.video.qq.com,REJECT
-DOMAIN-SUFFIX,static-res.qq.com,REJECT
-DOMAIN-SUFFIX,stat.tpns.tencent.com,REJECT
-DOMAIN,h.trace.qq.com,REJECT
 # 爱奇艺
 DOMAIN,cr-status.iqiyi.com,REJECT
 DOMAIN,f74f7f7765f8a2f6.ngaa.net.cn,REJECT
@@ -164,11 +156,6 @@ DOMAIN,qzs.gdtimg.com,REJECT
 
 ^https:\/\/mbd\.baidu\.com\/newspage\/api\/getmobads\?page\=landingshare - reject
 
-# 腾讯视频广告屏蔽
-^http:\/\/pgdt\.gtimg\.cn - REJECT-DICT
-^http:\/\/video\.dispatch\.tc\.qq\.com\/.+\.mp4 - REJECT-DICT
-^http:\/\/.+\/vmind\.qqvideo\.tc\.qq\.com\/.+\.mp4 - REJECT-DICT
-^http:\/\/wa\.gtimg\.com\/adxcdn\/.+\.jpg - REJECT-DICT
 # 爱奇艺广告屏蔽
 ^http:\/\/.+\.iqiyipic\.com\/image\/.+\/ad\/.+\.jpg - reject
 ^http:\/\/static-s\.iqiyi\.com\/common\/.+\/Small_video/a2/af/.+\.png - reject
