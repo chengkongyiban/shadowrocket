@@ -1,6 +1,6 @@
 #!name=腾讯视频
 #!desc=去除腾讯视频广告
-#搬运自bai1zi需先卸载重装，只保留开屏部分其他全部注释掉，打开app登录账号后关掉，在恢复注释就行。
+#搬运自bai1zi需先卸载重装，关掉模块，打开app登录账号后关掉app，再启用模块。
 
 [Rule]
 AND,((PROTOCOL,HTTPS), (DOMAIN,iacc.qq.com)),REJECT-NO-DROP
