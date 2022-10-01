@@ -8,7 +8,9 @@ AND,((PROTOCOL,HTTPS), (DOMAIN,iacc.qq.com)),REJECT-NO-DROP
 # > 开屏
 [URL Rewrite]
 ^http:\/\/pgdt\.gtimg\.cn - REJECT-DICT
-^http:\/\/(.+\.tc\.qq\.com\/.+mp4|pgdt\.gtimg\.cn) - REJECT-DICT
+^http:\/\/video\.dispatch\.tc\.qq\.com\/.+\.mp4 - REJECT-DICT
+^http:\/\/.+\/vmind\.qqvideo\.tc\.qq\.com\/.+\.mp4 - REJECT-DICT
+^http:\/\/wa\.gtimg\.com\/adxcdn\/.+\.jpg - REJECT-DICT
 
 
 [Script]
