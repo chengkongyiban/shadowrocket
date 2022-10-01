@@ -75,7 +75,7 @@ URL-REGEX,^https:\/\/apiwz\.midukanshu\.com\/config\/getAds$,REJECT
 DOMAIN,bid.adview.cn,REJECT
 
 # 京东开屏广告屏蔽
-URL-REGEX,https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-TINYGIF
+URL-REGEX,https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-DICT
 
 # 优酷去片头广告(by Choler)
 # force-http-engine-hosts = %APPEND% *.cp31.ott.cibntv.net
