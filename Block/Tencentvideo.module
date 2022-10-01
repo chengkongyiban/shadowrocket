@@ -4,6 +4,12 @@
 
 [Rule]
 AND,((PROTOCOL,HTTPS), (DOMAIN,iacc.qq.com)),REJECT-NO-DROP
+DOMAIN-SUFFIX,tetrack.qq.com,REJECT
+DOMAIN-SUFFIX,tpns.tencent.com,REJECT
+DOMAIN-SUFFIX,api.poll.video.qq.com,REJECT
+DOMAIN-SUFFIX,static-res.qq.com,REJECT
+DOMAIN-SUFFIX,stat.tpns.tencent.com,REJECT
+DOMAIN,h.trace.qq.com,REJECT
 
 # > 开屏
 [URL Rewrite]
