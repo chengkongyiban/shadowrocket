@@ -10,12 +10,13 @@ DOMAIN-SUFFIX,api.poll.video.qq.com,REJECT
 DOMAIN-SUFFIX,static-res.qq.com,REJECT
 DOMAIN-SUFFIX,stat.tpns.tencent.com,REJECT
 DOMAIN,h.trace.qq.com,REJECT
+#解决部分视频无法播放
+URL-REGEX,^http:\/\/.+\/vlive\.qqvideo\.tc\.qq\.com\/.+\.mp4,DIRECT
 
 # > 开屏
 [URL Rewrite]
 ^http:\/\/pgdt\.gtimg\.cn - REJECT-DICT
-^http:\/\/video\.dispatch\.tc\.qq\.com\/.+\.mp4 - REJECT-DICT
-^http:\/\/.+\/vmind\.qqvideo\.tc\.qq\.com\/.+\.mp4 - REJECT-DICT
+^http:\/\/.+\.tc\.qq\.com\/.+mp4 - REJECT-DICT
 ^http:\/\/wa\.gtimg\.com\/adxcdn\/.+\.jpg - REJECT-DICT
 
 
