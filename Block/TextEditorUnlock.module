@@ -4,7 +4,7 @@
 #!搬运自I-am-r-e
 
 [Script]
-TextEditor解锁=type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,script-path=https://raw.githubusercontent.com/I-am-R-E/QuantumultX/main/JavaScript/TextEditor.js
+TextEditor解锁=type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,script-path=https://raw.githubusercontent.com/I-am-R-E/QuantumultX/main/JavaScript/TextEditor.js,requires-body=1,max-size=0
 
 [MITM]
 hostname= %APPEND% buy.itunes.apple.com
