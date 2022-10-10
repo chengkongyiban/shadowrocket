@@ -1,6 +1,6 @@
 #!name=网易云去广告
 #!desc=网易云去广告
-#!修改自DivineEngine
+#!搬运自DivineEngine
 
 [URL Rewrite]
 ^https?:\/\/p\.du\.163\.com\/ad\/ - REJECT-DICT
