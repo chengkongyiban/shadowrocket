@@ -21,7 +21,7 @@ URL-REGEX,^http:\/\/.+\/vlive\.qqvideo\.tc\.qq\.com\/.+\.mp4,DIRECT
 
 
 [Script]
-腾讯 = type=http-request,pattern=^(https:\/\/i\.video|http:\/\/iacc)\.qq\.com\/$,requires-body=0,max-size=0,script-path=Tx.js
+腾讯 = type=http-request,pattern=^(https:\/\/i\.video|http:\/\/iacc)\.qq\.com\/$,requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Tx.js
 
 
 [MITM]
