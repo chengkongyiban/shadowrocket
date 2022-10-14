@@ -1,6 +1,6 @@
 #!name=youtube（改）
 #!desc= 测试
-
+#搬运自@小白脸
 [Rule]
 URL-REGEX,^https?:\/\/.+?\.googlevideo\.com\/.+&oda,REJECT-TINYGIF
 URL-REGEX,^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player\/ad_break\?key,REJECT-TINYGIF
