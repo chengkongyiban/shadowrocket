@@ -8,7 +8,7 @@ URL-REGEX,^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player\/ad_break\?
 
 
 [Script]
-/油管 = type=http-request,pattern=^https?:\/\/.+?\.googlevideo\.com\/.+ctier=L,requires-body=0,script-path=https://github.com/chengkongyiban/shadowrocket/blob/main/scripts/YouTube.js?raw=ture
+油管 = type=http-request,pattern=^https?:\/\/.+?\.googlevideo\.com\/.+ctier=L,requires-body=0,script-path=https://github.com/chengkongyiban/shadowrocket/blob/main/scripts/YouTube.js?raw=ture
 
 
 
