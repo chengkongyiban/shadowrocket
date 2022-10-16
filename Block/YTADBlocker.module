@@ -2,13 +2,13 @@
 #!desc=去视频片头广告并解决闪屏问题
 #搬运自@小白脸 
 [Rule]
-URL-REGEX,^https?:\/\/.+?\.googlevideo\.com\/.+&oda,REJECT-TINYGIF
+URL-REGEX,googlevideo\.com\/.+&oad,REJECT-TINYGIF
 URL-REGEX,^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player\/ad_break\?key,REJECT-TINYGIF
 
 
 
 [Script]
-油管 = type=http-request,pattern=^https?:\/\/.+?\.googlevideo\.com\/.+ctier=L,requires-body=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/YouTube.js
+/油管 = type=http-request,pattern=googlevideo\.com\/.+ctier=L,requires-body=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/YouTube.js
 
 
 
