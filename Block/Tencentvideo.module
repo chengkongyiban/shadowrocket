@@ -3,11 +3,13 @@
 #搬运自@天下第一小白脸，需先重装app，关掉模块，打开app登录账号后关掉app，再启用模块。
 
 [Rule]
+#去片头广告
 AND,((PROTOCOL,HTTPS), (DOMAIN,iacc.qq.com)),REJECT-NO-DROP
 # > 腾讯开屏
 OR,((DOMAIN,pgdt.gtimg.cn), (AND,((USER-AGENT,live4iphoneRel*), (IP-CIDR,0.0.0.0/0,no-resolve)))),REJECT-DROP
 
 [Script]
+#去片头广告
 腾讯 = type=http-request,pattern=^(https:\/\/i\.video|http:\/\/iacc)\.qq\.com\/$,requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Tx.js
 
 
