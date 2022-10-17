@@ -1,0 +1,9 @@
+#!name=stay去广告
+#!desc=stay去仓库广告
+#搬运自@ddgksf2013
+[script]
+# ～ Stay（2022-10-17）@ddgksf2013
+测试 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api\.shenyin\.name\/stay-fork\/browse\/featured$,script-path=https://github.com/ddgksf2013/Cuttlefish/raw/master/Script/stay.js
+
+[MITM]
+hostname = %APPEND% api.shenyin.name
