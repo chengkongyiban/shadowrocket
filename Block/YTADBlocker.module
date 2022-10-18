@@ -1,5 +1,5 @@
 #!name=YouTube（改）
-#!desc=去视频片头广告并解决闪屏问题
+#!desc=去视频片头广告
 #搬运自@小白脸 
 [Rule]
 URL-REGEX,googlevideo\.com\/.+&oad,REJECT-TINYGIF
