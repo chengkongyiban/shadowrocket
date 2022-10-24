@@ -5,6 +5,7 @@
 hostname = %APPEND% *.uve.weibo.com, *api.weibo.cn, *api.weibo.com, h5.sinaimg.cn, new.vip.weibo.cn, *.sc.weibo.com, captcha.weibo.com, wx*.sinaimg.cn, js.t.sinajs.cn, *.e.weibo.com
 
 [Rule]
+#广告联盟，去开屏广告
 DOMAIN-SUFFIX,e.qq.com,reject-dict
 DOMAIN-SUFFIX,gdt.qq.com,reject-dict
 DOMAIN-SUFFIX,l.qq.com,reject-dict
