@@ -17,8 +17,8 @@ DOMAIN,pgdt.ugdtimg.com,reject-dict
 DOMAIN,splashqqlive.gtimg.com,reject-dict
 DOMAIN,wa.gtimg.com,reject-dict
 
-DOMAIN-SUFFIX,umengcloud.com,reject-dict
-DOMAIN-SUFFIX,umeng.com,reject-dict
+DOMAIN,ulogs.umengcloud.com,reject-dict
+DOMAIN,ulogs.umeng.com,reject-dict
 DOMAIN,sdk.e.qq.com,reject-dict
 DOMAIN,mi.gdt.qq.com,reject-dict
 DOMAIN,open.e.kuaishou.com,reject-dict
