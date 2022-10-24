@@ -1,0 +1,65 @@
+#!name=All-In-One-Search
+#!desc=Safari全能搜索(需要把Safari的搜索引擎设置为：百度)
+#!system=ios
+#搬运自ATorNinja
+
+[URL Rewrite]
+# Safari全能搜索
+# 以下为Safari全能搜索、需要把Safari的搜索引擎设置为：百度
+
+# gm (Google图片)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=gm\+([^&]+) https://www.google.com/search?&tbm=isch&q=$1 302
+
+# gh (GitHub)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=gh\+([^&]+) https://github.com/search?q=$1 302
+
+# tf (Google 搜索 TestFlight)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=tf(\+|%20)([^&]+) https://www.google.com/search?as_q=$2&as_sitesearch=testflight.apple.com 302
+
+# wb (微博)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=wb\+([^&]+) https://s.weibo.com/weibo/$1 302
+
+# wx (微信)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=wx\+([^&]+) https://weixin.sogou.com/weixinwap?query=$1 302
+
+# jd (京东)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=jd\+([^&]+) https://so.m.jd.com/ware/search.action?keyword=$1 302
+
+# tb (淘宝)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=tb\+([^&]+) https://s.m.taobao.com/h5?q=$1 302
+
+# tm (天猫)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=tm\+([^&]+) https://s.m.tmall.com/m/search.htm?q=$1 302
+
+# ytb (YouTube)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=ytb\+([^&]+) https://www.youtube.com/results?search_query=$1 302
+
+# ph (PornHub)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=ph\+([^&]+) https://cn.pornhub.com/video/search?search=$1 302
+
+# bi (必应)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=bi\+([^&]+) https://cn.bing.com/search?q=$1 302
+
+# bd (百度)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=bd\+([^&]+) https://www.baidu.com/s?wd=$1 302
+
+# ccn (App Store 临时换至中国区)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=ccn https://itunes.apple.com/WebObjects/MZStore.woa/wa/resetAndRedirect?dsf=143465&mt=8&url=/WebObjects/MZStore.woa/wa/viewSoftware?mt=8&id=1108187390&cc=cn&urlDesc= 302
+
+# uus (App Store 临时换至美国区)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=uus https://itunes.apple.com/WebObjects/MZStore.woa/wa/resetAndRedirect?dsf=143441&mt=8&url=/WebObjects/MZStore.woa/wa/viewSoftware?mt=8&id=1108187390&cc=us&urlDesc= 302
+
+# jjp （APP Store 切换至JP）
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=jjp https://itunes.apple.com/WebObjects/MZStore.woa/wa/resetAndRedirect?dsf=143462&mt=8&url=/WebObjects/MZStore.woa/wa/viewSoftware?mt=8&id=1108187390&cc=jp&urlDesc= 302
+
+# ttr （APP Store 切换至TR）
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=ttr https://itunes.apple.com/WebObjects/MZStore.woa/wa/resetAndRedirect?dsf=143480&mt=8&url=/WebObjects/MZStore.woa/wa/viewSoftware?mt=8&id=1108187390&cc=tr&urlDesc= 302
+
+# ddg (DuckDuckGo)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=ddg\+([^&]+) https://duckduckgo.com/?ia=about&q=$1 302
+
+# 无指令 (Google)
+^https:\/\/m.baidu.com\/s\?from=1000539d&word=([^&]+) https://www.google.com/search?q=$1 302
+
+[MITM]
+hostname = %APPEND% *.baidu.com
