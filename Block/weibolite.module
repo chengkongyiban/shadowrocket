@@ -20,7 +20,7 @@ saxn.sina.com.cn - reject-dict
 ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/page\/get_search_suggest - reject-dict
 
 # ～ WeiboLite_微博国际版_屏蔽searching_info@ddgksf2013 
-^ttps?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*user&a=get_searching_info - reject
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*user&a=get_searching_info - reject
 
 # ～ WeiboLite_微博国际版_屏蔽search_topic@ddgksf2013 
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic - reject
