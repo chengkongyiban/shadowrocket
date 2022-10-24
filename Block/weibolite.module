@@ -30,14 +30,11 @@ saxn.sina.com.cn - reject-dict
 
 [Script]
 
-
 # ～ WeiboLite_微博国际版_关注tab去广告@ddgksf2013 
 关注tab去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses\/friends_timeline,script-path=https://github.com/ddgksf2013/Cuttlefish/raw/master/Script/weibo_json.js
 
 # ～ WeiboLite_微博国际版_推荐tab|热门tab去广告@ddgksf2013
-热门tab去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses\/unread_hot_timeline,script-path=https://hub.nange.cn/Script/Weibo/Weibo.js
-
-
+热门tab去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses\/unread_hot_timeline,script-path=https://github.com/ddgksf2013/Cuttlefish/raw/master/Script/weibo_json.js
 
 # ～ WeiboLite_微博国际版_趋势tab@ddgksf2013 
 趋势tab = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/cardlist,script-path=https://github.com/ddgksf2013/Cuttlefish/raw/master/Script/weibo_json.js
