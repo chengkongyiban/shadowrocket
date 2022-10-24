@@ -4,6 +4,28 @@
 hostname = %APPEND% *.uve.weibo.com, *api.weibo.cn, *api.weibo.com, h5.sinaimg.cn, new.vip.weibo.cn, *.sc.weibo.com, captcha.weibo.com, wx*.sinaimg.cn, js.t.sinajs.cn, *.e.weibo.com
 
 [URL Rewrite]
+#广告联盟，去开屏广告
+e.qq.com - reject
+gdt.qq.com - reject
+l.qq.com - reject
+adsmind.gdtimg.com - reject
+adsmind.ugdtimg.com - reject
+livep.l.t002.ottcn.com - reject
+pgdt.ugdtimg.com - reject
+splashqqlive.gtimg.com - reject
+wa.gtimg.com - reject
+wxsnsdy.wxs.qq.com - reject
+wxsnsdythumb.wxs.qq.com - reject
+ulogs.umengcloud.com - reject
+ulogs.umeng.com - reject
+open.e.kuaishou.com - reject
+api-access.pangolin-sdk-toutiao.com - reject
+sdk.open.talk.getui.net - reject
+sdk.open.talk.getui.com - reject
+errlog.umeng.com - reject
+tnc3-aliec2.snssdk.com - reject
+sf3-fe-tos.pglstatp-toutiao.com - reject
+qzs.gdtimg.com - reject
 
 # ～ WeiboLite_微博国际版_sdkad@ddgksf2013
 ^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php - reject
