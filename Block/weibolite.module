@@ -4,14 +4,6 @@
 hostname = %APPEND% *.uve.weibo.com, *api.weibo.cn, *api.weibo.com, h5.sinaimg.cn, new.vip.weibo.cn, *.sc.weibo.com, captcha.weibo.com, wx*.sinaimg.cn, js.t.sinajs.cn, *.e.weibo.com
 
 [URL Rewrite]
-^https?:\/\/.+\/alitui.weibo.com - reject-dict
-^https?:\/\/.+\/beacon.sina.com.cn - reject-dict
-^https?:\/\/.+\/adimg.uve.weibo.com - reject-dict
-^https?:\/\/.+\/adimg.vue.weibo.com - reject-dict
-^https?:\/\/.+\/u1.img.mobile.sina.cn - reject-dict
-^https?:\/\/.+\/sax.sina.com.cn - reject-dict
-^https?:\/\/.+\/saxs.sina.com.cn - reject-dict
-^https?:\/\/.+\/saxn.sina.com.cn - reject-dict
 
 # ～ WeiboLite_微博国际版_sdkad@ddgksf2013
 ^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php - reject
