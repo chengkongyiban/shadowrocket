@@ -32,7 +32,7 @@
 ^https:\/\/duckduckgo.com\/\?q=gh\+([^&]+).+ https://github.com/search?q=$1 302
 
 # tf (Google 搜索 TestFlight)
-^https:\/\/duckduckgo.com\/\?q=tf(\+|%20)([^&]+).+ https://www.google.com/search?as_q=$1&as_sitesearch=testflight.apple.com 302
+^https:\/\/duckduckgo.com\/\?q=tf\+([^&]+).+ https://www.google.com/search?as_q=$1&as_sitesearch=testflight.apple.com 302
 
 # wb (微博)
 ^https:\/\/duckduckgo.com\/\?q=wb\+([^&]+).+ https://s.weibo.com/weibo/$1 302
@@ -51,6 +51,9 @@
 
 # ytb (YouTube)
 ^https:\/\/duckduckgo.com\/\?q=ytb\+([^&]+).+ https://www.youtube.com/results?search_query=$1 302
+
+#vf（voflix视频网站）
+^https:\/\/duckduckgo.com\/\?q=vf\+([^&]+).+ https://www.voflix.com/search/-------------.html?wd=$1 302
 
 # ph (PornHub)
 ^https:\/\/duckduckgo.com\/\?q=ph\+([^&]+).+ https://cn.pornhub.com/video/search?search=$1 302
