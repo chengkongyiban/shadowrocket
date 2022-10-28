@@ -5,7 +5,7 @@
 ^https:\/\/(cn|www)\.pornhub\.com\/_xa\/ads - reject-dict
 
 [Script]
-pornhub = type=http-response,requires-body=1,max-size=0,pattern=^https?:/\/(cn|www)\.pornhub\.com(\/?$|\/([?]|view|video).*$),script-path=https://github.com/ddgksf2013/Cuttlefish/raw/master/Html/JS/pornhub.js
+pornhub = type=http-response,requires-body=1,max-size=0,pattern=^https?:/\/(cn|www)\.pornhub\.com(\/?$|\/([?]|view|video).*$),script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/pornhub.js
 
 [MITM]
 hostname = %APPEND% *.pornhub.com
