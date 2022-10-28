@@ -4,7 +4,7 @@
 [Script]
 
 # ～ 财新（2022-10-17）@ddgksf2013
-财新解锁 = type=http-request,requires-body=0,max-size=0,pattern=^https?:\/\/gateway\.caixin\.com\/api\/app\-api\/auth\/(validate|validateAudioAuth),script-path=https://github.com/ddgksf2013/Cuttlefish/raw/master/Crack/caixin.js
+财新解锁 = type=http-request,requires-body=0,max-size=0,pattern=^https?:\/\/gateway\.caixin\.com\/api\/app\-api\/auth\/(validate|validateAudioAuth),script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/caixin.js
 
 [MITM]
 
