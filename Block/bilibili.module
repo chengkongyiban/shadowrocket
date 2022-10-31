@@ -58,8 +58,10 @@
 //2022-09-12 34、屏蔽视频播放页面下方浮动方框的广告
 //2022-10-02 35、B站解锁普通视频高码率仅适用国区粉色APP，外区为自我安慰
 [MITM]
-hostname = %APPEND% *.hdslb.com,app.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com, api.bilibili.com, manga.bilibili.com, grpc.biliapi.net,api.biliapi.net, -broadcast.chat.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net
+hostname = %APPEND% *.hdslb.com,app.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com, api.bilibili.com, manga.bilibili.com, grpc.biliapi.net,api.biliapi.net, -broadcast.chat.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net, upos-hz-mirrorakam.akamaized.net
 [URL Rewrite]
+#UPOS服务器替换为腾讯Cos对象存储
+^https?:\/\/upos-hz-mirrorakam\.akamaized\.net\/(.*) https://upos-sz-mirrorcos.bilivideo.com/$1 302
 # ～ BiliBili_哔哩哔哩_屏蔽广告浮窗@ddgksf2013
 ^https?:\/\/api\.bilibili\.com\/pgc\/activity\/deliver\/material\/receive - reject-dict
 # ～ BiliBili_哔哩哔哩_屏蔽IP请求@ddgksf2013
