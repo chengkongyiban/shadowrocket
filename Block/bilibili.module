@@ -59,6 +59,11 @@
 //2022-10-02 35、B站解锁普通视频高码率仅适用国区粉色APP，外区为自我安慰
 [MITM]
 hostname = %APPEND% *.hdslb.com,app.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com, api.bilibili.com, manga.bilibili.com, grpc.biliapi.net,api.biliapi.net, -broadcast.chat.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net, upos-hz-mirrorakam.akamaized.net
+
+[Rule]
+#防止tun模式下切区脚本失效
+IP-CIDR,203.107.1.1/24,REJECT,no-resolve
+
 [URL Rewrite]
 #UPOS服务器替换为腾讯Cos对象存储
 ^https?:\/\/upos-hz-mirrorakam\.akamaized\.net\/(.*) https://upos-sz-mirrorcos.bilivideo.com/$1 302
