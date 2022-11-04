@@ -73,8 +73,8 @@ IP-CIDR,203.107.1.1/24,REJECT,no-resolve
 ^https?:\/\/app\.bilibili\.com\/x\/resource\/ip - reject
 # ～ BiliBili_哔哩哔哩_屏蔽DefaultWord@ddgksf2013
 ^https?:\/\/app\.bilibili\.com\/bilibili\.app\.interface\.v1\.Search\/Default - reject
-# ～ BiliBili_哔哩哔哩_屏蔽首页右上活动[卸载重装]@ddgksf2013
-^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity - reject-dict
+# ～ BiliBili_哔哩哔哩_屏蔽首页右上活动@ddgksf2013
+屏蔽首页右上角活动 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/bilibili_json.js
 # ～ BiliBili_哔哩哔哩_应用开屏去广告@bm7
 ^https://app.bilibili.com/x/v2/splash/show - reject-dict
 # ～ BiliBili_哔哩哔哩_Defaultword@ddgksf2013
