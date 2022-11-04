@@ -5,7 +5,7 @@
 # BiliBili cookie
 获取B站cookie = type=http-request,requires-body=0,max-size=0,pattern=^https:\/\/app\.bilibili\.com\/x\/resource\/domain\?,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibiliSign.js
 
-B站签到 = type=cron,cronexp=10 8 * * *,timeout=30,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibiliSign.js
+B站签到 = type=cron,cronexp=30 8 * * *,timeout=30,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibiliSign.js
 
 [MITM]
 hostname = %APPEND% app.bilibili.com
