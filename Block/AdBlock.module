@@ -192,4 +192,4 @@ http:\/\/analytics\.163\.com\/ntes - reject
 
 
 [MITM]
-hostname = %APPEND% appconf.mail.163.com,analytics.163.com,mbd.baidu.com,m.ads.8le8le.com,iadmusicmat.music.com,ma-adx.ctrip.com,m.ctrip.com,api.m.jd.com,bdsp-x.jd.com,dsp-x.jd.com,mp.weixin.qq.com,ocean.shuqireader.com,mi.gdt.qq.com,mobads.baidu.com,sq.sljkj.com,img-tailor.11222.cn,j-image.missfresh.cn,act.vip.iqiyi.com, gw.alicdn.com, heic.alicdn.com,apiwz.midukanshu.com,*.iqiyipic.com, *.iqiyi.com,m5.amap.com,flowplus.meituan.net,*.bankcomm.com
+hostname = %APPEND% appconf.mail.163.com,analytics.163.com,mbd.baidu.com,m.ads.8le8le.com,iadmusicmat.music.com,ma-adx.ctrip.com,m.ctrip.com,api.m.jd.com,bdsp-x.jd.com,dsp-x.jd.com,mp.weixin.qq.com,ocean.shuqireader.com,mi.gdt.qq.com,mobads.baidu.com,sq.sljkj.com,img-tailor.11222.cn,j-image.missfresh.cn,act.vip.iqiyi.com,gw.alicdn.com, heic.alicdn.com,apiwz.midukanshu.com,*.iqiyipic.com,*.iqiyi.com,m5.amap.com,flowplus.meituan.net,*.bankcomm.com
