@@ -105,6 +105,9 @@ DOMAIN,qzs.gdtimg.com,REJECT
 ^https?:\/\/api\.m\.jd.com\/client\.action\?functionId=queryMaterialAdverts - reject
 ^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ - reject
 
+#高德地图开屏广告
+^https?:\/\/m5.amap.com\/ws\/valueadded\/ - reject
+
 #买单吧4.7.2开屏,升级提示
 ^https:\/\/creditcardapp\.bankcomm\.com\/mappweb_interaction\/json\/app\/appManage\/getApkUpdateInfo\.do - reject
 ^https:\/\/creditcardapp\.bankcomm\.com\/mappweb_interaction\/common\/getPopAds\.do - reject
@@ -190,4 +193,4 @@ http:\/\/analytics\.163\.com\/ntes - reject
 
 
 [MITM]
-hostname = %APPEND% appconf.mail.163.com,analytics.163.com,mbd.baidu.com,m.ads.8le8le.com,iadmusicmat.music.com,ma-adx.ctrip.com,m.ctrip.com,api.m.jd.com,bdsp-x.jd.com, dsp-x.jd.com,mp.weixin.qq.com,ocean.shuqireader.com,mi.gdt.qq.com,mobads.baidu.com,sq.sljkj.com,img-tailor.11222.cn,j-image.missfresh.cn,act.vip.iqiyi.com, gw.alicdn.com, heic.alicdn.com,apiwz.midukanshu.com,*.iqiyipic.com, *.iqiyi.com,flowplus.meituan.net,*.bankcomm.com
+hostname = %APPEND% appconf.mail.163.com,analytics.163.com,mbd.baidu.com,m.ads.8le8le.com,iadmusicmat.music.com,ma-adx.ctrip.com,m.ctrip.com,api.m.jd.com,bdsp-x.jd.com, dsp-x.jd.com,mp.weixin.qq.com,ocean.shuqireader.com,mi.gdt.qq.com,mobads.baidu.com,sq.sljkj.com,img-tailor.11222.cn,j-image.missfresh.cn,act.vip.iqiyi.com, gw.alicdn.com, heic.alicdn.com,apiwz.midukanshu.com,*.iqiyipic.com, *.iqiyi.com,flowplus.meituan.net,*.bankcomm.com,m5.amap.com
