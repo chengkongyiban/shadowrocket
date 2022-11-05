@@ -105,9 +105,6 @@ DOMAIN,qzs.gdtimg.com,REJECT
 ^https?:\/\/api\.m\.jd.com\/client\.action\?functionId=queryMaterialAdverts - reject
 ^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ - reject
 
-#高德地图开屏广告
-^https?:\/\/m5.amap.com\/ws\/valueadded\/ - reject
-
 #买单吧4.7.2开屏,升级提示
 ^https:\/\/creditcardapp\.bankcomm\.com\/mappweb_interaction\/json\/app\/appManage\/getApkUpdateInfo\.do - reject
 ^https:\/\/creditcardapp\.bankcomm\.com\/mappweb_interaction\/common\/getPopAds\.do - reject
@@ -154,6 +151,8 @@ DOMAIN,qzs.gdtimg.com,REJECT
 # 高德地图广告
 ^http:\/\/ems\.youku\.com\/imp\? - reject
 ^http:\/\/optimus-ads\.amap\.com\/uploadimg\/.+ - reject
+^https?:\/\/m5.amap.com\/ws\/valueadded\/ - reject
+
 # 携程广告->ma-adx.ctrip.com,m.ctrip.com
 ^https:\/\/ma-adx\.ctrip\.com\/_ma\.gif - reject
 ^https:\/\/m\.ctrip\.com\/restapi\/.+\/json\/tripAds - reject
