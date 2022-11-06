@@ -79,9 +79,9 @@ Proto去广告 = type=http-response,requires-body=1,max-size=0,timeout=60,patter
 
 #以下脚本默认关闭，如需使用可自行删掉脚本前面的#
 
-#魔改皮肤
-#魔改皮肤 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/ap(i|p)\.bilibili\.com\/x\/(vip|v2|resource)\/(space|account|web|price|top_panel_info|show)(\/|\?)(mine|myinfo|access|vip_center|panel|_bridge|skin\?).*,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/BiliBili/bili_info.js
-#B站切区
+#魔改皮肤 作者@ClydeTime
+#魔改皮肤 = type=http-response,requires-body=1,max-size=0,timeout=60,pattern=^https?:\/\/ap(i|p)\.bilibili\.com\/x\/(vip|v2|resource)\/(space|account|web|price|top_panel_info|show)(\/|\?)(mine|myinfo|access|vip_center|panel|_bridge|skin\?).*,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/BiliBili/bili_info.js
+#B站切区 作者@Nobyda
 #Bili Region = type=http-response,pattern=^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(pgc\/view\/v\d\/app\/season|x\/offline\/version)\?,requires-body=1,max-size=0,timeout=60,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Bili_Auto_Regions.js
-#可选, 适用于搜索指定地区的番剧
+#可选, 适用于搜索指定地区的番剧 作者@Nobyda
 #Bili Search = type=http-request,timeout=60,pattern=^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/x\/v\d\/search(\/type)?\?.+?%20(%E6%B8%AF|%E5%8F%B0|%E4%B8%AD)&,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Bili_Auto_Regions.js
