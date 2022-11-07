@@ -1,0 +1,10 @@
+#!name=趣听去弹窗
+#!desc=趣听去弹窗
+[Script]
+
+# ～ 趣听音乐☆自动激活APP（2022-10-26）@ddgksf2013
+趣听去弹窗 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api\.bspapp\.com\/client$,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Crack/qtmusic.js
+
+[mitm]
+
+hostname=%APPEND% api.bspapp.com
