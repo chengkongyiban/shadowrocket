@@ -13,7 +13,8 @@
 hifini签到cookie = type=http-request,pattern=https:\/\/www.hifini.com\/my.htm,script-path=https://raw.githubusercontent.com/lowking/Scripts/master/hifini/hifiniSign.js
 #打开喜马拉雅客户端即可获取
 喜马拉雅cookie = type=http-request,pattern=^https?:\/\/mobile\.ximalaya\.com\/app-skin-service\/skin\/,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/xmlySign.js
-
+#使用方法：打开 交管12123支付宝小程序 登录即可自动抓取
+交管12123 = type=http-request,pattern=^https:\/\/miniappcsfw\.122\.gov\.cn:8443\/openapi\/invokeApi\/business\/biz,requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/12123/index.js
 [MITM]
 
-hostname = %APPEND% *.hifini.com,app.bilibili.com,ms.jr.jd.com,me-api.jd.com,api.m.jd.com,mobile.ximalaya.com,180.153.255.10*,180.153.250.*,114.80.99.*,1.62.62.64
+hostname = %APPEND% *.hifini.com,app.bilibili.com,ms.jr.jd.com,me-api.jd.com,api.m.jd.com,mobile.ximalaya.com,180.153.255.10*,180.153.250.*,114.80.99.*,1.62.62.64,miniappcsfw.122.gov.cn:8443,miniappcsfw.122.gov.cn
