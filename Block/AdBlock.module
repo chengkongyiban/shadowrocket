@@ -149,6 +149,7 @@ DOMAIN,qzs.gdtimg.com,REJECT
 ^https?:\//m\.ads\.8le8le\.com\/adShow - reject
 
 # 高德地图广告
+https:\/\/m5\.amap\.com\/ws\/shield\/nest\/updatable\/v1\/preUpgrade\? - reject
 ^http:\/\/ems\.youku\.com\/imp\? - reject
 ^http:\/\/optimus-ads\.amap\.com\/uploadimg\/.+ - reject
 ^https?:\/\/m5.amap.com\/ws\/valueadded\/ - reject
