@@ -102,8 +102,8 @@ DOMAIN,qzs.gdtimg.com,REJECT
 [URL Rewrite]
 #京东开屏广告
 ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start - reject-dict
-^https?:\/\/api\.m\.jd.com\/client\.action\?functionId=queryMaterialAdverts - reject
-^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ - reject
+^https?:\/\/api\.m\.jd.com\/client\.action\?functionId=queryMaterialAdverts - reject-dict
+^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ - reject-dict
 
 #买单吧4.7.2开屏,升级提示
 ^https:\/\/creditcardapp\.bankcomm\.com\/mappweb_interaction\/json\/app\/appManage\/getApkUpdateInfo\.do - reject
@@ -185,8 +185,6 @@ http:\/\/analytics\.163\.com\/ntes - reject
 ^https?:\/\/(gw|heic)\.alicdn\.com\/imgextra\/.+\d{4}-\d{4}\.jpg_(9\d{2}|\d{4}) - reject
 
 [Script]
-京东开屏 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=hotWords,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/jd_json.js
-京东开屏2 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=hotSearchTerms,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/jd_json.js
 # 微信公众号广告屏蔽(By Choler)
 微信公众号广告屏蔽=type=http-response,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad,requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
 
