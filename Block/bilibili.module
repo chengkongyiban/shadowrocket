@@ -63,7 +63,7 @@ IP-CIDR,203.107.1.1/24,REJECT,no-resolve
 # ～ BiliBili_哔哩哔哩_热搜发现@ddgksf2013
 热搜 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https://app.bilibili.com/x/v2/search/square,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibili_json.js
 # ～ BiliBili_哔哩哔哩_屏蔽首页右上活动@ddgksf2013
-屏蔽首页右上角活动 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/bilibili_json.js
+屏蔽首页右上角活动 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibili_json.js
 # ～ BiliBili_哔哩哔哩_推荐去广告@ddgksf2013
 推荐去广告 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibili_json.js
 # ～ BiliBili_哔哩哔哩_追番去广告@ddgksf2013
