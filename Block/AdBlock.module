@@ -100,10 +100,11 @@ DOMAIN,sf3-fe-tos.pglstatp-toutiao.com,REJECT
 DOMAIN,qzs.gdtimg.com,REJECT
 
 [URL Rewrite]
-#京东开屏广告
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start - reject-dict
-^https?:\/\/api\.m\.jd.com\/client\.action\?functionId=queryMaterialAdverts - reject-dict
-^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ - reject-dict
+#京东屏蔽开屏广告
+^https?:\/\/api\.m\.jd\.com\/client\.action\*functionId=start - reject-dict
+^https?:\/\/api\.m\.jd.com\/client\.action\*functionId=queryMaterialAdverts - reject-dict
+^https?:\/\/api\.m\.jd\.com\/client\.action*functionId=msgEntranceV710 - reject-200
+^https?:\/\/api\.m\.jd\.com\/client\.action*functionId=xview2Config - reject-200
 
 #中国招商银行
 ^https?:\/\/mlife\.cmbchina\.com\/ClientFaceService\/preCacheAdvertise\.json - reject
