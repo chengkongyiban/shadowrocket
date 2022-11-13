@@ -56,8 +56,6 @@ IP-CIDR,203.107.1.1/24,REJECT,no-resolve
 观影页广告 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/cinema\/tab\?,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibili_json.js
 # ～ BiliBili_哔哩哔哩_应用开屏广告预加载@yjqiang
 开屏预加载 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/list,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibili_json.js
-# ～ BiliBili_哔哩哔哩_去除统一设置的皮肤@ddgksf2013
-禁统一皮肤 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\?,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibili_json.js
 # ～ BiliBili_哔哩哔哩_1080P高码率+4K画质(番剧和影视除外)@ddgksf2013
 解锁高码率 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\?,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibili_json.js
 # ～ BiliBili_哔哩哔哩_热搜发现@ddgksf2013
@@ -74,15 +72,16 @@ IP-CIDR,203.107.1.1/24,REJECT,no-resolve
 标签页处理 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/tab,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibili_json.js
 # ～ BiliBili_哔哩哔哩_Proto去广告@app2smile
 bili-proto = type=http-response,pattern=^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll|playurl\.v1\.PlayURL\/PlayView)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/bilibili-proto.js,script-update-interval=0
-
 #我的页面处理脚本 和魔改皮肤脚本只需要开启一个就行
 # ～ BiliBili_哔哩哔哩_我的页面处理@ddgksf2013
 我的页面处理 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/mine,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibili_json.js
-
-#以下脚本默认关闭，如需使用可自行删掉脚本前面的#
-
 #魔改皮肤 作者@ClydeTime
 #魔改皮肤 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https?:\/\/ap(i|p)\.bilibili\.com\/x\/(vip|v2|resource)\/(space|account|web|price|top_panel_info|show)(\/|\?)(mine|myinfo|access|vip_center|panel|_bridge|skin\?).*,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/BiliBili/bili_info.js
+# ～ BiliBili_哔哩哔哩_去除统一设置的皮肤@ddgksf2013
+禁统一皮肤 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\?,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibili_json.js
+
+#以下切区脚本需设置分流和策略组，教程链接https://t.me/weltyfjd/4  请看完教程再考虑是否启用
+
 #B站切区 作者@Nobyda
 #Bili Region = type=http-response,pattern=^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(pgc\/view\/v\d\/app\/season|x\/offline\/version)\?,requires-body=1,max-size=3145728,timeout=60,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Bili_Auto_Regions.js
 #可选, 适用于搜索指定地区的番剧 作者@Nobyda
