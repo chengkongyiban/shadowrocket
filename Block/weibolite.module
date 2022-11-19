@@ -3,7 +3,7 @@
 #需重装微博轻享版
 #搬运自@ddgksf2013
 [MITM]
-hostname = %APPEND% *.uve.weibo.com, *api.weibo.cn, *api.weibo.com, h5.sinaimg.cn, new.vip.weibo.cn, *.sc.weibo.com, captcha.weibo.com, wx*.sinaimg.cn, js.t.sinajs.cn, *.e.weibo.com
+hostname = %APPEND% *.uve.weibo.com,*api.weibo.cn,*api.weibo.com,h5.sinaimg.cn,new.vip.weibo.cn,*.sc.weibo.com,captcha.weibo.com,wx*.sinaimg.cn,js.t.sinajs.cn,*.e.weibo.com
 
 [Rule]
 #广告联盟，去开屏广告
