@@ -46,7 +46,7 @@
         Telegram: Neurogram
         GitHub: Neurogram-R
 */
-
+const $ = new Env("Dualsub");
 let url = $request.url
 let headers = $request.headers
 
