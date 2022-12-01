@@ -8,7 +8,7 @@
             
 [rewrite_local]
 
-^https?:\/\/api\.bspapp\.com\/client$ url script-response-body https://raw.githubusercontent.com/chxm1023/script/main/Advertising/quting.js
+^https?:\/\/api\.bspapp\.com\/client$ url script-response-body https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/qtmusic.js
 
 [mitm]
 
