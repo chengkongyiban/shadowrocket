@@ -7,6 +7,6 @@
 # ～ 趣听音乐☆自动激活APP（2022-10-26）@ddgksf2013
 趣听去弹窗 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api\.bspapp\.com\/client$,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/qtmusic.js
 
-[mitm]
+[MITM]
 
 hostname=%APPEND% api.bspapp.com
