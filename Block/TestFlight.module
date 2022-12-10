@@ -5,4 +5,4 @@
 #pluwen的TF收集仓库https://github.com/pluwen/awesome-testflight-link/blob/main/scripts/data/ios.md
 
 [Script]
-TF监控 = type = cron,cronexp=0 */30 * * * *,timeout=30,script-path=https://raw.githubusercontent.com/songyangzz/QuantumultX/master/testflight.js
+TF监控 = type = cron,cronexp=0 */30 * * * *,timeout=30,script-path=https://raw.githubusercontent.com/seirhsiao/config/main/scripts/testflight.js
