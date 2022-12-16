@@ -75,8 +75,6 @@ weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.c(n|o
 # ～ WeiboLite_微博国际版_用户中心@ddgksf2013
 weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=user_center,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/weibo_json.js
 
-
-
 [MITM]
 
 hostname = %APPEND% *.uve.weibo.com,*api.weibo.cn,*api.weibo.com,h5.sinaimg.cn,new.vip.weibo.cn,*.sc.weibo.com,captcha.weibo.com,wx*.sinaimg.cn,js.t.sinajs.cn,*.e.weibo.com
