@@ -19,6 +19,7 @@ RULE-SET,https://raw.githubusercontent.com/chengkongyiban/myself-rule-set/main/W
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*user&a=get_searching_info url reject-dict
 # > 微博国际版_屏蔽search_topic@ddgksf2013 
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic url reject-dict
+
 [Script]
 
 # > 微博国际版_屏蔽开屏广告@ddgksf2013 
