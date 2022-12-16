@@ -5,39 +5,7 @@
 
 [Rule]
 #广告联盟，去开屏广告
-DOMAIN-SUFFIX,sdkapp.uve.weibo.com,reject-dict
-DOMAIN,adstrategy.biz.weibo.com,reject-dict
-DOMAIN-SUFFIX,e.qq.com,reject-dict
-DOMAIN-SUFFIX,gdt.qq.com,reject-dict
-DOMAIN-SUFFIX,l.qq.com,reject-dict
-DOMAIN,adsmind.gdtimg.com,reject-dict
-DOMAIN,adsmind.ugdtimg.com,reject-dict
-DOMAIN,livep.l.t002.ottcn.com,reject-dict
-DOMAIN,pgdt.ugdtimg.com,reject-dict
-DOMAIN,splashqqlive.gtimg.com,reject-dict
-DOMAIN,wa.gtimg.com,reject-dict
-
-DOMAIN,ulogs.umengcloud.com,reject-dict
-DOMAIN,ulogs.umeng.com,reject-dict
-DOMAIN,sdk.e.qq.com,reject-dict
-DOMAIN,mi.gdt.qq.com,reject-dict
-DOMAIN,open.e.kuaishou.com,reject-dict
-DOMAIN,api-access.pangolin-sdk-toutiao.com,reject-dict
-DOMAIN,sdk.open.talk.getui.net,reject-dict
-DOMAIN,sdk.open.talk.getui.com,reject-dict
-DOMAIN,errlog.umeng.com,reject-dict
-DOMAIN,tnc3-aliec2.snssdk.com,reject-dict
-DOMAIN,sf3-fe-tos.pglstatp-toutiao.com,reject-dict
-DOMAIN,qzs.gdtimg.com,reject-dict
-
-DOMAIN-SUFFIX,alitui.weibo.com,reject-dict
-DOMAIN-SUFFIX,beacon.sina.com.cn,reject-dict
-DOMAIN,adimg.uve.weibo.com,reject-dict
-DOMAIN,adimg.vue.weibo.com,reject-dict
-DOMAIN,u1.img.mobile.sina.cn,reject-dict
-DOMAIN,sax.sina.com.cn,reject-dict
-DOMAIN,saxs.sina.com.cn,reject-dict
-DOMAIN,saxn.sina.com.cn,reject-dict
+RULE-SET,https://raw.githubusercontent.com/chengkongyiban/myself-rule-set/main/WeiboLiteAds.list,REJECT-DICT
 
 [URL Rewrite]
 
