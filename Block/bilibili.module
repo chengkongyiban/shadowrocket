@@ -53,7 +53,7 @@ IP-CIDR,203.107.1.1/24,REJECT,no-resolve
 # ～ BiliBili_哔哩哔哩_标签页处理@ddgksf2013
 标签页处理 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/tab,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibili_json.js
 # ～ BiliBili_哔哩哔哩_Proto去广告@app2smile
-bili-proto = type=http-response,pattern=^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll|playurl\.v1\.PlayURL\/PlayView)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/bilibili-proto.js,script-update-interval=0
+bili-proto = type=http-response,pattern=^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll|playurl\.v1\.PlayURL\/PlayView)$,requires-body=1,binary-body-mode=1,max-size=3145728,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/bilibili-proto.js,script-update-interval=0
 #魔改皮肤脚本自带解锁4k，和我的页面处理功能，自行选择
 # ～ BiliBili_哔哩哔哩_我的页面处理@ddgksf2013
 我的页面处理 = type=http-response,requires-body=1,max-size=3145728,timeout=60,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/mine,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/bilibili_json.js
