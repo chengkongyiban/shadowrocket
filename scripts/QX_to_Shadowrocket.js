@@ -9,7 +9,7 @@ hostname = %APPEND% github.com:443, raw.githubusercontent.com:443
 */
 
 let req = $request.url.replace(/qx$/,'')
-let name = '#!name= ' + req.match(/.+\/(.+)\.conf/)[1];
+let name = '#!name= ' + req.match(/.+\/(.+)\.(conf|js)/)?.[1] || '无名'
 !(async () => {
   let body = await http(req);
 
@@ -23,7 +23,7 @@ let MITM = "";
 
 body.forEach((x, y, z) => {
 	let type = x.match(
-		/script-|enabled=|reject|echo-response|url-and-header|hostname|url\s(302|307)|(request|\Bresponse)-body/
+		/script-|enabled=|reject|echo-response|url\srequest-header|hostname|url\s(302|307)|\s(request|response)-body/
 	)?.[0];
 	if (type) {
 		switch (type) {
@@ -51,20 +51,8 @@ body.forEach((x, y, z) => {
 				let jct = x.match(/reject?[^\s]+/)[0];
 				let url = x.match(/\^?http[^\s]+/)?.[0];
 
-				if (jct === "reject-200") {
-					z[y - 1]?.match("#") && MapLocal.push(z[y - 1]);
-					MapLocal.push(`${url} data="https://raw.githubusercontent.com/mieqq/mieqq/master/reject-200.txt"`);
-					break;
-				}
-
-				if (jct === "reject-img") {
-					z[y - 1]?.match("#") && MapLocal.push(z[y - 1]);
-					MapLocal.push(`${url} data="https://raw.githubusercontent.com/mieqq/mieqq/master/reject-img.gif"`);
-					break;
-				}
-
 				z[y - 1]?.match("#") && URLRewrite.push(z[y - 1]);
-				URLRewrite.push(x.replace(/(\^?http[^\s]+).+/, "$1 - reject"));
+				URLRewrite.push(x.replace(/(.*?)\x20url\x20(reject-200|reject-img|reject-dict|reject-array|reject)/, "$1 - $2"));
 				break;
 
 			case "url-and-header":
@@ -82,7 +70,7 @@ body.forEach((x, y, z) => {
 				MapLocal.push(x.replace(/(\^?http[^\s]+).+(http.+)/, '$1 data="$2"'));
 				break;
 			case "hostname":
-				MITM = x.replace(/hostname = (.+)/, `[MITM]\nhostname = %APPEND% $1`);
+				MITM = x.replace(/hostname\s?=(.*)/, `[MITM]\nhostname = %APPEND% $1`);
 				break;
 			default:
 				if (type.match("url ")) {
@@ -116,9 +104,9 @@ ${URLRewrite}
 ${HeaderRewrite}
 ${MapLocal}
 ${MITM}`;
+
+
 console.log(body)
-
-
  $done({ response: { status: 200 ,body:body} });
 })();
 
