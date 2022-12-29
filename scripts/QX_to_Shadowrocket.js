@@ -115,7 +115,7 @@ ${URLRewrite}
 ${HeaderRewrite}
 ${script}
 ${MapLocal}
-${MITM}`.replace(/\;/g,'#')
+${MITM}`.replace(/\;/g,'#').replace(/\n{2,}/g,'\n\n')
 
 
 
