@@ -9,7 +9,7 @@ hostname = %APPEND% github.com:443, raw.githubusercontent.com:443
 */
 
 let req = $request.url.replace(/qx$/,'')
-let name = '#!name= ' + req.match(/.+\/(.+)\.(conf|js)/)?.[1] || '无名';
+let name = '#!name= ' + req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1] || '无名';
 !(async () => {
   let body = await http(req);
 
@@ -34,7 +34,7 @@ body.forEach((x, y, z) => {
 				script.push(
 					x.replace(
 						/(\^?http[^\s]+)\surl\sscript-(response|request)[^\s]+\s(http.+\/(.+)\.js)/,
-						`$4 = type=http-$2,pattern=$1,requires-body=1${proto},max-size=0,script-path=$3,script-update-interval=0`,
+						`$4 = type=http-$2,pattern=$1,requires-body=1${proto},max-size=3145728,script-path=$3,script-update-interval=0`,
 					),
 				);
 				break;
