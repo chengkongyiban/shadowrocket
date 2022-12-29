@@ -111,9 +111,9 @@ MapLocal = (MapLocal[0] || '') && `[MapLocal]\n${MapLocal.join("\n")}`;
 
 body = `${name}
 
-${script}
 ${URLRewrite}
 ${HeaderRewrite}
+${script}
 ${MapLocal}
 ${MITM}`.replace(/\;/g,'#')
 
