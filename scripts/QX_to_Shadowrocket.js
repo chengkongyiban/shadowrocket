@@ -23,18 +23,20 @@ let MITM = "";
 
 body.forEach((x, y, z) => {
 	let type = x.match(
-		/script-|enabled=|reject|echo-response|\-header|hostname|url\s(302|307)|\s(request|response)-body/
+		/script-|enabled=|reject|echo-response|\-header|hostname|url\x20(302|307)|\x20(request|response)-body/
 	)?.[0];
 	if (type) {
 		switch (type) {
 			case "script-":
-			if (x.match('echo')) {throw '脚本不支持通用'}
+			if (x.match('script-echo-response')) {throw '脚本不支持通用'}
 				z[y - 1]?.match("#") && script.push(z[y - 1]);
 				let proto = x.match('proto.js') ? ',binary-body-mode=1' : '';
+				let rebody = x.match('script-(request|response)-body') ? ',requires-body=1,max-size=3145728' : '';
+				let analyze = x.match('analyze-echo') ? ',requires-body=1,max-size=3145728' : '';
 				script.push(
 					x.replace(
-						/(\^?http[^\s]+)\surl\sscript-(response|request)[^\s]+\s(http.+\/(.+)\.js)/,
-						`$4 = type=http-$2,pattern=$1,requires-body=1${proto},max-size=3145728,script-path=$3,script-update-interval=0`,
+						/(\^?http[^\s]+)\x20url\x20script-(response|request|analyze)[^\s]+\x20(http.+\/(.+)\.js)/,
+						`$4 = type=http-$2,pattern=$1${rebody}${proto}${analyze},script-path=$3,script-update-interval=0`,
 					),
 				);
 				break;
@@ -43,7 +45,7 @@ body.forEach((x, y, z) => {
 				z[y - 1]?.match("#") && script.push(z[y - 1]);
 				script.push(
 					x.replace(
-						/(.+\*)\s([^\,]+).+?\=([^\,]+).+/,
+						/(.+\*)\x20([^\,]+).+?\=([^\,]+).+/,
 						`$3 = type=cron,script-path=$2,timeout=60,cronexp=$1,wake-system=1`,
 					),
 				);
@@ -60,14 +62,14 @@ body.forEach((x, y, z) => {
 			case "-header":
 			if (x.match(/\(\\r\\n\)/g).length === 2){			
 				z[y - 1]?.match("#") &&  HeaderRewrite.push(z[y - 1]);
-let op = x.match(/\sresponse-header/) ?
+let op = x.match(/\x20response-header/) ?
 'http-response ' : '';
      if(x.match(/\$1\$2/)){
 		  HeaderRewrite.push(x.replace(/(\^?http[^\s]+).+?n\)([^\:]+).+/,`${op}$1 header-del $2`))	
 		}else{
 				HeaderRewrite.push(
 					x.replace(
-						/(\^?http[^\s]+)[^\)]+\)([^:]+):([^\(]+).+\$1\s?\2?\:?([^\$]+)?\$2/,
+						/(\^?http[^\s]+)[^\)]+\)([^:]+):([^\(]+).+\$1\x20?\2?\:?([^\$]+)?\$2/,
 						`${op}$1 header-replace-regex $2 $3 $4''`,
 					),
 				);
@@ -82,7 +84,7 @@ let op = x.match(/\sresponse-header/) ?
 				MapLocal.push(x.replace(/(\^?http[^\s]+).+(http.+)/, '$1 data="$2"'));
 				break;
 			case "hostname":
-				MITM = x.replace(/hostname\s?=(.*)/, `[MITM]\nhostname = %APPEND% $1`);
+				MITM = x.replace(/hostname\x20?=(.*)/, `[MITM]\nhostname = %APPEND% $1`);
 				break;
 			default:
 				if (type.match("url ")) {
@@ -92,7 +94,7 @@ let op = x.match(/\sresponse-header/) ?
 					z[y - 1]?.match("#") && script.push(z[y - 1]);
 					script.push(
 						x.replace(
-							/([^\s]+)\surl\s(response|request)-body\s(.+)\2-body(.+)/,
+							/([^\s]+)\x20url\x20(response|request)-body\x20(.+)\2-body(.+)/,
 							`test = type=$2,pattern=$1,requires-body=1,script-path=https://raw.githubusercontent.com/mieqq/mieqq/master/replace-body.js, argument=$3->$4`,
 						),
 					);
@@ -115,7 +117,7 @@ ${URLRewrite}
 ${HeaderRewrite}
 ${script}
 ${MapLocal}
-${MITM}`.replace(/\;/g,'#').replace(/\n{2,}/g,'\n\n')
+${MITM}`.replace(/\;/g,'#').replace(/\n{2,}/g,'\n\n').replace(/\x20{2,}/g,'\x20').replace(/http-analyze/g,'http-request')
 
 
 
