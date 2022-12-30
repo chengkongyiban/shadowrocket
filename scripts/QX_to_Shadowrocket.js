@@ -23,7 +23,7 @@ let MITM = "";
 
 body.forEach((x, y, z) => {
 	let type = x.match(
-		/script-|enabled=|reject|echo-response|\-header|hostname|url\x20(302|307)|\x20(request|response)-body/
+		/script-|enabled=|url\x20reject|echo-response|\-header|hostname|url\x20(302|307)|\x20(request|response)-body/
 	)?.[0];
 	if (type) {
 		switch (type) {
@@ -51,7 +51,7 @@ body.forEach((x, y, z) => {
 				);
 				break;
 
-			case "reject":
+			case "url\x20reject":
 				let jct = x.match(/reject?[^\s]+/)[0];
 				let url = x.match(/\^?http[^\s]+/)?.[0];
 
