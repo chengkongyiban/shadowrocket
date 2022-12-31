@@ -4,4 +4,4 @@
 [Script]
 
 #测试
-test = type=http-request,pattern=^http[s]?:\/\/((app|api)\.(\w{2,15})?\.(com|cn)).*player\.(v3|v2|v1).Play(URL|View).*$,requires-body=0,script-path=https://bai/du.js
+test = type=http-request,pattern=^http[s]?:\/\/((app|api)\.(\w{2,15})?\.(com|cn)).\w{2,15}*player\.(v3|v2|v1).Play(URL|View).*$,requires-body=0,script-path=https://bai/du.js
