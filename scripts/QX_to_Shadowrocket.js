@@ -42,7 +42,10 @@ body.forEach((x, y, z) => {
 				break;
 
 			case "enabled=":
+			
 				z[y - 1]?.match("#") && script.push(z[y - 1]);
+				
+				x = x.replace(/^(#|;|\/\/)/gi,'')
 				
 				let cronExp = x.split(" http")[0];
 				
