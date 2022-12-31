@@ -43,10 +43,17 @@ body.forEach((x, y, z) => {
 
 			case "enabled=":
 				z[y - 1]?.match("#") && script.push(z[y - 1]);
+				
+				let cronExp = x.split(" http")[0];
+				
+				let cronJs = x.split("//")[1].split(",")[0].replace(/(.+)/,'https://$1');
+				
+				let croName = x.split("tag=")[1].split(",")[0];
+				
 				script.push(
 					x.replace(
-						/(.+\*)\x20([^\,]+).+?\=([^\,]+).+/,
-						`$3 = type=cron,script-path=$2,timeout=60,cronexp=$1,wake-system=1`,
+						/.+enabled=.+/,
+						`${croName} = type=cron,script-path=${cronJs},timeout=60,cronexp=${cronExp},wake-system=1`,
 					),
 				);
 				break;
