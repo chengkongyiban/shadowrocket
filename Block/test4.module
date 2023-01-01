@@ -36,9 +36,13 @@ KeepBottom = type = http-response,pattern=https:\/\/api\.gotokeep\.com\/config\/
 hostname = %APPEND% api.gotokeep.com, static2.keepcdn.com
 
 [URL Rewrite]
+#test1
 ;(?<=_region=)CN(?=&) JP 307
+//test2
 //(^h.+v5\/)(.+) $1 302
+#test3
 #(?<=&mcc_mnc=)4 2 307
+#test4
 (?<=eme\/v)2(?=\/f\w{2}d\/\?.*) 1 302
 
 [Script]
