@@ -7,6 +7,12 @@
 # ～ BiliBili_哔哩哔哩_应用开屏去广告@bm7
 ^https://app.bilibili.com/x/v2/splash/show - reject-dict
 
+;B = type=cron,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/BiliBili.js,cronexpr="30 8 * * *",timeout=30,script-update-interval=0,enable=true
+//Hifini = type=cron,script-path=https://raw.githubusercontent.com/lowking/Scripts/master/hifini/hifiniSign.js,cronexpr="0 0 * * *",timeout=10,script-update-interval=0,enable=true
+#jd = type=cron,cronexp=1 0 * * *,wake-system=1,timeout=60,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js
+xmly = type = cron,cronexp=35 8 * * *,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/xmlySign.js,timeout=15
+(v3) = type=cron,script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/10010v3/10010.js,cronexpr="0 0,12,23 * * *",timeout=30,script-update-interval=0,enable=true
+
 #!name=TikTok JP
 #!desc=TikTok Unlock
 
