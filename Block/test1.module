@@ -13,8 +13,21 @@
 xmly = type = cron,cronexp=35 8 * * *,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/xmlySign.js,timeout=15
 (v3) = type=cron,script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/10010v3/10010.js,cronexpr="0 0,12,23 * * *",timeout=30,script-update-interval=0,enable=true
 
-#!name=TikTok JP
-#!desc=TikTok Unlock
+#!name=Block Keep Advertising
+#!desc=去除 keep 广告
+
+[Rule]
+URL-REGEX,^https:\/\/api\.gotokeep\.com\/op-engine-webapp\/v1\/ad,REJECT
+URL-REGEX,^https:\/\/api\.gotokeep\.com\/training\/box\/config,REJECT
+URL-REGEX,^https:\/\/api\.gotokeep\.com\/op-engine-webapp\/v1\/ad\/preload$,REJECT
+URL-REGEX,^https:\/\/api\.gotokeep\.com\/anno\/v1\/upgrade\/check$,REJECT
+
+[Script]
+KeepMy = pattern=https:\/\/api\.gotokeep\.com\/athena\/v5\/people\/my,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Maasea/surgeModule/master/Script/Keep/my.js,type=http-response
+KeepBottom = type = http-response,pattern=https:\/\/api\.gotokeep\.com\/config\/v3/basic,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Maasea/surgeModule/master/Script/Keep/bottom_bar.js
+
+[MITM]
+hostname = %APPEND% api.gotokeep.com, static2.keepcdn.com
 
 [URL Rewrite]
 (?<=_region=)CN(?=&) JP 307
@@ -23,7 +36,7 @@ xmly = type = cron,cronexp=35 8 * * *,script-path=https://raw.githubusercontent.
 (?<=eme\/v)2(?=\/f\w{2}d\/\?.*) 1 302
 
 [Script]
-http-response https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/favorite) script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/Tiktok.js, requires-body=true, timeout=10, tag=TK去水印
+http-response https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/favorite) script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/Tiktok.js, requires-body=true, timeout=10, tag=TK
 
 [MITM]
 hostname = %APPEND% *.tiktokv.com,*.byteoversea.com,*.tik-tokapi.com
