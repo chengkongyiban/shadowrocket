@@ -1,6 +1,6 @@
 #!name=QX格式转化
 #!desc=使用方法在qx重写链接末尾加上qx surge模块以module或者sgmodule结尾的不需要加后缀，其他格式加le
-#!author=@小白脸
+#!author=@小白脸 @chengkongyiban
 [Script]
 QX转换 = type=http-request,pattern=qx$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/QX_to_Shadowrocket.js
 
