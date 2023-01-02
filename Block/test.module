@@ -1,6 +1,8 @@
 #!name=Block Keep Advertising
 #!desc=去除 keep 广告
 # BiliBili_fuchuang
+
+
 [Url Rewrite]
 //^https?:\/\/api\.bilibili\.com\/pgc\/activity\/deliver\/material\/receive - reject-dict
 #  BiliBili_pinbi ip
@@ -10,11 +12,7 @@
 #  BiliBili_kaiping
 ^https://app.bilibili.com/x/v2/splash/show - reject-dict
 
-;B = type=cron,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/BiliBili.js,cronexpr="30 8 * * *",timeout=30,script-update-interval=0,enable=true
-//Hifini = type=cron,script-path=https://raw.githubusercontent.com/lowking/Scripts/master/hifini/hifiniSign.js,cronexpr="0 0 * * *",timeout=10,script-update-interval=0,enable=true
-#jd = type=cron,cronexp=1 0 * * *,wake-system=1,timeout=60,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js
-xmly = type = cron,cronexp=35 8 * * *,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/xmlySign.js,timeout=15
-(v3) = type=cron,script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/10010v3/10010.js,cronexpr="0 0,12,23 * * *",timeout=30,script-update-interval=0,enable=true
+
 
 ;(?<=_region=)CN(?=&) JP 307
 //(^h.+v5\/)(.+) $1 302
@@ -34,12 +32,29 @@ URL-REGEX,^https:\/\/api\.gotokeep\.com\/anno\/v1\/upgrade\/check$,REJECT-TINYGI
 #URX REJECT
 URL-REGEX,^https:\/\/api\.gotokeep\.com\/anno\/v1\/upgrade\/check$,REJECT-DROP
 
+[Map Local]
+"^https?:\/\/api\.zhihu\.com/moments/hybrid\?" data="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/blank/blank_dict.json"
+"^https?:\/\/api\.zhihu\.com\/(notifications\/v3\/count|v3\/package|me\/guides|drama\/living-info|ad|fringe|commercial|market\/popovers|search\/(top|tab)|.*featured-comment-ad|appview\/api\/v\d\/answers\/\d+\/recommendations)" data="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/blank/blank_dict.json"
+"^https?:\/\/api\.zhihu\.com\/ab\/api\/v1\/products\/zhihu\/platforms\/ios\/config" 
+
 [Script]
+
 KeepMy = pattern=https:\/\/api\.gotokeep\.com\/athena\/v5\/people\/my,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Maasea/surgeModule/master/Script/Keep/my.js,type=http-response
+
 KeepBottom = type = http-response,pattern=https:\/\/api\.gotokeep\.com\/config\/v3/basic,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Maasea/surgeModule/master/Script/Keep/bottom_bar.js
 
+;B = type=cron,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/BiliBili.js,cronexpr="30 8 * * *",timeout=30,script-update-interval=0,enable=true
+
+//Hifini = type=cron,script-path=https://raw.githubusercontent.com/lowking/Scripts/master/hifini/hifiniSign.js,cronexpr="0 0 * * *",timeout=10,script-update-interval=0,enable=true
+
+#jd = type=cron,cronexp=1 0 * * *,wake-system=1,timeout=60,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js
+
+xmly = type = cron,cronexp=35 8 * * *,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/xmlySign.js,timeout=15
+
+(v3) = type=cron,script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/10010v3/10010.js,cronexpr="0 0,12,23 * * *",timeout=30,script-update-interval=0,enable=true
 
 http-response https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/favorite) script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/Tiktok.js, requires-body=true, timeout=10, tag=TK
+
 [MITM]
 hostname = %APPEND% api.gotokeep.com, static2.keepcdn.com
 
