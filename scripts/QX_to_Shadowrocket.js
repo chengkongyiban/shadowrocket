@@ -26,7 +26,7 @@ let MITM = "";
 
 body.forEach((x, y, z) => {
 	let type = x.match(
-		/script-|enabled=|url\x20reject|echo-response|\-header|hostname|url\x20(302|307)|\x20(request|response)-body/
+		/\x20script-|enabled=|url\x20reject|echo-response|\-header|^hostname|url\x20(302|307)|\x20(request|response)-body/
 	)?.[0];
 	//判断注释
 	
@@ -38,7 +38,7 @@ body.forEach((x, y, z) => {
 	
 	if (type) {
 		switch (type) {
-			case "script-":
+			case "\x20script-":
 			if (x.match('script-echo-response')) {throw '脚本不支持通用'}
 				z[y - 1]?.match("#") && script.push(z[y - 1]);
 				let sctype = x.match('-response') ? 'response' : 'request';
@@ -143,7 +143,7 @@ ${URLRewrite}
 ${HeaderRewrite}
 ${script}
 ${MapLocal}
-${MITM}`.replace(/\;/g,'#').replace(/\n{2,}/g,'\n\n').replace(/\x20{2,}/g,'\x20').replace(/http-analyze/g,'http-request')
+${MITM}`.replace(/\n{2,}/g,'\n\n').replace(/\x20{2,}/g,'\x20')
 
 
 
