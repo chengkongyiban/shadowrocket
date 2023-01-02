@@ -32,10 +32,8 @@ URL-REGEX,^https:\/\/api\.gotokeep\.com\/anno\/v1\/upgrade\/check$,REJECT-TINYGI
 #URX REJECT
 URL-REGEX,^https:\/\/api\.gotokeep\.com\/anno\/v1\/upgrade\/check$,REJECT-DROP
 
-[Map Local]
-"^https?:\/\/api\.zhihu\.com/moments/hybrid\?" data="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/blank/blank_dict.json"
-"^https?:\/\/api\.zhihu\.com\/(notifications\/v3\/count|v3\/package|me\/guides|drama\/living-info|ad|fringe|commercial|market\/popovers|search\/(top|tab)|.*featured-comment-ad|appview\/api\/v\d\/answers\/\d+\/recommendations)" data="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/blank/blank_dict.json"
-"^https?:\/\/api\.zhihu\.com\/ab\/api\/v1\/products\/zhihu\/platforms\/ios\/config" 
+
+
 
 [Script]
 
