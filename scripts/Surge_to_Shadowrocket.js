@@ -1,11 +1,11 @@
 /****************************
-仅需要将Mock转为reject
+
 说明
    t&zd; = {  , }  花括号中的逗号
 
 ***************************/
 
-let req = $request.url.replace(/sg$/,'')
+let req = $request.url.replace(/le$/,'le')
 let name = '#!name = ' + req.match(/.+\/(.+)\.(sgmodule|module|js)/)?.[1] || '无名';
 let desc = '#!desc = ' + req.match(/.+\/(.+)\.(sgmodule|module|js)/)?.[1] || '无名';
 
@@ -67,7 +67,7 @@ body.forEach((x, y, z) => {
 
 //script = (script[0] || '') && `[Script]\n${script.join("\n")}`;
 
-URLRewrite = (URLRewrite[0] || '') && `${URLRewrite.join("\n")}`;
+URLRewrite = (URLRewrite[0] || '') && `${URLRewrite.join("\n\n")}`;
 
 //Rule = (Rule[0] || '') && `[Rule]\n${Rule.join("\n")}`;
 
@@ -79,7 +79,7 @@ if (others.match("[URL Rewrite]")){
 	mods = `${uHalf}\n[URL Rewrite]\n${URLRewrite}\n${lHalf}`
 }
 	if (URLRewrite !== ''){
-		mods = `${others}\n[URL Rewrite]\n${URLRewrite}`;
+		mods = `${others}\n\n[URL Rewrite]\n\n${URLRewrite}`;
 	}else{
 		mods = `${others}`;
 	}
@@ -91,12 +91,11 @@ HeaderRewrite = (HeaderRewrite[0] || '') && `[Header Rewrite]\n${HeaderRewrite.j
 MapLocal = (MapLocal[0] || '') && `[MapLocal]\n${MapLocal.join("\n")}`;
 ********/
 
-body = `
-${mods}
+body = `${mods}
 `
 		.replace(/t&zd;/g,',')
 		.replace(/#(.+)\n/g,'#$1')
-		.replace(/\n{2,}/g,'\n\n')
+		.replace(/\n{2,}/gi,'\n\n')
 		.replace(/"/g,'')
 		.replace(/\[Map\x20Local\]/gi,'')
 
