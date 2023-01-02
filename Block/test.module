@@ -3,22 +3,12 @@
 # BiliBili_fuchuang
 
 
-[Url Rewrite]
-//^https?:\/\/api\.bilibili\.com\/pgc\/activity\/deliver\/material\/receive - reject-dict
-#  BiliBili_pinbi ip
-;^https?:\/\/app\.bilibili\.com\/x\/resource\/ip - reject
-#  BiliBili default
-^https?:\/\/app\.bilibili\.com\/bilibili\.app\.interface\.v1\.Search\/Default - reject
-#  BiliBili_kaiping
-^https://app.bilibili.com/x/v2/splash/show - reject-dict
 
 
 
-;(?<=_region=)CN(?=&) JP 307
-//(^h.+v5\/)(.+) $1 302
-#(?<=&mcc_mnc=)4 2 307
-#shawanyi
-(?<=eme\/v)2(?=\/f\w{2}d\/\?.*) 1 302
+
+
+
 
 [Rule]
 #URX DIRECT
