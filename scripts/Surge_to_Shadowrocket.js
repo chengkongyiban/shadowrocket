@@ -68,21 +68,21 @@ body.forEach((x, y, z) => {
 //script = (script[0] || '') && `[Script]\n${script.join("\n")}`;
 
 URLRewrite = (URLRewrite[0] || '') && `${URLRewrite.join("\n\n")}`;
-
 //Rule = (Rule[0] || '') && `[Rule]\n${Rule.join("\n")}`;
 
 others = (others[0] || '') && `${others.join("\n\n")}`;
 
-if (others.match("[URL Rewrite]")){
+if (URLRewrite !== "" && others.match("[URL Rewrite]")){
 	uHalf = others.split(/\[URL Rewrite\]/i)[0];
 	lHalf = others.split(/\[URL Rewrite\]/i)[1];
-	mods = `${uHalf}\n[URL Rewrite]\n${URLRewrite}\n${lHalf}`
-}
-	if (URLRewrite !== ''){
+	mods = `${uHalf}\n[URL Rewrite]\n${URLRewrite}\n${lHalf}`;
+}else{if (URLRewrite !== ''){
 		mods = `${others}\n\n[URL Rewrite]\n\n${URLRewrite}`;
 	}else{
 		mods = `${others}`;
 	}
+	}
+	
 	
 
 /********
