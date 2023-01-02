@@ -7,10 +7,6 @@ QX转换 = type=http-request,pattern=qx$,requires-body=1,max-size=0,script-path=
 [MITM]
 hostname = %APPEND% github.com:443, raw.githubusercontent.com:443
 */
-
-
-
-
 let req = $request.url.replace(/qx$/,'')
 let name = '#!name= ' + req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1] || '无名';
 !(async () => {
@@ -147,7 +143,7 @@ ${MITM}`.replace(/\n{2,}/g,'\n\n').replace(/\x20{2,}/g,'\x20')
 
 
 
- $done({ response: { status: 200 ,body:body } });
+ $done({ response: { status: 200 ,body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'} } });
 
 })()
 .catch((e) => {
