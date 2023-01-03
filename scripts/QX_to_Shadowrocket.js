@@ -24,10 +24,10 @@ let MITM = "";
 body.forEach((x, y, z) => {
 	x = x.replace(/^(#|;|\/\/)/gi,'#');
 	let type = x.match(
-		/\x20script-|enabled=|url\x20reject|echo-response|\-header|^hostname|url\x20(302|307)|\x20(request|response)-body/
+		/\x20url\x20script-|enabled=|\x20url\x20reject|\x20echo-response|\-header|^hostname| url 30|\x20(request|response)-body/
 	)?.[0];
-	//判断注释
 	
+//判断注释
 	if (x.match(/^[^#]/)){
 	var noteK = "";
 	}else{
@@ -36,7 +36,8 @@ body.forEach((x, y, z) => {
 	
 	if (type) {
 		switch (type) {
-			case "\x20script-":
+//脚本			
+			case " url script-":
 				z[y - 1]?.match("#") && script.push(z[y - 1]);
 				let sctype = x.match('script-response') ? 'response' : 'request';
 				
@@ -60,7 +61,7 @@ body.forEach((x, y, z) => {
 					),
 				);
 				break;
-
+//定时任务
 			case "enabled=":
 				z[y - 1]?.match("#") && script.push(z[y - 1]);
 				
@@ -77,8 +78,8 @@ body.forEach((x, y, z) => {
 					),
 				);
 				break;
-
-			case "url\x20reject":
+//reject
+			case " url reject":
 
 				z[y - 1]?.match("#") && URLRewrite.push(z[y - 1]);
 				URLRewrite.push(x.replace(/(#)?(.*?)\x20url\x20(reject-200|reject-img|reject-dict|reject-array|reject)/, `${noteK}$2 - $3`));
@@ -109,7 +110,7 @@ let op = x.match(/\x20response-header/) ?
 
 //Mock 火箭不支持，但是保留
 
-			case "echo-response":
+			case " echo-response":
 				z[y - 1]?.match("#") && MapLocal.push(z[y - 1]);
 				MapLocal.push(x.replace(/(\^?http[^\s]+).+(http.+)/, '$1 data="$2"'));
 				break;
@@ -117,15 +118,17 @@ let op = x.match(/\x20response-header/) ?
 //mitm				
 				
 			case "hostname":
-				MITM = x.replace(/hostname\x20?=(.*)/, `[MITM]\n\nhostname = %APPEND% $1`);
+				MITM = x.replace(/hostname\x20?=(.*)/, `[MITM]\n\nhostname = %APPEND% $1`).replace(/,$/,"");
 				break;
 				
-//302/307				
-			default:
-				if (type.match("url ")) {
+//302/307						
+			case " url 30":
 					z[y - 1]?.match("#") && URLRewrite.push(z[y - 1]);
 					URLRewrite.push(x.replace(/(#)?(.*?)\x20url\x20(302|307)\s(.+)/, `${noteK}$2 $4 $3`));
-				} else {
+				
+				break;
+				
+			default:
 					
 //带参数脚本argument					
 					z[y - 1]?.match("#") && script.push(z[y - 1]);
@@ -135,7 +138,7 @@ let op = x.match(/\x20response-header/) ?
 							`test = type=$2,pattern=$1,requires-body=1,script-path=https://raw.githubusercontent.com/mieqq/mieqq/master/replace-body.js, argument=$3->$4`,
 						),
 					);
-				}
+				
 		} //switch结束
 	}
 }); //循环结束
@@ -160,8 +163,8 @@ ${MapLocal}
 
 ${MITM}`
 		.replace(/(#.+\n)\n/g,'$1')
-		.replace(/t&zd;/g,',')
 		.replace(/\n{2,}/g,'\n\n')
+		.replace(/t&zd;/g,',')
 		.replace(/"{2,}/g,'"')
 		.replace(/\x20{2,}/g,' ')
 
