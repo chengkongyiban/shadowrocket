@@ -83,16 +83,19 @@ body.forEach((x, y, z) => {
 				z[y - 1]?.match("#") && URLRewrite.push(z[y - 1]);
 				URLRewrite.push(x.replace(/(#)?(.*?)\x20url\x20(reject-200|reject-img|reject-dict|reject-array|reject)/, `${noteK}$2 - $3`));
 				break;
+				
+				
+//headerRewrite，转的不对请赐教
 
 			case "-header":
 			if (x.match(/\(\\r\\n\)/g).length === 2){			
-				z[y - 1]?.match("#") &&  HeaderRewrite.push(z[y - 1]);
+				z[y - 1]?.match("#") &&  URLRewrite.push(z[y - 1]);
 let op = x.match(/\x20response-header/) ?
 'http-response ' : '';
      if(x.match(/\$1\$2/)){
-		  HeaderRewrite.push(x.replace(/(\^?http[^\s]+).+?n\)([^\:]+).+/,`${op}$1 header-del $2`))	
+		  URLRewrite.push(x.replace(/(\^?http[^\s]+).+?n\)([^\:]+).+/,`${op}$1 header-del $2`))	
 		}else{
-				HeaderRewrite.push(
+				URLRewrite.push(
 					x.replace(
 						/(\^?http[^\s]+)[^\)]+\)([^:]+):([^\(]+).+\$1\x20?\2?\:?([^\$]+)?\$2/,
 						`${op}$1 header-replace-regex $2 $3 $4''`,
@@ -100,22 +103,31 @@ let op = x.match(/\x20response-header/) ?
 				);
 				}
 				}else{
-	$notification.post('不支持这条规则转换,已跳过','',`${x}`);
+					
 				}
 				break;
+
+//Mock 火箭不支持，但是保留
 
 			case "echo-response":
 				z[y - 1]?.match("#") && MapLocal.push(z[y - 1]);
 				MapLocal.push(x.replace(/(\^?http[^\s]+).+(http.+)/, '$1 data="$2"'));
 				break;
+				
+//mitm				
+				
 			case "hostname":
-				MITM = x.replace(/hostname\x20?=(.*)/, `[MITM]\nhostname = %APPEND% $1`);
+				MITM = x.replace(/hostname\x20?=(.*)/, `[MITM]\n\nhostname = %APPEND% $1`);
 				break;
+				
+//302/307				
 			default:
 				if (type.match("url ")) {
 					z[y - 1]?.match("#") && URLRewrite.push(z[y - 1]);
 					URLRewrite.push(x.replace(/(#)?(.*?)\x20url\x20(302|307)\s(.+)/, `${noteK}$2 $4 $3`));
 				} else {
+					
+//带参数脚本argument					
 					z[y - 1]?.match("#") && script.push(z[y - 1]);
 					script.push(
 						x.replace(
@@ -128,26 +140,31 @@ let op = x.match(/\x20response-header/) ?
 	}
 }); //循环结束
 
-script = (script[0] || '') && `[Script]\n${script.join("\n")}`;
+script = (script[0] || '') && `[Script]\n\n${script.join("\n\n")}`;
 
-URLRewrite = (URLRewrite[0] || '') && `[URL Rewrite]\n${URLRewrite.join("\n")}`;
+URLRewrite = (URLRewrite[0] || '') && `[URL Rewrite]\n\n${URLRewrite.join("\n\n")}`;
 
-HeaderRewrite = (HeaderRewrite[0] || '') && `[Header Rewrite]\n${HeaderRewrite.join("\n")}`;
+//HeaderRewrite = (HeaderRewrite[0] || '') && `[Header Rewrite]\n\n${HeaderRewrite.join("\n")}`;
 
-MapLocal = (MapLocal[0] || '') && `[MapLocal]\n${MapLocal.join("\n")}`;
+MapLocal = (MapLocal[0] || '') && `[Map Local]\n\n${MapLocal.join("\n\n")}`;
 
 body = `${name}
+
 ${desc}
 
-${URLRewrite}
 
-${HeaderRewrite}
+${URLRewrite}
 
 ${script}
 
 ${MapLocal}
 
-${MITM}`.replace(/\n{2,}/g,'\n\n').replace(/\x20{2,}/g,'\x20')
+${MITM}`
+		.replace(/#(.+)\n/g,'#$1')
+		.replace(/t&zd;/g,',')
+		.replace(/\n{2,}/g,'\n\n')
+		.replace(/"{2,}/g,'"')
+		.replace(/\x20{2,}/g,' ')
 
 
 
