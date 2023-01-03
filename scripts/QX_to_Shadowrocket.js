@@ -162,11 +162,11 @@ ${script}
 ${MapLocal}
 
 ${MITM}`
-		.replace(/(#.+\n)\n/g,'$1')
-		.replace(/\n{2,}/g,'\n\n')
 		.replace(/t&zd;/g,',')
 		.replace(/"{2,}/g,'"')
 		.replace(/\x20{2,}/g,' ')
+		.replace(/(#.+\n)\n/g,'$1')
+		.replace(/\n{2,}/g,'\n\n')
 
 
 
