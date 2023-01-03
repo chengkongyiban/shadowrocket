@@ -20,7 +20,7 @@ let plugin = [];
 body.forEach((x, y, z) => {
 	x = x.replace(/^(#|;|\/\/)/gi,'#');
 	let type = x.match(
-		/\[Rewrite\]|^hostname\x20?=\x20?|^((?!\[Rewrite\]).)*$|^((?!^hostname).)*$/
+		/\[Rewrite\]|^hostname\x20?=\x20?|\[mitm\]|^((?!\[Rewrite\]).)*$|^((?!^hostname).)*$/i
 	)?.[0];
 	//判断注释
 	
@@ -50,7 +50,13 @@ body.forEach((x, y, z) => {
 			if (type.match(/^hostname\x20?=\x20?/)){
 				plugin.push(x.replace(/hostname\x20?=\x20?(.+)/,'hostname = %APPEND% $1'))
 			}else{
+				
+			if (type.match(/\[mitm\]/i)){
+				plugin.push(x.replace(/\[mitm\]/i,'[MITM]'))
+			}
+			else{
 				plugin.push(x);
+			}
 			}
 				
 				
