@@ -5,7 +5,7 @@
 
 ***************************/
 
-let req = $request.url.replace(/sg$/,'')
+let req = $request.url.replace(/plugin$/,'plugin')
 let name = '#!name = ' + req.match(/.+\/(.+)\.(sgmodule|module|js)/)?.[1] || '无名';
 let desc = '#!desc = ' + req.match(/.+\/(.+)\.(sgmodule|module|js)/)?.[1] || '无名';
 
@@ -22,7 +22,6 @@ body.forEach((x, y, z) => {
 	let type = x.match(
 		/\[Rewrite\]|^hostname\x20?=\x20?|^((?!\[Rewrite\]).)*$|^((?!^hostname).)*$/
 	)?.[0];
-	console.log(type)
 	//判断注释
 	
 	if (x.match(/^[^#]/)){
@@ -40,7 +39,7 @@ body.forEach((x, y, z) => {
 				
 				plugin.push(
 					x.replace(
-						'[Rewrite]',
+						/\[Rewrite\]/i,
 						'[URL Rewrite]'
 					),
 				);
