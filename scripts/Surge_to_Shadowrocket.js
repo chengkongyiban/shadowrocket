@@ -67,7 +67,7 @@ body.forEach((x, y, z) => {
 
 //script = (script[0] || '') && `[Script]\n${script.join("\n")}`;
 
-URLRewrite = (URLRewrite[0] || '') && `${URLRewrite.join("\n\n")}`;
+URLRewrite = (URLRewrite[0] || '') && `${URLRewrite.join("\n")}`;
 //Rule = (Rule[0] || '') && `[Rule]\n${Rule.join("\n")}`;
 
 others = (others[0] || '') && `${others.join("\n\n")}`;
@@ -91,7 +91,7 @@ MapLocal = (MapLocal[0] || '') && `[MapLocal]\n${MapLocal.join("\n")}`;
 
 body = `${mods}`
 		.replace(/t&zd;/g,',')
-		.replace(/#(.+)\n/g,'#$1')
+		.replace(/(#.+\n)\n/g,'$1')
 		.replace(/\n{2,}/g,'\n\n')
 		.replace(/"/g,'')
 		.replace(/\[Map\x20?Local\]/gi,'')
