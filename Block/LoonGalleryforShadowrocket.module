@@ -1,0 +1,18 @@
+#!name=火箭模块商店
+#!desc=商店链接https://loon-gallery.vercel.app/
+#!author=@Peng-YM @小白脸 @chengkongyiban
+#!说明：打开商店后找到想要的插件，点左边插件的头像会自动转换为火箭支持的模块，复制链接添加到火箭模块即可
+#!集成了QX转火箭 链接末尾加qx Surge转火箭加sg 
+
+[Script]
+
+Loon-Gallery = type=http-request,pattern=https?:\/\/xn--ck8h\.com,script-path=https://raw.githubusercontent.com/Peng-YM/Loon-Gallery/master/backend/gallery.js, requires-body=true, timeout=120
+
+QX转换火箭 = type=http-request,pattern=qx$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/QX_to_Shadowrocket.js
+
+Surge转换火箭 = type=http-request,pattern=(module|js)sg$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Surge_to_Shadowrocket.js
+
+Loon转换火箭 = type=http-request,pattern=plugin$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Loon_to_Shadowrocket.js
+
+[MITM]
+hostname = %APPEND% xn--ck8h.com,github.com:443, raw.githubusercontent.com:443
