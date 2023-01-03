@@ -33,8 +33,6 @@ body.forEach((x, y, z) => {
 	if (type) {
 		switch (type) {
 			
-//Mock统统转reject，其他作用的Mock Loon无法实现
-
 			case "[Rewrite]":
 				
 				plugin.push(
@@ -64,31 +62,8 @@ body.forEach((x, y, z) => {
 	}
 }); //循环结束
 
-//script = (script[0] || '') && `[Script]\n${script.join("\n")}`;
-
-//URLRewrite = (URLRewrite[0] || '') && `${URLRewrite.join("\n\n")}`;
-//Rule = (Rule[0] || '') && `[Rule]\n${Rule.join("\n")}`;
-
-//MITM = (MITM[0] || '') && `${MITM.join("\n\n")}`;
 plugin = (plugin[0] || '') && `${plugin.join("\n\n")}`;
 
-/*		
-if (URLRewrite !== "" && others.match("[URL Rewrite]")){
-	uHalf = others.split(/\[URL Rewrite\]/i)[0];
-	lHalf = others.split(/\[URL Rewrite\]/i)[1];
-	mods = `${uHalf}\n\n[URL Rewrite]\n${URLRewrite}\n${lHalf}`;
-}else{if (URLRewrite != ""){
-		mods = `${others}${URLRewrite}`
-		
-	}else{
-		mods = `${others}`;
-	}
-	};
-/********
-HeaderRewrite = (HeaderRewrite[0] || '') && `[Header Rewrite]\n${HeaderRewrite.join("\n")}`;
-
-MapLocal = (MapLocal[0] || '') && `[MapLocal]\n${MapLocal.join("\n")}`;
-********/
 
 body = `${plugin}`
 		.replace(/#(.+)\n/g,'#$1')
