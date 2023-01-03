@@ -66,7 +66,7 @@ plugin = (plugin[0] || '') && `${plugin.join("\n\n")}`;
 
 
 body = `${plugin}`
-		.replace(/#(.+)\n/g,'#$1')
+		.replace(/(#.+\n)\n/g,'$1')
 		.replace(/\n{2,}/g,'\n\n')
 		.replace(/\x20{2,}/gi,' ')
 		.replace(/"/g,'')
