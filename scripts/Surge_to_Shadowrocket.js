@@ -75,7 +75,7 @@ others = (others[0] || '') && `${others.join("\n\n")}`;
 if (URLRewrite !== "" && others.match("[URL Rewrite]")){
 	uHalf = others.split(/\[URL Rewrite\]/i)[0];
 	lHalf = others.split(/\[URL Rewrite\]/i)[1];
-	mods = `${uHalf}\n\n[URL Rewrite]\n${URLRewrite}\n${lHalf}`;
+	mods = `${uHalf}\n\n[URL Rewrite]\n\n${URLRewrite}\n\n${lHalf}`;
 }else{if (URLRewrite != ""){
 		mods = `${others}${URLRewrite}`
 		
