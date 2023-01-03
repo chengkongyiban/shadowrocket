@@ -5,7 +5,7 @@
 
 ***************************/
 
-let req = $request.url.replace(/le$/,'le')
+let req = $request.url.replace(/sg$/,'')
 let name = '#!name = ' + req.match(/.+\/(.+)\.(sgmodule|module|js)/)?.[1] || '无名';
 let desc = '#!desc = ' + req.match(/.+\/(.+)\.(sgmodule|module|js)/)?.[1] || '无名';
 
@@ -71,34 +71,31 @@ URLRewrite = (URLRewrite[0] || '') && `${URLRewrite.join("\n\n")}`;
 //Rule = (Rule[0] || '') && `[Rule]\n${Rule.join("\n")}`;
 
 others = (others[0] || '') && `${others.join("\n\n")}`;
-
+		
 if (URLRewrite !== "" && others.match("[URL Rewrite]")){
 	uHalf = others.split(/\[URL Rewrite\]/i)[0];
 	lHalf = others.split(/\[URL Rewrite\]/i)[1];
-	mods = `${uHalf}\n[URL Rewrite]\n${URLRewrite}\n${lHalf}`;
-}else{if (URLRewrite !== ''){
-		mods = `${others}\n\n[URL Rewrite]\n\n${URLRewrite}`;
+	mods = `${uHalf}\n\n[URL Rewrite]\n${URLRewrite}\n${lHalf}`;
+}else{if (URLRewrite != ""){
+		mods = `${others}${URLRewrite}`
+		
 	}else{
 		mods = `${others}`;
 	}
-	}
-	
-	
-
+	};
 /********
 HeaderRewrite = (HeaderRewrite[0] || '') && `[Header Rewrite]\n${HeaderRewrite.join("\n")}`;
 
 MapLocal = (MapLocal[0] || '') && `[MapLocal]\n${MapLocal.join("\n")}`;
 ********/
 
-body = `${mods}
-`
+body = `${mods}`
 		.replace(/t&zd;/g,',')
 		.replace(/#(.+)\n/g,'#$1')
-		.replace(/\n{2,}/gi,'\n\n')
+		.replace(/\n{2,}/g,'\n\n')
 		.replace(/"/g,'')
 		.replace(/\[Map\x20Local\]/gi,'')
-
+		.replace(/undefined$/,'')
 
  $done({ response: { status: 200 ,body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'} } });
 
