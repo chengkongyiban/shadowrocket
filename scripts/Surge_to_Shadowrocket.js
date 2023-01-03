@@ -94,7 +94,7 @@ body = `${mods}`
 		.replace(/#(.+)\n/g,'#$1')
 		.replace(/\n{2,}/g,'\n\n')
 		.replace(/"/g,'')
-		.replace(/\[Map\x20Local\]/gi,'')
+		.replace(/\[Map\x20?Local\]/gi,'')
 		.replace(/undefined$/,'')
 
  $done({ response: { status: 200 ,body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'} } });
