@@ -13,7 +13,7 @@ URL-REGEX,^https?:\/\/d\.image\.i4\.cn\/adInfo\/.+,REJECT
 URL-REGEX,^https?:\/\/wapi\.kuwo\.cn\/api\/mobile\/index\/feed\?.+,REJECT
 URL-REGEX,fvedio\.kuwo\.cn,REJECT-DICT
 #美团
-URL-REGEX,^https?:\/\/(s3plus|flowplus)\.meituan\.net\/v\d\/\w+\/linglong\/\w+\.(gif|jpg|mp4),DIRECT
+URL-REGEX,^https?:\/\/(s3plus|flowplus)\.meituan\.net\/v\d\/\w+\/linglong\/\w+\.(gif|jpg|mp4),REJECT
 # 有兔阅读
 DOMAIN,app.zhoudamozi.com,DIRECT
 DOMAIN-SUFFIX,youzibank.com,DIRECT
