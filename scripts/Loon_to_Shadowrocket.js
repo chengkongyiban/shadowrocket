@@ -37,6 +37,7 @@ let plugin = [];
 //let MITM = [];
 
 body.forEach((x, y, z) => {
+	x = x.replace(/^(#|;|\/\/)/,"#")
 	plugin.push(x)
 	
 }); //循环结束
@@ -51,6 +52,7 @@ body = `${plugin}`
 		.replace(/\[Rule\]/gi,'\n[Rule]\n')
 		.replace(/\[General\]/gi,'\n[General]\n')
 		.replace(/(.+)\x20(302|307)\x20(.+)/gi,"$1 $3 $2")
+		.replace(/(DOMAIN|U|IP|GEOIP)[^,\s]+,[^,\s]+/g,"")
 		.replace(/hostname\x20?=\x20?(.+)/gi,"hostname = %APPEND% $1")
 		.replace(/\x20{2,}/gi,' ')
 		.replace(/"{2,}/g,'"')
