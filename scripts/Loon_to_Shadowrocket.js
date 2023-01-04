@@ -7,7 +7,7 @@
 ***************************/
 var name = "";
 var desc = "";
-let req = $request.url.replace(/plugin.*/,'');
+let req = $request.url.replace(/plugin.*/,'plugin');
 let urlArg = $request.url.replace(/.+plugin(.*)/,'$1');
 
 if (urlArg === ""){
