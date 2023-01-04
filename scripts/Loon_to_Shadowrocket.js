@@ -20,10 +20,9 @@ let plugin = [];
 body.forEach((x, y, z) => {
 	x = x.replace(/^(#|;|\/\/)/gi,'#');
 	let type = x.match(
-		/\[Rewrite\]|^hostname\x20?=\x20?|\[mitm\]|^((?!\[Rewrite\]).)*$|^((?!^hostname).)*$/i
+		/\[Rewrite\]|^hostname\x20?=\x20?|\[mitm\]|.+/i
 	)?.[0];
 	//判断注释
-	
 	if (x.match(/^[^#]/)){
 	var noteK = "";
 	}else{
@@ -62,14 +61,20 @@ body.forEach((x, y, z) => {
 	}
 }); //循环结束
 
-plugin = (plugin[0] || '') && `${plugin.join("\n\n")}`;
+plugin = (plugin[0] || '') && `${plugin.join("\n")}`;
 
 
 body = `${plugin}`
-		.replace(/(#.+\n)\n/g,'$1')
-		.replace(/\n{2,}/g,'\n\n')
 		.replace(/\x20{2,}/gi,' ')
 		.replace(/"/g,'')
+		.replace(/\n{2,}/g,'\n\n')
+		.replace(/\[URL Rewrite\]/gi,'\n[URL Rewrite]\n')
+		.replace(/\[MITM\]/gi,'\n[MITM]\n')
+		.replace(/\[Script\]/gi,'\n[Script]\n')
+		.replace(/\[Rule\]/gi,'\n[Rule]\n')
+		.replace(/\[General\]/gi,'\n[General]\n')
+		
+		
 
  $done({ response: { status: 200 ,body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'} } });
 
