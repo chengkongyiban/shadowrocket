@@ -38,7 +38,7 @@ body.forEach((x, y, z) => {
 	if (type) {
 		switch (type) {
 			
-//Mock统统转reject，其他作用的Mock Loon无法实现
+//Mock统统转reject
 
 			case " data=":
 				z[y - 1]?.match("#") && URLRewrite.push(z[y - 1]);
