@@ -25,6 +25,8 @@ if (urlArg === ""){
     desc = name;
 	}
 };
+name = "name: " + decodeURIComponent(name);
+desc = "desc: " + decodeURIComponent(desc);
 
 !(async () => {
   let body = await http(req);
