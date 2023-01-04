@@ -1,13 +1,30 @@
 /****************************
-
+原脚本作者@小白脸 脚本修改@chengkongyiban
+感谢@xream 的指导
 说明
    t&zd; = {  , }  花括号中的逗号
 
 ***************************/
+var name = "";
+var desc = "";
+let req = $request.url.replace(/plugin.*/,'');
+let urlArg = $request.url.replace(/.+plugin(.*)/,'$1');
 
-let req = $request.url.replace(/plugin$/,'plugin')
-let name = '#!name = ' + req.match(/.+\/(.+)\.(sgmodule|module|js)/)?.[1] || '无名';
-let desc = '#!desc = ' + req.match(/.+\/(.+)\.(sgmodule|module|js)/)?.[1] || '无名';
+if (urlArg === ""){
+	name = req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1] || '无名';
+    desc = req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1] || '无名';
+}else{
+	if(urlArg.match("n=")){
+		name = urlArg.split("n=")[1].split("&")[0];
+	}else{
+		name = req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1] || '无名';
+	}
+	if(urlArg.match("d=")){
+		desc = urlArg.split("d=")[1].split("&")[0];
+	}else{
+		desc = name;
+	}
+};
 
 !(async () => {
   let body = await http(req);
