@@ -37,60 +37,24 @@ let plugin = [];
 //let MITM = [];
 
 body.forEach((x, y, z) => {
-	x = x.replace(/^(#|;|\/\/)/gi,'#');
-	let type = x.match(
-		/\[Rewrite\]|^hostname\x20?=\x20?|\[mitm\]|.+/i
-	)?.[0];
-	//判断注释
-	if (x.match(/^[^#]/)){
-	var noteK = "";
-	}else{
-	var noteK = "#";
-	};
+	plugin.push(x)
 	
-	if (type) {
-		switch (type) {
-			
-			case "[Rewrite]":
-				
-				plugin.push(
-					x.replace(
-						/\[Rewrite\]/i,
-						'[URL Rewrite]'
-					),
-				);
-				
-				break;
-				
-			default:
-			if (type.match(/^hostname\x20?=\x20?/)){
-				plugin.push(x.replace(/hostname\x20?=\x20?(.+)/,'hostname = %APPEND% $1'))
-			}else{
-				
-			if (type.match(/\[mitm\]/i)){
-				plugin.push(x.replace(/\[mitm\]/i,'[MITM]'))
-			}
-			else{
-				plugin.push(x);
-			}
-			}
-				
-				
-		} //switch结束
-	}
 }); //循环结束
 
-plugin = (plugin[0] || '') && `${plugin.join("\n")}`;
+plugin = (plugin[0] || '') && `${plugin.join("\n\n")}`;
 
 
 body = `${plugin}`
-		.replace(/\x20{2,}/gi,' ')
-		.replace(/"/g,'')
-		.replace(/\[URL Rewrite\]/gi,'\n[URL Rewrite]\n')
+		.replace(/\[Rewrite\]/gi,'\n[URL Rewrite]\n')
 		.replace(/\[MITM\]/gi,'\n[MITM]\n')
 		.replace(/\[Script\]/gi,'\n[Script]\n')
 		.replace(/\[Rule\]/gi,'\n[Rule]\n')
 		.replace(/\[General\]/gi,'\n[General]\n')
+		.replace(/(.+)\x20(302|307)\x20(.+)/gi,"$1 $3 $2")
+		.replace(/hostname\x20?=\x20?(.+)/gi,"hostname = %APPEND% $1")
+		.replace(/\x20{2,}/gi,' ')
+		.replace(/"{2,}/g,'"')
+		.replace(/(#.+\n)\n/g,'$1')
 		.replace(/\n{2,}/g,'\n\n')
 		
 		
