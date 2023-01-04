@@ -67,12 +67,12 @@ plugin = (plugin[0] || '') && `${plugin.join("\n")}`;
 body = `${plugin}`
 		.replace(/\x20{2,}/gi,' ')
 		.replace(/"/g,'')
-		.replace(/\n{2,}/g,'\n\n')
 		.replace(/\[URL Rewrite\]/gi,'\n[URL Rewrite]\n')
 		.replace(/\[MITM\]/gi,'\n[MITM]\n')
 		.replace(/\[Script\]/gi,'\n[Script]\n')
 		.replace(/\[Rule\]/gi,'\n[Rule]\n')
 		.replace(/\[General\]/gi,'\n[General]\n')
+		.replace(/\n{2,}/g,'\n\n')
 		
 		
 
