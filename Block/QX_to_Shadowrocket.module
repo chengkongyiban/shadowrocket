@@ -1,11 +1,12 @@
 #!name=QX格式转化
 #!desc=使用方法在qx重写链接末尾加上qx 在surge模块链接末尾加sg
 #!author=@小白脸 @chengkongyiban
+
 [Script]
-QX转换 = type=http-request,pattern=qx$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/QX_to_Shadowrocket.js
+QX转换 = type=http-request,pattern=qx\?.*|qx$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/QX_to_Shadowrocket.js
 
 #仅需要将Mock转为reject
-Surge转换 = type=http-request,pattern=sg$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Surge_to_Shadowrocket.js
+Surge转换 = type=http-request,pattern=sg\?.*|sg$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Surge_to_Shadowrocket.js
 
 [MITM]
 hostname = %APPEND% github.com:443, raw.githubusercontent.com:443
