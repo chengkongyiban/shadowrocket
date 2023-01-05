@@ -7,8 +7,8 @@
 ***************************/
 var name = "";
 var desc = "";
-let req = $request.url.replace(/sg.*/,'');
-let urlArg = $request.url.replace(/.+sg(.*)/,'$1');
+let req = $request.url.replace(/sg$/,'');
+let urlArg = $request.url.replace(/.+sg(\?.*)/,'$1');
 
 if (urlArg === ""){
 	name = req.match(/.+\/(.+)\.(module|js|sgmodule)/)?.[1] || '无名';
