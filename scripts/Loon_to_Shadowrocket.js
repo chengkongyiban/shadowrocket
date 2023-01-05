@@ -8,7 +8,7 @@
 var name = "";
 var desc = "";
 let req = $request.url.replace(/plugin/,'plugin');
-let urlArg = $request.url.replace(/.+plugin(.*)/,'$1');
+let urlArg = $request.url.replace(/.+plugin(\?.*)/,'$1');
 
 if (urlArg === ""){
 	name = req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1] || '无名';
