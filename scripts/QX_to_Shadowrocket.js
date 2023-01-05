@@ -29,8 +29,8 @@ if (urlArg === ""){
 		desc = name;
 	}
 };
-name = "#!name= " + decodeURIComponent(name);
-desc = "#!desc= " + decodeURIComponent(desc);
+name = "#!name=" + decodeURIComponent(name);
+desc = "#!desc=" + decodeURIComponent(desc);
 
 !(async () => {
   let body = await http(req);
@@ -46,7 +46,7 @@ let MITM = "";
 body.forEach((x, y, z) => {
 	x = x.replace(/^(#|;|\/\/)/gi,'#');
 	let type = x.match(
-		/\x20url\x20script-|enabled=|\x20url\x20reject|\x20echo-response|\-header|hostname| url 30|\x20(request|response)-body/
+		/\x20url\x20script-|enabled=|\x20url\x20reject|\x20echo-response|\-header|^hostname| url 30|\x20(request|response)-body/
 	)?.[0];
 	
 //判断注释
@@ -140,7 +140,7 @@ let op = x.match(/\x20response-header/) ?
 //mitm				
 				
 			case "hostname":
-				MITM = x.replace(/hostname\x20?=(.*)/, `[MITM]\n\nhostname = %APPEND% $1`).replace(/,$/,"");
+				MITM = x.replace(/.*hostname\x20?=(.*)/, `[MITM]\n\nhostname = %APPEND% $1`).replace(/,$/,"");
 				break;
 				
 //302/307						
