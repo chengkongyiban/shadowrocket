@@ -3,6 +3,7 @@
 #!author=@Peng-YM @小白脸 @chengkongyiban
 #!说明：打开商店后找到想要的插件，点左边插件的头像会自动转换为火箭支持的模块，复制链接添加到火箭模块即可 也可以在链接末尾加上 . 以自动跳转火箭安装
 #!集成了QX转火箭 链接末尾加qx Surge转火箭加sg 
+#!我是否已经安装好了模块商店?如何验证?访问此链接验证 https://raw.githubusercontent.com/chengkongyiban/Loon/main/Plugin/Check.plugin
 
 [URL Rewrite]
 
