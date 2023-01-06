@@ -38,7 +38,11 @@ let plugin = [];
 
 body.forEach((x, y, z) => {
 	x = x.replace(/^(#|;|\/\/)/,"#")
-	plugin.push(x)
+	if (x.match(/^(DOM|U|IP|GEO)[^,]+,[^,]+,.+/)){
+		plugin.push(x)
+	}else{
+	plugin.push(x.replace(/^(DOM|USER|URL|IP|GEO)[^,]+,[^,]+[^,]$/,""))
+	};
 	
 }); //循环结束
 
@@ -52,7 +56,6 @@ body = `${plugin}`
 		.replace(/\[Rule\]/gi,'\n[Rule]\n')
 		.replace(/\[General\]/gi,'\n[General]\n')
 		.replace(/(.+)\x20(302|307)\x20(.+)/gi,"$1 $3 $2")
-		.replace(/(DOMAIN|U|IP|GEOIP)[^,\s]+,[^,\s]+/g,"")
 		.replace(/hostname\x20?=\x20?(.+)/gi,"hostname = %APPEND% $1")
 		.replace(/skip-proxy\x20?=\x20?(.+)/gi,"skip-proxy = %APPEND% $1")
 		.replace(/bypass-tun\x20?=\x20?(.+)/gi,"tun-excluded-routes = %APPEND% $1")
