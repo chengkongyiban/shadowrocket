@@ -4,7 +4,7 @@
 
 [URL Rewrite]
 
-abc 302 bcd
+#abc 302 bcd
 
 
 
