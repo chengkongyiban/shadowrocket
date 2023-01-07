@@ -10,44 +10,6 @@ abc 302 bcd
 
 
 
-[Rule]
-#URX DIRECT
-#URL-REGEX,^https:\/\/api\.gotokeep\.com\/op-engine-webapp\/v1\/ad,DIRECT
-#URX IMG
-;URL-REGEX,^https:\/\/api\.gotokeep\.com\/training\/box\/config,REJECT-IMG
-#URX DICT
-//URL-REGEX,^https:\/\/api\.gotokeep\.com\/op-engine-webapp\/v1\/ad\/preload$,REJECT-DICT
-#URX TINYGIF
-URL-REGEX,^https:\/\/api\.gotokeep\.com\/anno\/v1\/upgrade\/check$,REJECT-TINYGIF
-#URX REJECT
-URL-REGEX,^https:\/\/api\.gotokeep\.com\/anno\/v1\/upgrade\/check$,REJECT-DROP
-
-
-
-
-[Script]
-
-KeepMy = pattern=https:\/\/api\.gotokeep\.com\/athena\/v5\/people\/my,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Maasea/surgeModule/master/Script/Keep/my.js,type=http-response
-
-KeepBottom = type = http-response,pattern=https:\/\/api\.gotokeep\.com\/config\/v3/basic,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Maasea/surgeModule/master/Script/Keep/bottom_bar.js
-
-;B = type=cron,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/BiliBili.js,cronexpr="30 8 * * *",timeout=30,script-update-interval=0,enable=true
-
-//Hifini = type=cron,script-path=https://raw.githubusercontent.com/lowking/Scripts/master/hifini/hifiniSign.js,cronexpr="0 0 * * *",timeout=10,script-update-interval=0,enable=true
-
-#jd = type=cron,cronexp=1 0 * * *,wake-system=1,timeout=60,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js
-
-xmly = type = cron,cronexp=35 8 * * *,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/xmlySign.js,timeout=15
-
-(v3) = type=cron,script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/10010v3/10010.js,cronexpr="0 0,12,23 * * *",timeout=30,script-update-interval=0,enable=true
-
-#http-response https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/favorite) script-path = https://raw.githubusercontent.com/Tartarus2014/Script/master/Tiktok.js, requires-body = false, timeout=10, tag=TK 
-
-[MITM]
-hostname = %APPEND% api.gotokeep.com, static2.keepcdn.com
-
-
-
 
 
 
