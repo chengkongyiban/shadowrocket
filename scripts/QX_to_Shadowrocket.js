@@ -13,38 +13,56 @@ var name = "";
 var desc = "";
 let req = $request.url.replace(/qx$/,'');
 let urlArg = $request.url.replace(/.+qx(\?.*)/,'$1');
-
-if (urlArg === ""){
+var original = [];//用于获取原文行号
+//获取参数
+var nName = urlArg.indexOf("n=") != -1 ? (urlArg.split("n=")[1].split("&")[0].split("+")) : null;
+var Pin0 = urlArg.indexOf("y=") != -1 ? (urlArg.split("y=")[1].split("&")[0].split("+")).map(decodeURIComponent) : null;
+var Pout0 = urlArg.indexOf("x=") != -1 ? (urlArg.split("x=")[1].split("&")[0].split("+")).map(decodeURIComponent) : null;
+//修改名字和简介
+if (nName === null){
 	name = req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1] || '无名';
-    desc = req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1] || '无名';
+    desc = name;
 }else{
-	if(urlArg.match("n=")){
-		name = urlArg.split("n=")[1].split("&")[0];
-	}else{
-		name = req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1] || '无名';
-	}
-	if(urlArg.match("d=")){
-		desc = urlArg.split("d=")[1].split("&")[0];
-	}else{
-		desc = name;
-	}
+	name = nName[0] != "" ? nName[0] : req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1];
+	desc = nName[1] != undefined ? nName[1] : nName[0];
 };
 name = "#!name=" + decodeURIComponent(name);
 desc = "#!desc=" + decodeURIComponent(desc);
 
 !(async () => {
   let body = await http(req);
-
+original = body.split("\n");
 	body = body.match(/[^\n]+/g);
 	
 let script = [];
 let URLRewrite = [];
 let HeaderRewrite = [];
 let MapLocal = [];
+let others = [];
 let MITM = "";
 
 body.forEach((x, y, z) => {
 	x = x.replace(/^(#|;|\/\/)/gi,'#');
+//去掉注释
+if(Pin0 != null)	{
+	for (let i=0; i < Pin0.length; i++) {
+  const elem = Pin0[i];
+	if (x.indexOf(elem) != -1){
+		x = x.replace(/^#/,"")
+	}else{};
+};//循环结束
+}else{};//去掉注释结束
+
+//增加注释
+if(Pout0 != null){
+	for (let i=0; i < Pout0.length; i++) {
+  const elem = Pout0[i];
+	if (x.indexOf(elem) != -1 && x.indexOf("hostname") == -1){
+		x = x.replace(/(.+)/,"#$1")
+	}else{};
+};//循环结束
+}else{};//增加注释结束
+
 	let type = x.match(
 		/\x20url\x20script-|enabled=|\x20url\x20reject|\x20echo-response|\-header|^hostname| url 30|\x20(request|response)-body/
 	)?.[0];
@@ -60,7 +78,7 @@ body.forEach((x, y, z) => {
 		switch (type) {
 //脚本			
 			case " url script-":
-				z[y - 1]?.match("#") && script.push(z[y - 1]);
+				z[y - 1]?.match(/^#/) && script.push(z[y - 1]);
 				let sctype = x.match('script-response') ? 'response' : 'request';
 				
 				let rebody = x.match('-body|-analyze') ? ',requires-body=1' : '';
@@ -85,7 +103,7 @@ body.forEach((x, y, z) => {
 				break;
 //定时任务
 			case "enabled=":
-				z[y - 1]?.match("#") && script.push(z[y - 1]);
+				z[y - 1]?.match(/^#/) && script.push(z[y - 1]);
 				
 				let cronExp = x.split(" http")[0].replace(/#/,'');
 				
@@ -103,37 +121,46 @@ body.forEach((x, y, z) => {
 //reject
 			case " url reject":
 
-				z[y - 1]?.match("#") && URLRewrite.push(z[y - 1]);
+				z[y - 1]?.match(/^#/) && URLRewrite.push(z[y - 1]);
 				URLRewrite.push(x.replace(/(#)?(.*?)\x20url\x20(reject-200|reject-img|reject-dict|reject-array|reject)/, `${noteK}$2 - $3`));
 				break;
 				
 				
-//headerRewrite，转的不对请赐教
+//headerRewrite，火箭仅支持header重定向，不支持修改
 
 			case "-header":
+				
+				if (x.match(/\x20re[^\s]+-header/) != undefined){
+					
 			if (x.match(/\(\\r\\n\)/g).length === 2){			
-				z[y - 1]?.match("#") &&  URLRewrite.push(z[y - 1]);
+				z[y - 1]?.match(/^#/) &&  HeaderRewrite.push(z[y - 1]);
 let op = x.match(/\x20response-header/) ?
-'http-response ' : '';
+'http-response ' : 'http-request';
      if(x.match(/\$1\$2/)){
-		  URLRewrite.push(x.replace(/(\^?http[^\s]+).+?n\)([^\:]+).+/,`${op}$1 header-del $2`))	
+		  HeaderRewrite.push(x.replace(/(\^?http[^\s]+).+?n\)([^\:]+).+/,`${op}$1 header-del $2`))	
 		}else{
-				URLRewrite.push(
+				HeaderRewrite.push(
 					x.replace(
-						/(\^?http[^\s]+)[^\)]+\)([^:]+):([^\(]+).+\$1\x20?\2?\:?([^\$]+)?\$2/,
-						`${op}$1 header-replace-regex $2 $3 $4''`,
+						/(\^?http[^\s]+)[^\)]+\)([^:]+):([^\(]+).+\$1\x20?\2?\:?\x20?([^\$]+)?\$2/,
+						`${op}$1 header-replace-regex $2 $3 "$4"`,
 					),
 				);
 				}
 				}else{
 					
+let lineNum = original.indexOf(x) + 1;
+others.push(lineNum + "行" + x)
 				}
+}else{
+	let lineNum = original.indexOf(x) + 1;
+	others.push(lineNum + "行" + x)
+};//-header结束		
 				break;
 
-//Mock 火箭不支持，但是保留
+//Mock 火箭不支持
 
 			case " echo-response":
-				z[y - 1]?.match("#") && MapLocal.push(z[y - 1]);
+				z[y - 1]?.match(/^#/) && MapLocal.push(z[y - 1]);
 				MapLocal.push(x.replace(/(\^?http[^\s]+).+(http.+)/, '$1 data="$2"'));
 				break;
 				
@@ -145,7 +172,7 @@ let op = x.match(/\x20response-header/) ?
 				
 //302/307						
 			case " url 30":
-					z[y - 1]?.match("#") && URLRewrite.push(z[y - 1]);
+					z[y - 1]?.match(/^#/) && URLRewrite.push(z[y - 1]);
 					URLRewrite.push(x.replace(/(#)?(.*?)\x20url\x20(302|307)\s(.+)/, `${noteK}$2 $4 $3`));
 				
 				break;
@@ -153,7 +180,7 @@ let op = x.match(/\x20response-header/) ?
 			default:
 					
 //带参数脚本argument					
-					z[y - 1]?.match("#") && script.push(z[y - 1]);
+					z[y - 1]?.match(/^#/) && script.push(z[y - 1]);
 					script.push(
 						x.replace(
 							/([^\s]+)\x20url\x20(response|request)-body\x20(.+)\2-body(.+)/,
@@ -173,6 +200,8 @@ URLRewrite = (URLRewrite[0] || '') && `[URL Rewrite]\n\n${URLRewrite.join("\n")}
 
 MapLocal = (MapLocal[0] || '') && `[Map Local]\n\n${MapLocal.join("\n\n")}`;
 
+others = (others[0] || '') && `${others.join("\n\n")}`;
+
 body = `${name}
 ${desc}
 
@@ -181,7 +210,6 @@ ${URLRewrite}
 
 ${script}
 
-${MapLocal}
 
 ${MITM}`
 		.replace(/t&zd;/g,',')
@@ -191,6 +219,7 @@ ${MITM}`
 		.replace(/\n{2,}/g,'\n\n')
 
 
+others !="" && $notification.post("不支持的类型已跳过","第" + others,"点击查看原文，长按可展开查看跳过行",req)
 
  $done({ response: { status: 200 ,body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'} } });
 
