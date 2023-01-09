@@ -5,6 +5,10 @@
 #!集成了QX转火箭 链接末尾加qx Surge转火箭加sg 
 #!我是否已经安装好了模块商店?如何验证?访问此链接验证 https://raw.githubusercontent.com/chengkongyiban/Loon/main/Plugin/Check.plugin
 
+[Rule]
+
+DOMAIN-KEYWORD,ghproxy,PROXY
+
 [URL Rewrite]
 
 (.+plugin)\.$ https://api.boxjs.app/shadowrocket/install?module=$1 302
