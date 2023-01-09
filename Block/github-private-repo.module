@@ -8,4 +8,4 @@
 hostname = %APPEND% raw.githubusercontent.com, gist.githubusercontent.com
 
 [Script]
-Github Private = type=http-request, requires-body=0, pattern=^https?:\/\/(raw|gist)\.githubusercontent\.com.+enhanced-github$, script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/github-private-repo.js
+Github Private = type=http-request, requires-body=0, pattern=^https?:\/\/(raw|gist)\.githubusercontent\.com, script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/github-private-repo.js
