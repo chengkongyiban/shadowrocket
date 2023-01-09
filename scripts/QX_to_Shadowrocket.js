@@ -9,6 +9,7 @@ QX转换 = type=http-request,pattern=qx$,requires-body=1,max-size=0,script-path=
 [MITM]
 hostname = %APPEND% github.com:443, raw.githubusercontent.com:443
 ******************/
+const ua = $request.headers['User-Agent'] || $request.headers['user-agent']
 const isStashiOS = 'undefined' !== typeof $environment && $environment['stash-version'] && ua.indexOf('Macintosh') === -1
 const isSurgeiOS = 'undefined' !== typeof $environment && $environment['surge-version'];
 const isShadowrocket = 'undefined' !== typeof $rocket;
