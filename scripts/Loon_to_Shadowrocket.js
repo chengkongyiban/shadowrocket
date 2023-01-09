@@ -38,7 +38,7 @@ let plugin = [];
 //let MITM = [];
 
 body.forEach((x, y, z) => {
-	x = x.replace(/^(#|;|\/\/)/,"#")
+	x = x.replace(/^(#|;|\/\/)/,"#").replace(" _ reject"," - reject")
 	if (x.match(/^(DOM|U|IP|GEO)[^,]+,[^,]+,.+/)){
 		plugin.push(x)
 	}else{
