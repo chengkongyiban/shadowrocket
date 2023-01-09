@@ -13,6 +13,7 @@ https://raw.githubusercontent.com/Peng-YM/QuanX/master/Rewrites/GithubPrivate/gi
 QX下载配置文件的请求不会触发脚本MITM重写。故无法使用。
 */
 // 如果不使用BoxJS配置，可以在这里修改
+// 如果不使用BoxJS配置，可以在这里修改
 let config = {
   username: "", // 用户名
   token: "", // token
@@ -27,10 +28,12 @@ if (boxConfig) {
 const username = $request.url.match(
   /https:\/\/(?:raw|gist)\.githubusercontent\.com\/([^\/]+)\/.+/
 )[1];
-
-
+$done({});
+/*
 // rewrite headers for specific user
 if ($request.url.match("github-private-repo.js") == null && username == config.username) {
   console.log(`ACCESSING PRIVATE REPO: ${$request.url}`);
   $done({ headers: {...$request.headers, Authorization: `token ${config.token}`} });
 } else $done({});
+
+*/
