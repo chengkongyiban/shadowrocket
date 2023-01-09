@@ -19,4 +19,4 @@ enhanced_github = type=http-request,pattern=^https?:\/\/(raw|gist)\.githubuserco
 
 [MITM]
 
-hostname = raw.githubusercontent.com,gist.githubusercontent.com
+hostname = %APPEND% raw.githubusercontent.com,gist.githubusercontent.com
