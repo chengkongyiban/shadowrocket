@@ -1,11 +1,22 @@
-#!name=Github Private
-#!desc=允许引用Github私有仓库/gist中的订阅分流，重写，脚本等配置文件。
-#1️⃣ 登陆Github > 点击头像下拉菜单 > 选择Settings > 左边菜单栏选择最后一个Developer settings > 选择Personal access tokens > Generate new token > Note里面填写token名字 > ☑️下面的勾选框选择第一项repo打钩（所有子项目自动勾选）> 点击Generate token按钮保存并返回。
-#2️⃣ 在BoxJS里面填入用户名（打开Github，浏览器地址栏应该会显示https://github.com/这里是你的用户名/）和上面的token。
-#!author=Peng-YM
+#!name=GitHub 增强
+#!desc=允许引用私有库、禁用缓存
+#!author=@xream
+# ❤️ 感谢 Peng-YM 佬的 https://raw.githubusercontent.com/Peng-YM/QuanX/master/Rewrites/GithubPrivate/github-private-repo.js
 
-[MITM]
-hostname = %APPEND% raw.githubusercontent.com, gist.githubusercontent.com
+# 🔧 设置方法
+# 使用 BoxJs 订阅: https://raw.githubusercontent.com/xream/scripts/main/boxjs/boxjs.json
+# 在 http://boxjs.net/#/app/xream.enhanced_github 中设置
+
+# 📃 使用方法
+# 在链接的末尾添加 enhanced-github
+# 如 https://raw.githubusercontent.com/1/2/master/3.txt
+# 应为 https://raw.githubusercontent.com/1/2/master/3.txtenhanced-github
+
 
 [Script]
-Github Private = type=http-request, requires-body=0, pattern=^https?:\/\/(raw|gist)\.githubusercontent\.com, script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/github-private-repo.js
+
+enhanced_github = type=http-request,pattern=^https?:\/\/(raw|gist)\.githubusercontent\.com/.*?enhanced-github$,script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/enhanced-github/enhanced-github.js
+
+[MITM]
+
+hostname = raw.githubusercontent.com,gist.githubusercontent.com
