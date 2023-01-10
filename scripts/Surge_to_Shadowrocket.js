@@ -5,31 +5,37 @@
    t&zd; = {  , }  花括号中的逗号
 
 ***************************/
+const isSurgeiOS = 'undefined' !== typeof $environment && $environment['surge-version'];
+const isShadowrocket = 'undefined' !== typeof $rocket;
 var name = "";
 var desc = "";
 let req = $request.url.replace(/sg$/,'');
 let urlArg = $request.url.replace(/.+sg(\?.*)/,'$1');
-
-if (urlArg === ""){
-	name = req.match(/.+\/(.+)\.(module|js|sgmodule)/)?.[1] || '无名';
-    desc = req.match(/.+\/(.+)\.(module|js|sgmodule)/)?.[1] || '无名';
-}else{
-	if(urlArg.match("n=")){
-		name = urlArg.split("n=")[1].split("&")[0];
-	}else{
-	name = req.match(/.+\/(.+)\.(module|js|sgmodule)/)?.[1] || '无名';
-	}
-	if(urlArg.match("d=")){
-		desc = urlArg.split("d=")[1].split("&")[0];
-	}else{
+var original = [];//用于获取原文行号
+//获取参数
+var nName = urlArg.indexOf("n=") != -1 ? (urlArg.split("n=")[1].split("&")[0].split("+")) : null;
+var Pin0 = urlArg.indexOf("y=") != -1 ? (urlArg.split("y=")[1].split("&")[0].split("+")).map(decodeURIComponent) : null;
+var Pout0 = urlArg.indexOf("x=") != -1 ? (urlArg.split("x=")[1].split("&")[0].split("+")).map(decodeURIComponent) : null;
+//修改名字和简介
+if (nName === null){
+	name = req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1] || '无名';
     desc = name;
-	}
+}else{
+	name = nName[0] != "" ? nName[0] : req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1];
+	desc = nName[1] != undefined ? nName[1] : nName[0];
 };
 name = "#!name=" + decodeURIComponent(name);
 desc = "#!desc=" + decodeURIComponent(desc);
 
 !(async () => {
   let body = await http(req);
+//判断是否断网
+if(body == null){if(isSurgeiOS){
+	$notification.post("重写转换：未获取到body","请检查网络及节点是否畅通","认为是bug?点击通知反馈",{url:"https://t.me/zhangpeifu"})
+ $done({ response: { status: 404 ,body:{} } });}else{$notification.post("重写转换：未获取到body","请检查网络及节点是否畅通","认为是bug?点击通知反馈","https://t.me/zhangpeifu")
+ $done({ response: { status: 404 ,body:{} } });
+}//识别客户端通知
+}else{//以下开始重写及脚本转换
 
 	body = body.match(/[^\n]+/g);
 let uHalf = [];
@@ -60,7 +66,7 @@ body.forEach((x, y, z) => {
 //Mock统统转reject
 
 			case " data=":
-				z[y - 1]?.match("#") && URLRewrite.push(z[y - 1]);
+				z[y - 1]?.match(/^#/) && URLRewrite.push(z[y - 1]);
 				
 				let mock2Dict = x.match('dict') ? '-dict' : '';
 				let mock2Array = x.match('array') ? '-array' : '';
@@ -117,6 +123,7 @@ body = `${mods}`
 		.replace(/\n{2,}/g,'\n\n')
 
  $done({ response: { status: 200 ,body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'} } });
+}//判断是否断网的反括号
 
 })()
 .catch((e) => {
