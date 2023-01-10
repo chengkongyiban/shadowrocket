@@ -1,3 +1,7 @@
+/*
+小火箭用户不再错误的得到获取信息成功的通知，现在一碗粉就是一碗粉
+*/
+
 $persistentStore.write(null, 'request_id')
 let url = $request.url
 let fdbUrl = "https://t.me/zhangpeifu"
