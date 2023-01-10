@@ -39,6 +39,7 @@ function autoPost(ID) {
         } else {
 			if (!$persistentStore.read('request_id')){
         $notification.post('未读取到TF信息','请先获取TF信息再来','上海一九四三')
+        $done({})
       }else{
           let jsonData = JSON.parse(data)
           if (jsonData.data == null) {
