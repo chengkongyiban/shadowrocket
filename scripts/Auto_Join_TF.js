@@ -1,3 +1,9 @@
+/*
+author=@DecoAri
+加了一条未读取到TF信息时候的通知，不再是默默的在log里报错
+
+*/
+
 !(async () => {
 ids = $persistentStore.read('APP_ID')
 if (ids == '') {
