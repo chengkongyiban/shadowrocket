@@ -21,6 +21,6 @@ if (!$persistentStore.read('request_id') && $persistentStore.read('request_id') 
 	$notification.post('信息获取失败','请仔细阅读使用方法','不能说的秘密')
 console.log('request_id为' + $persistentStore.read('request_id'))
 } else {
-	$notification.post('请关闭本脚本', '信息获取成功','最美不是下雨天')
+	$notification.post('请关闭本脚本', '信息获取成功','冷咖啡离开了杯垫')
 }
 $done({})
