@@ -56,7 +56,7 @@ let others = [];
 let MITM = "";
 
 body.forEach((x, y, z) => {
-	x = x.replace(/^(#|;|\/\/)/gi,'#');
+	x = x.replace(/^(#|;|\/\/)/gi,'#').replace(/\x20{2,}/g," ");
 //去掉注释
 if(Pin0 != null)	{
 	for (let i=0; i < Pin0.length; i++) {
