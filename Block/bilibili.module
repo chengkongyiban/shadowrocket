@@ -69,7 +69,7 @@ bilibili_json = type=http-response,pattern=^https?:\/\/api\.live\.bilibili\.com\
 bilibili_json = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/tab,requires-body=1,max-size=3145728,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js,script-update-interval=0
 
 # ～ BiliBili_哔哩哔哩_Proto去广告@app2smile
-bilibili_proto = type=http-response,pattern=^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll|playurl\.v1\.PlayURL\/PlayView)$,requires-body=1,max-size=3145728,binary-body-mode=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js,script-update-interval=0
+bilibili_proto = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll|playurl\.v1\.PlayURL\/PlayView)$,requires-body=1,max-size=3145728,binary-body-mode=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js,script-update-interval=0
 
 # ～ BiliBili_哔哩哔哩_繁体CC字幕转中文简体@ddgksf2013
 bilibili_cc = type=http-response,pattern=^https?:\/\/i.\.hdslb\.com\/bfs\/subtitle\/.+\.json$,requires-body=1,max-size=3145728,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_cc.js,script-update-interval=0
