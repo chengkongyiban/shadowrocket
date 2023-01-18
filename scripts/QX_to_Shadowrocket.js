@@ -17,7 +17,7 @@ const isLooniOS = 'undefined' != typeof $loon && /iPhone/.test($loon);
 
 var name = "";
 var desc = "";
-let req = $request.url.replace(/qx$/,'');
+let req = $request.url.replace(/qx$|qx\?.*/,'');
 let urlArg = $request.url.replace(/.+qx(\?.*)/,'$1');
 var original = [];//用于获取原文行号
 //获取参数
