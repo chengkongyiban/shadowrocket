@@ -45,7 +45,7 @@ let plugin = [];
 //let MITM = [];
 
 body.forEach((x, y, z) => {
-	x = x.replace(/^(#|;|\/\/)/,"#").replace(" _ reject"," - reject")
+	x = x.replace(/^(#|;|\/\/)/,"#").replace(" _ reject"," - reject").replace(/(\{.*?)\,(.*?\})/gi,'$1t&zd;$2');
 	if (x.match(/^(DOM|U|IP|GEO)[^,]+,[^,]+,.+/)){
 		plugin.push(x)
 	}else{
@@ -58,6 +58,7 @@ plugin = (plugin[0] || '') && `${plugin.join("\n\n")}`;
 
 
 body = `${plugin}`
+		.replace(/t&zd;/g,',')
 		.replace(/\[Rewrite\]/gi,'\n[URL Rewrite]\n')
 		.replace(/\[MITM\]/gi,'\n[MITM]\n')
 		.replace(/\[Script\]/gi,'\n[Script]\n')
