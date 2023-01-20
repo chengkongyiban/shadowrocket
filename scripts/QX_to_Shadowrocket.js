@@ -4,7 +4,7 @@
 使用方法 在qx重写链接末尾加上qx
 
 [Script]
-QX转换 = type=http-request,pattern=qx$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/QX_to_Shadowrocket.js
+QX转换 = type=http-request,pattern=qx$|qx\?.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/QX_to_Shadowrocket.js
 
 [MITM]
 hostname = %APPEND% github.com:443, raw.githubusercontent.com:443
@@ -78,7 +78,7 @@ if(Pout0 != null){
 }else{};//增加注释结束
 
 	let type = x.match(
-		/\x20url\x20script-|enabled=|\x20url\x20reject|\x20echo-response|\-header|^hostname| url 30|\x20(request|response)-body/
+		/\x20url\x20script-|enabled=|\x20url\x20reject|\x20echo-response\x20|\-header|^hostname| url 30|\x20(request|response)-body/
 	)?.[0];
 	
 //判断注释
@@ -173,11 +173,26 @@ others.push(lineNum + "行" + x)
 
 //Mock 火箭不支持
 
-			case " echo-response":
+			case " echo-response ":
+			
+			if(x.match(" text/json ")){
+				
+				z[y - 1]?.match(/^#/) && script.push(z[y - 1]);
+				
+				let urlInNum = x.split(" ").indexOf("url");
+				
+				let ptn = x.split(" ")[urlInNum - 1].replace(/#/,"");
+				
+				let arg = x.split(" echo-response ")[2];
+				
+				let scname = arg.substring(arg.lastIndexOf('/') + 1, arg.lastIndexOf('.') );
+				
+				script.push(x.replace(/.*echo-response.*/,`${noteK}${scname} = type=http-request,pattern=${ptn},script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/echo-response/index.js,argument=type=text/json&url=${arg}`))
+				
+			}else{
 let lineNum = original.indexOf(x) + 1;
-others.push(lineNum + "行" + x)
-				//z[y - 1]?.match(/^#/) && MapLocal.push(z[y - 1]);
-			//	MapLocal.push(x.replace(/(\^?http[^\s]+).+(http.+)/, '$1 data="$2"'));
+others.push(lineNum + "行" + x)}
+			
 				break;
 				
 //mitm				
