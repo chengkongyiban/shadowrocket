@@ -10,4 +10,4 @@ QX转换 = type=http-request,pattern=qx\?.*|qx$,requires-body=1,max-size=0,scrip
 Surge转换 = type=http-request,pattern=sg\?.*|sg$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Surge_to_Shadowrocket.js
 
 [MITM]
-hostname = %APPEND% github.com:443, raw.githubusercontent.com:443
+hostname = %APPEND% github.com:443, raw.githubusercontent.com:443,gist.githubusercontent.com
