@@ -42,9 +42,8 @@ let uHalf = [];
 let lHalf = [];	
 let mods = [];
 let others = [];
-let URLRewrite = [];          //不支持的内容
-//let MapLocal = [];
-//let HeaderRewrite = [];
+let URLRewrite = [];
+let script = [];
 
 body.forEach((x, y, z) => {
 	x = x.replace(/^(#|;|\/\/)/gi,'#');
@@ -63,22 +62,32 @@ body.forEach((x, y, z) => {
 	if (type) {
 		switch (type) {
 			
-//Mock统统转reject
+//Mock转reject/request
 
 			case " data=":
 				z[y - 1]?.match(/^#/) && URLRewrite.push(z[y - 1]);
 				
-				let mock2Dict = x.match('dict') ? '-dict' : '';
-				let mock2Array = x.match('array') ? '-array' : '';
-				let mock2200 = x.match('200') ? '-200' : '';
-				let mock2Img = x.match('(img|png|gif)') ? '-img' : '';
-				let mock2Other = x.match('dict|array|200|img|png|gif') ? '' : '-200';
+					let ptn = x.split(" data=")[0].replace(/^#|"/g,"");
+					let arg = x.split(" data=")[1].replace(/"/g,"");
+					let scname = arg.substring(arg.lastIndexOf('/') + 1, arg.lastIndexOf('.') );
+					
+				if (arg.match(/(img|png|gif|jpg|dict|array|200|txt)/)){
+					
+				let mock2Dict = arg.match('dict') ? '-dict' : '';
+				let mock2Array = arg.match('array') ? '-array' : '';
+				let mock2200 = arg.match('200|txt') ? '-200' : '';
+				let mock2Img = x.match('(img|png|gif|jpg)') ? '-img' : '';
 				URLRewrite.push(
 					x.replace(
-						/(#)?(.+)data=.+/,
-						`${noteK}$2- reject${mock2Dict}${mock2Array}${mock2200}${mock2Img}${mock2Other}`
+						/.+data=.+/,
+						`${noteK}${ptn} - reject${mock2Dict}${mock2Array}${mock2200}${mock2Img}`
 					),
 				);
+				}else{
+		
+		script.push(x.replace(/.*data=.*/,`${noteK}${scname} = type=http-request,pattern=${ptn},script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/echo-response/index.js,argument=type=text/json&url=${arg}`))
+					
+				}
 				
 				break;
 				
@@ -90,10 +99,9 @@ body.forEach((x, y, z) => {
 	}
 }); //循环结束
 
-//script = (script[0] || '') && `[Script]\n${script.join("\n")}`;
+script = (script[0] || '') && `${script.join("\n")}`;
 
 URLRewrite = (URLRewrite[0] || '') && `${URLRewrite.join("\n")}`;
-//Rule = (Rule[0] || '') && `[Rule]\n${Rule.join("\n")}`;
 
 others = (others[0] || '') && `${others.join("\n\n")}`;
 		
@@ -108,11 +116,19 @@ if (URLRewrite !== "" && others.match("[URL Rewrite]")){
 		mods = `${others}`;
 	}
 	};
-/********
-HeaderRewrite = (HeaderRewrite[0] || '') && `[Header Rewrite]\n${HeaderRewrite.join("\n")}`;
+		
+if (script !== "" && mods.match("[Script]")){
+	uHalf = mods.split(/\[Script\]/i)[0];
+	lHalf = mods.split(/\[Script\]/i)[1];
+	mods = `${uHalf}\n\n[Script]\n\n${script}\n\n${lHalf}`;
+}else{if (script != ""){
+		mods = `${mods}${script}`
+		
+	}else{
+		mods = `${mods}`;
+	}
+	};
 
-MapLocal = (MapLocal[0] || '') && `[MapLocal]\n${MapLocal.join("\n")}`;
-********/
 
 body = `${mods}`
 		.replace(/t&zd;/g,',')
