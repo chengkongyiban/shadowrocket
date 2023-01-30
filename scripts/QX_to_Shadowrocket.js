@@ -222,8 +222,6 @@ ${script}
 
 ${MITM}`
 		.replace(/t&zd;/g,',')
-		.replace(/"{2,}/g,'"')
-		.replace(/->(")\n/g,"->$1$1\n")
 		.replace(/\x20{2,}/g,' ')
 		.replace(/(#.+\n)\n/g,'$1')
 		.replace(/\n{2,}/g,'\n\n')
