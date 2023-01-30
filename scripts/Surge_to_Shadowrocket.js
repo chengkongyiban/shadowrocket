@@ -132,7 +132,6 @@ if (script !== "" && mods.match("[Script]")){
 
 body = `${mods}`
 		.replace(/t&zd;/g,',')
-		.replace(/"/g,'')
 		.replace(/\[Map\x20?Local\]/gi,'')
 		.replace(/undefined$/,'')
 		.replace(/(#.+\n)\n/g,'$1')
