@@ -196,7 +196,7 @@ others.push(lineNum + "行" + x)}
 					script.push(
 						x.replace(
 							/^#?([^\s]+)\x20url\x20(response|request)-body\x20(.+)\x20\2-body\x20(.+)/,
-							`replacebody = type=http-$2,pattern=$1,requires-body=1,max-size=3145728,script-path=https://raw.githubusercontent.com/mieqq/mieqq/master/replace-body.js,argument=$3->$4`,
+							`replaceBody = type=http-$2,pattern=$1,requires-body=1,max-size=3145728,script-path=https://raw.githubusercontent.com/mieqq/mieqq/master/replace-body.js,argument=$3->$4`,
 						),
 					);
 				
