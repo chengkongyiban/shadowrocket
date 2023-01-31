@@ -37,7 +37,7 @@ if(body == null){if(isSurgeiOS){
 }//识别客户端通知
 }else{//以下开始重写及脚本转换
 
-	body = body.match(/[^\n]+/g);
+	body = body.match(/[^\r\n]+/g);
 let uHalf = [];
 let lHalf = [];	
 let mods = [];
@@ -47,9 +47,6 @@ let script = [];
 
 body.forEach((x, y, z) => {
 	x = x.replace(/^(#|;|\/\/)/gi,'#');
-	let type = x.match(
-		/\x20data=|^((?!data=).)*$/
-	)?.[0];
 	
 	//判断注释
 	
@@ -59,24 +56,21 @@ body.forEach((x, y, z) => {
 	var noteK = "#";
 	};
 	
-	if (type) {
-		switch (type) {
-			
+	if (x.match(/\x20data=/)){
+
 //Mock转reject/request
 
-			case " data=":
-				z[y - 1]?.match(/^#/) && URLRewrite.push(z[y - 1]);
-				
-					let ptn = x.split(" data=")[0].replace(/^#|"/g,"");
-					let arg = x.split(" data=")[1].replace(/"/g,"");
+				let ptn = x.split(" data=")[0].replace(/^#|"/g,"");
+					let arg = x.split(' data="')[1].split('"')[0];
 					let scname = arg.substring(arg.lastIndexOf('/') + 1, arg.lastIndexOf('.') );
 					
-				if (arg.match(/(img|png|gif|jpg|dict|array|200|txt)/)){
+				if (arg.match(/(img\.|dict\.|array\.|200\.|blank\.)/i)){
+				z[y - 1]?.match(/^#/) && URLRewrite.push(z[y - 1]);
 					
-				let mock2Dict = arg.match('dict') ? '-dict' : '';
-				let mock2Array = arg.match('array') ? '-array' : '';
-				let mock2200 = arg.match('200|txt') ? '-200' : '';
-				let mock2Img = x.match('(img|png|gif|jpg)') ? '-img' : '';
+				let mock2Dict = arg.match(/dict\./) ? '-dict' : '';
+				let mock2Array = arg.match(/array\./) ? '-array' : '';
+				let mock2200 = arg.match(/200\.|blank\./) ? '-200' : '';
+				let mock2Img = x.match(/img\./) ? '-img' : '';
 				URLRewrite.push(
 					x.replace(
 						/.+data=.+/,
@@ -89,14 +83,10 @@ body.forEach((x, y, z) => {
 					
 				}
 				
-				break;
-				
-			default:
-			
+			}else{
 				others.push(x);
-				
-		} //switch结束
-	}
+				}
+	
 }); //循环结束
 
 script = (script[0] || '') && `${script.join("\n")}`;
@@ -134,7 +124,7 @@ body = `${mods}`
 		.replace(/t&zd;/g,',')
 		.replace(/\[Map\x20?Local\]/gi,'')
 		.replace(/undefined$/,'')
-		.replace(/(#.+\n)\n/g,'$1')
+		.replace(/(#.+\n)\n+/g,'$1')
 		.replace(/\n{2,}/g,'\n\n')
 
  $done({ response: { status: 200 ,body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'} } });
