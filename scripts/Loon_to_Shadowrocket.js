@@ -39,7 +39,7 @@ if(body == null){if(isSurgeiOS){
 }//识别客户端通知
 }else{//以下开始重写及脚本转换
 
-	body = body.match(/[^\n]+/g);
+	body = body.match(/[^\r\n]+/g);
 let plugin = [];
 //let URLRewrite = [];
 //let MITM = [];
