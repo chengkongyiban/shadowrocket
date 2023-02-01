@@ -60,7 +60,7 @@ body.forEach((x, y, z) => {
 
 //Mock转reject/request
 
-				let ptn = x.split(" data=")[0].replace(/^#|"/g,"");
+				let ptn = x.replace(/\x20{2,}/g," ").split(" data=")[0].replace(/^#|"/g,"");
 					let arg = x.split(' data="')[1].split('"')[0];
 					let scname = arg.substring(arg.lastIndexOf('/') + 1, arg.lastIndexOf('.') );
 					
@@ -73,14 +73,13 @@ body.forEach((x, y, z) => {
 				let mock2Img = x.match(/img\./) ? '-img' : '';
 				URLRewrite.push(
 					x.replace(
-						/.+data=.+/,
 						`${noteK}${ptn} - reject${mock2Dict}${mock2Array}${mock2200}${mock2Img}`
-					),
 				);
 				}else{
+				z[y - 1]?.match(/^#/) && script.push(z[y - 1]);
 		
-		script.push(x.replace(/.*data=.*/,`${noteK}${scname} = type=http-request,pattern=${ptn},script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/echo-response/index.js,argument=type=text/json&url=${arg}`))
-					
+		script.push(
+			`${noteK}${scname} = type=http-request,pattern=${ptn},script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/echo-response/index.js,argument=type=text/json&url=${arg}`)
 				}
 				
 			}else{
