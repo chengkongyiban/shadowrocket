@@ -72,7 +72,6 @@ body.forEach((x, y, z) => {
 				let mock2200 = arg.match(/200\.|blank\./) ? '-200' : '';
 				let mock2Img = x.match(/img\./) ? '-img' : '';
 				URLRewrite.push(
-					x.replace(
 						`${noteK}${ptn} - reject${mock2Dict}${mock2Array}${mock2200}${mock2Img}`
 				);
 				}else{
