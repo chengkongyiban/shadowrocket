@@ -9,25 +9,7 @@ const isSurgeiOS = 'undefined' !== typeof $environment && $environment['surge-ve
 const isShadowrocket = 'undefined' !== typeof $rocket;
 const modStore = "https://loon-gallery.vercel.app/";
 
-var name = "";
-var desc = "";
-let req = $request.url.replace(/plugin/,'plugin');
-let urlArg = $request.url.replace(/.+plugin(\?.*)/,'$1');
-var original = [];//用于获取原文行号
-//获取参数
-var nName = urlArg.indexOf("n=") != -1 ? (urlArg.split("n=")[1].split("&")[0].split("+")) : null;
-var Pin0 = urlArg.indexOf("y=") != -1 ? (urlArg.split("y=")[1].split("&")[0].split("+")).map(decodeURIComponent) : null;
-var Pout0 = urlArg.indexOf("x=") != -1 ? (urlArg.split("x=")[1].split("&")[0].split("+")).map(decodeURIComponent) : null;
-//修改名字和简介
-if (nName === null){
-	name = req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1] || '无名';
-    desc = name;
-}else{
-	name = nName[0] != "" ? nName[0] : req.match(/.+\/(.+)\.(conf|js|snippet|txt)/)?.[1];
-	desc = nName[1] != undefined ? nName[1] : nName[0];
-};
-name = "#!name=" + decodeURIComponent(name);
-desc = "#!desc=" + decodeURIComponent(desc);
+let req = $request.url;
 
 !(async () => {
   let body = await http(req);
@@ -40,37 +22,79 @@ if(body == null){if(isSurgeiOS){
 }else{//以下开始重写及脚本转换
 
 	body = body.match(/[^\r\n]+/g);
+let Rule = [];
+let urlRewrite = [];
 let plugin = [];
-//let URLRewrite = [];
-//let MITM = [];
+let MapLocal = [];
+let uHalf = [];
+let lHalf = [];	
+let mods = [];
 
 body.forEach((x, y, z) => {
-	x = x.replace(/^(#|;|\/\/)/,"#").replace(" _ reject"," - reject").replace(/(\{.*?)\,(.*?\})/gi,'$1t&zd;$2');
-	if (x.match(/^(DOM|U|IP|GEO)[^,]+,[^,]+,.+/)){
-		plugin.push(x)
-	}else{
-	plugin.push(x.replace(/^(DOM|USER|URL|IP|GEO)[^,]+,[^,]+[^,]$/,""))
-	};
+	x = x.replace(/^(#|;|\/\/)/,"#").replace(" _ reject"," - reject").replace(/(\{.*?)\,(.*?\})/gi,'$1t&zd;$2').replace(/\[URL\x20Rewrite\]/i,"[Rewrite]");
 	
+	if (x.match(/(\x20-)?\x20+reject-?/)){
+			
+				z[y - 1]?.match(/^#/) && urlRewrite.push(z[y - 1]);
+						urlRewrite.push(x.replace(/(^#)?(.+?)(\x20+-)?\x20+(reject(-.+)?)/,`$1$2 - $4`));
+		
+	}else if (x.match(/^(DOM|U|IP|GEO)[^,]+,[^,]+,.+/)){
+				z[y - 1]?.match(/^#/) && Rule.push(z[y - 1]);
+				
+		Rule.push(x);
+		
+	}else if (x.match(/^(DOM|USER|URL|IP|GEO)[^,]+,[^,]+[^,]$/)){
+	x.replace(/^(DOM|USER|URL|IP|GEO)[^,]+,[^,]+$/,"");
+	}else if (x.match(/\x20+(302|307)\x20+/)){
+						
+				z[y - 1]?.match(/^#/) && urlRewrite.push(z[y - 1]);
+				
+		urlRewrite.push(x.replace(/(.+)\x20+(302|307)\x20+(.+)/,"$1 $3 $2"));
+	}else{
+		plugin.push(x)
+	};	
+		
 }); //循环结束
 
-plugin = (plugin[0] || '') && `${plugin.join("\n\n")}`;
+plugin = (plugin[0] || '') && `${plugin.join("\n")}`;
 
+Rule = (Rule[0] || '') && `${Rule.join("\n")}`;
 
-body = `${plugin}`
+urlRewrite = (urlRewrite[0] || '') && `${urlRewrite.join("\n")}`;
+
+if (urlRewrite !== "" && plugin.match("[Rewrite]")){
+	uHalf = plugin.split(/\[Rewrite\]/i)[0];
+	lHalf = plugin.split(/\[Rewrite\]/i)[1];
+	mods = `${uHalf}\n\n[Rewrite]\n\n${urlRewrite}\n\n${lHalf}`;
+}else{if (urlRewrite != ""){
+		mods = `${plugin}${urlRewrite}`
+	}else{
+		mods = `${plugin}`;
+	}
+	};
+		
+if (Rule !== "" && mods.match("[Rule]")){
+	uHalf = mods.split(/\[Rule\]/i)[0];
+	lHalf = mods.split(/\[Rule\]/i)[1];
+	mods = `${uHalf}\n\n[Rule]\n\n${Rule}\n\n${lHalf}`;
+}else{if (Rule != ""){
+		mods = `${mods}${Rule}`
+	}else{
+		mods = `${mods}`;
+	}
+	};
+
+body = `${mods}`
 		.replace(/t&zd;/g,',')
 		.replace(/\[Rewrite\]/gi,'\n[URL Rewrite]\n')
 		.replace(/\[MITM\]/gi,'\n[MITM]\n')
 		.replace(/\[Script\]/gi,'\n[Script]\n')
 		.replace(/\[Rule\]/gi,'\n[Rule]\n')
 		.replace(/\[General\]/gi,'\n[General]\n')
-		.replace(/(.+)\x20(302|307)\x20(.+)/gi,"$1 $3 $2")
-		.replace(/hostname\x20?=\x20?(.*)/gi,"hostname = %APPEND% $1")
-		.replace(/skip-proxy\x20?=\x20?(.+)/gi,"skip-proxy = %APPEND% $1")
-		.replace(/bypass-tun\x20?=\x20?(.+)/gi,"tun-excluded-routes = %APPEND% $1")
-		.replace(/real-ip\x20?=\x20?(.+)/gi,"always-real-ip = %APPEND% $1")
-		.replace(/\x20{2,}/gi,' ')
-		.replace(/"{2,}/g,'"')
+		.replace(/hostname\x20*=\x20*(.+)/gi,"hostname = %APPEND% $1")
+		.replace(/skip-proxy\x20*=\x20*(.+)/gi,"skip-proxy = %APPEND% $1")
+		.replace(/bypass-tun\x20*=\x20*(.+)/gi,"tun-excluded-routes = %APPEND% $1")
+		.replace(/real-ip\x20*=\x20*(.+)/gi,"always-real-ip = %APPEND% $1")
 		.replace(/(#.+\n)\n/g,'$1')
 		.replace(/\n{2,}/g,'\n\n')
 		.replace(/hostname\x20=\x20%APPEND%\x20\n\n安装失败\n\n1、请检查模块商店是否安装\n\n2、请检查是否开启HTTPS解密\n\n小火箭开启HTTPS解密教程https:\/\/t\.me\/h5683577\/3\n\nSurge开启HTTPS解密\(MITM\)教程https:\/\/t\.me\/h5683577\/135/,"hostname = %APPEND% \n\n模块商店已成功安装!!!")
