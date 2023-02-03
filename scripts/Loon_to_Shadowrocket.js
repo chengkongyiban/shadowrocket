@@ -43,7 +43,7 @@ body.forEach((x, y, z) => {
 				
 		Rule.push(x);
 		
-	}else if (x.match(/^(DOM|USER|URL|IP|GEO)[^,]+,[^,]+[^,]$/)){
+	}else if (x.match(/^(DOM|USER|URL|IP|GEO)[^,]+,[^,]+$/)){
 	x.replace(/^(DOM|USER|URL|IP|GEO)[^,]+,[^,]+$/,"");
 	}else if (x.match(/\x20+(302|307)\x20+/)){
 						
@@ -56,11 +56,11 @@ body.forEach((x, y, z) => {
 		
 }); //循环结束
 
-plugin = (plugin[0] || '') && `${plugin.join("\n")}`;
+plugin = (plugin[0] || '') && `${plugin.join("\n\n")}`;
 
 Rule = (Rule[0] || '') && `${Rule.join("\n")}`;
 
-urlRewrite = (urlRewrite[0] || '') && `${urlRewrite.join("\n")}`;
+urlRewrite = (urlRewrite[0] || '') && `${urlRewrite.join("\n\n")}`;
 
 if (urlRewrite !== "" && plugin.match("[Rewrite]")){
 	uHalf = plugin.split(/\[Rewrite\]/i)[0];
