@@ -54,7 +54,7 @@ let others = [];
 let MITM = "";
 
 body.forEach((x, y, z) => {
-	x = x.replace(/^(#|;|\/\/)/gi,'#');
+	x = x.replace(/^(#|;|\/\/)/gi,'#').replace(/(^[^#].+)\x20+\/\/.+/,"$1");
 //去掉注释
 if(Pin0 != null)	{
 	for (let i=0; i < Pin0.length; i++) {
@@ -107,7 +107,7 @@ if(Pout0 != null){
 				
 				let scname = js.substring(js.lastIndexOf('/') + 1, js.lastIndexOf('.') );
 				script.push(
-						`${noteK}${scname} = type=http-${sctype},pattern=${ptn}${rebody}${size}${proto},script-path=${js},script-update-interval=0`
+						`${noteK}${scname}_${y} = type=http-${sctype},pattern=${ptn}${rebody}${size}${proto},script-path=${js},script-update-interval=0`
 				);
 				break;
 //定时任务
@@ -144,7 +144,7 @@ if(Pout0 != null){
 				
 				let reHdArg2 = x.split(" " + reHdType + "-header ")[2];
 				
-				script.push(`${noteK}replaceHeader = type=http-${reHdType},pattern=${reHdPtn},script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/replace-header/index.js,argument=${reHdArg1}->${reHdArg2}`)
+				script.push(`${noteK}replaceHeader_${y} = type=http-${reHdType},pattern=${reHdPtn},script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/replace-header/index.js,argument=${reHdArg1}->${reHdArg2}`)
 				
 				break;
 
@@ -163,7 +163,7 @@ if(Pout0 != null){
 				let scname = arg.substring(arg.lastIndexOf('/') + 1, arg.lastIndexOf('.') );
 				
 				script.push(
-					`${noteK}${scname} = type=http-request,pattern=${ptn},script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/echo-response/index.js,argument=type=text/json&url=${arg}`)
+					`${noteK}${scname}_${y} = type=http-request,pattern=${ptn},script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/echo-response/index.js,argument=type=text/json&url=${arg}`)
 				
 			}else{
 let lineNum = original.indexOf(x) + 1;
@@ -198,7 +198,7 @@ others.push(lineNum + "行" + x)}
 					
 					script.push(
 						
-							`${noteK}replaceBody = type=http-${reBdType},pattern=${reBdPtn},requires-body=1,max-size=3145728,script-path=https://raw.githubusercontent.com/mieqq/mieqq/master/replace-body.js,argument=${reBdArg1}->${reBdArg2}`,
+							`${noteK}replaceBody_${y} = type=http-${reBdType},pattern=${reBdPtn},requires-body=1,max-size=3145728,script-path=https://raw.githubusercontent.com/mieqq/mieqq/master/replace-body.js,argument=${reBdArg1}->${reBdArg2}`,
 						
 					);
 				}
