@@ -33,7 +33,7 @@ let mods = [];
 body.forEach((x, y, z) => {
 	x = x.replace(/^(#|;|\/\/)/,"#").replace(" _ reject"," - reject").replace(/(\{.*?)\,(.*?\})/gi,'$1t&zd;$2').replace(/\[URL\x20Rewrite\]/i,"[Rewrite]");
 	
-	if (x.match(/(\x20-)?\x20+reject-?/)){
+	if (x.match(/^[^#].+(\x20-)?\x20+reject-?/)){
 			
 				z[y - 1]?.match(/^#/) && urlRewrite.push(z[y - 1]);
 						urlRewrite.push(x.replace(/(^#)?(.+?)(\x20+-)?\x20+(reject(-.+)?)/,`$1$2 - $4`));
