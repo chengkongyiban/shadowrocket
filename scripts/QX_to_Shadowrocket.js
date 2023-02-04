@@ -54,7 +54,7 @@ let others = [];
 let MITM = "";
 
 body.forEach((x, y, z) => {
-	x = x.replace(/^(#|;|\/\/)/gi,'#').replace(/(^[^#].+)\x20+\/\/.+/,"$1");
+	x = x.replace(/^(#|;|\/\/)/,'#').replace(/\x20+url\x20+/," url ").replace(/hostname\x20*=/,"hostname=").replace(/(^[^#].+)\x20+\/\/.+/,"$1");
 //去掉注释
 if(Pin0 != null)	{
 	for (let i=0; i < Pin0.length; i++) {
@@ -69,14 +69,14 @@ if(Pin0 != null)	{
 if(Pout0 != null){
 	for (let i=0; i < Pout0.length; i++) {
   const elem = Pout0[i];
-	if (x.indexOf(elem) != -1 && x.indexOf("hostname") == -1){
+	if (x.indexOf(elem) != -1 && x.indexOf("hostname=") == -1){
 		x = x.replace(/(.+)/,"#$1")
 	}else{};
 };//循环结束
 }else{};//增加注释结束
 
 	let type = x.match(
-		/\x20url\x20script-|enabled=|\x20url\x20reject|\x20echo-response\x20|\-header\x20|^hostname| url 30|\x20(request|response)-body/
+		/\x20url\x20script-|enabled=|\x20url\x20reject|\x20echo-response\x20|-header\x20|^hostname| url 30|\x20(request|response)-body/
 	)?.[0];
 	
 //判断注释
@@ -91,19 +91,19 @@ if(Pout0 != null){
 //脚本			
 			case " url script-":
 				z[y - 1]?.match(/^#/) && script.push(z[y - 1]);
-				let sctype = x.match('script-response') ? 'response' : 'request';
+				let sctype = x.match(' script-response') ? 'response' : 'request';
 				
-				let rebody = x.match('-body|-analyze') ? ',requires-body=1' : '';
+				let rebody = x.match(/\x20script[^\s]*(-body|-analyze)/) ? ',requires-body=1' : '';
 				
-				let size = x.match('-body|-analyze') ? ',max-size=3145728' : '';
-				
-				let proto = x.match('proto.js') ? ',binary-body-mode=1' : '';
+				let size = x.match(/\x20script[^\s]*(-body|-analyze)/) ? ',max-size=3145728' : '';
 				
 				let urlInNum = x.replace(/\x20{2,}/g," ").split(" ").indexOf("url");
 				
 				let ptn = x.replace(/\x20{2,}/g," ").split(" ")[urlInNum - 1].replace(/#/,"");
 				
 				let js = x.replace(/\x20{2,}/g," ").split(" ")[urlInNum + 2];
+				
+				let proto = js.match('proto.js') ? ',binary-body-mode=1' : '';
 				
 				let scname = js.substring(js.lastIndexOf('/') + 1, js.lastIndexOf('.') );
 				script.push(
