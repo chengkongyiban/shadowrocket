@@ -4,10 +4,13 @@
 #!此模块已于模块商店模块合并https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/Block/LoonGalleryforShadowrocket.module
 
 [Script]
+
 QX转换 = type=http-request,pattern=qx\?.*|qx$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/QX_to_Shadowrocket.js
 
 #仅需要将Mock转为reject
 Surge转换 = type=http-request,pattern=sg\?.*|sg$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Surge_to_Shadowrocket.js
+
+规则集转换 = type=http-request,pattern=r_parser.list$|r_parser.list\?.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/stash/main/js/rule_parser.js
 
 [MITM]
 hostname = %APPEND% github.com:443, raw.githubusercontent.com:443,gist.githubusercontent.com,gitlab.com
