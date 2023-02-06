@@ -1,5 +1,5 @@
 #!name=文本预览器
-#!desc=主要用于预览Safari浏览器无法直接预览，需要下载的文本，例如yaml snippet格式
+#!desc=主要用于预览Safari浏览器无法直接预览，需要下载的文本，例如yaml snippet格式，在需要预览的链接末尾加.t_read.txt
 
 [Script]
 
