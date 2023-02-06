@@ -46,7 +46,7 @@ let URLRewrite = [];
 let script = [];
 
 body.forEach((x, y, z) => {
-	x = x.replace(/^(#|;|\/\/)/gi,'#');
+	x = x.replace(/^ *(#|;|\/\/)/gi,'#');
 	
 	//判断注释
 	
