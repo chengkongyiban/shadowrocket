@@ -19,5 +19,7 @@ Surge转换火箭 = type=http-request,pattern=sg\?.*|(module|js)sg$,requires-bod
 
 Loon转换火箭 = type=http-request,pattern=plugin\?.*|plugin$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Loon_to_Shadowrocket.js
 
+规则集转换 = type=http-request,pattern=r_parser.list$|r_parser.list\?.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/stash/main/js/rule_parser.js
+
 [MITM]
 hostname = %APPEND% xn--ck8h.com,github.com:443, raw.githubusercontent.com:443,gitlab.com,gist.githubusercontent.com
