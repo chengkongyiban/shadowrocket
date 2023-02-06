@@ -3,7 +3,7 @@
 
 [Script]
 
-文本预览器 = type=http-request,pattern=\.t_read\.txt$,requires-body=1,max-size=3145728,script-path=https://github.com/chengkongyiban/Quantumultx/raw/main/js/txt_read.js,script-update-interval=0
+文本预览器 = type=http-request,pattern=\.t_read\.txt$,requires-body=1,max-size=3145728,script-path=https://github.com/chengkongyiban/shadowrocket/raw/main/scripts/txt_read.js,script-update-interval=0
 
 [MITM]
 
