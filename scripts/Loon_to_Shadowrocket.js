@@ -31,7 +31,7 @@ let lHalf = [];
 let mods = [];
 
 body.forEach((x, y, z) => {
-	x = x.replace(/^ *(#|;|\/\/)/,"#").replace(" _ reject"," - reject").replace(/(\{.*?)\,(.*?\})/gi,'$1t&zd;$2').replace(/\[URL\x20Rewrite\]/i,"[Rewrite]");
+	x = x.replace(/^ *(#|;|\/\/)/,"#").replace(" _ reject"," - reject").replace(/(\{[0-9]+)\,([0-9]*\})/gi,'$1t&zd;$2').replace(/\[URL\x20Rewrite\]/i,"[Rewrite]");
 	
 	if (x.match(/^[^#].+(\x20-)?\x20+reject-?/)){
 			
@@ -95,7 +95,7 @@ body = `${mods}`
 		.replace(/skip-proxy\x20*=\x20*(.*)/gi,"skip-proxy = %APPEND% $1")
 		.replace(/bypass-tun\x20*=\x20*(.*)/gi,"tun-excluded-routes = %APPEND% $1")
 		.replace(/real-ip\x20*=\x20*(.*)/gi,"always-real-ip = %APPEND% $1")
-		.replace(/(#.+\n)\n/g,'$1')
+		.replace(/(#.+\n)\n+/g,'$1')
 		.replace(/\n{2,}/g,'\n\n')
 		.replace(/hostname\x20=\x20%APPEND%\x20\n\n安装失败\n\n1、请检查模块商店是否安装\n\n2、请检查是否开启HTTPS解密\n\n小火箭开启HTTPS解密教程https:\/\/t\.me\/h5683577\/3\n\nSurge开启HTTPS解密\(MITM\)教程https:\/\/t\.me\/h5683577\/135/,"hostname = %APPEND% \n\n模块商店已成功安装!!!")
 
