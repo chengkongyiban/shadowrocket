@@ -31,7 +31,7 @@ let lHalf = [];
 let mods = [];
 
 body.forEach((x, y, z) => {
-	x = x.replace(/^(#|;|\/\/)/,"#").replace(" _ reject"," - reject").replace(/(\{.*?)\,(.*?\})/gi,'$1t&zd;$2').replace(/\[URL\x20Rewrite\]/i,"[Rewrite]");
+	x = x.replace(/^ *(#|;|\/\/)/,"#").replace(" _ reject"," - reject").replace(/(\{.*?)\,(.*?\})/gi,'$1t&zd;$2').replace(/\[URL\x20Rewrite\]/i,"[Rewrite]");
 	
 	if (x.match(/^[^#].+(\x20-)?\x20+reject-?/)){
 			
