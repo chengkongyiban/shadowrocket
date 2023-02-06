@@ -1,5 +1,5 @@
-#!name=QX格式转化
-#!desc=使用方法在qx重写链接末尾加上qx 在surge模块链接末尾加sg
+#!name=QX重写转化&规则集解析
+#!desc=使用方法在qx重写链接末尾加上qx 在surge模块链接末尾加sg 在规则集链接末尾加r_parser.list 支持QX & Clash规则集解析
 #!author=@小白脸 @chengkongyiban
 #!此模块已于模块商店模块合并https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/Block/LoonGalleryforShadowrocket.module
 
