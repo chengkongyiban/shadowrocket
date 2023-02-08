@@ -13,7 +13,7 @@
 
 Loon-Gallery = type=http-request,pattern=https?:\/\/xn--ck8h\.com,script-path=https://raw.githubusercontent.com/Peng-YM/Loon-Gallery/master/backend/gallery.js, requires-body=true, timeout=120
 
-QX转换火箭 = type=http-request,pattern=qx\?.*|qx$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/QX_to_Shadowrocket.js
+QX转换火箭 = type=http-request,pattern=qx\?.*|qx$,requires-body=1,max-size=0,script-path=https://github.com/chengkongyiban/stash/raw/main/js/QX_RewriteParser.js
 
 Surge转换火箭 = type=http-request,pattern=sg\?.*|(module|js)sg$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Surge_to_Shadowrocket.js
 
