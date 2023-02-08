@@ -5,7 +5,7 @@
 
 [Script]
 
-QX转换 = type=http-request,pattern=qx\?.*|qx$,requires-body=1,max-size=0,script-path=https://github.com/chengkongyiban/stash/raw/main/js/QX_RewriteParser.js
+QX转换 = type=http-request,pattern=qx\?.*|qx$,requires-body=1,max-size=0,script-path=https://github.com/chengkongyiban/stash/raw/main/js/QXRewrite_Parser.js
 
 #仅需要将Mock转为reject
 Surge转换 = type=http-request,pattern=sg\?.*|sg$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Surge_to_Shadowrocket.js
