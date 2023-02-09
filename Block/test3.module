@@ -3,7 +3,7 @@
 
 [Rule]
 
-URL-REGEX, baidu.com, REJECT-NO-DROP
+URL-REGEX, baidu.com, DIRECT
 
 
 [Script]
