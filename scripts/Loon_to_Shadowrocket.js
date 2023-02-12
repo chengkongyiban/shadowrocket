@@ -5,8 +5,7 @@
    t&zd; = {  , }  花括号中的逗号
 
 ***************************/
-const isSurgeiOS = 'undefined' !== typeof $environment && $environment['surge-version'];
-const isShadowrocket = 'undefined' !== typeof $rocket;
+
 const modStore = "https://loon-gallery.vercel.app/";
 
 let req = $request.url;
