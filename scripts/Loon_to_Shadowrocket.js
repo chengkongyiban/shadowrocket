@@ -13,11 +13,8 @@ let req = $request.url;
 !(async () => {
   let body = await http(req);
 //判断是否断网
-if(body == null){if(isSurgeiOS){
-	$notification.post("重写转换：未获取到body","请检查网络及节点是否畅通","认为是bug?点击通知反馈",{url:"https://t.me/zhangpeifu"})
- $done({ response: { status: 404 ,body:{} } });}else{$notification.post("重写转换：未获取到body","请检查网络及节点是否畅通","认为是bug?点击通知反馈","https://t.me/zhangpeifu")
+if(body == null){$notification.post("重写转换：未获取到body","请检查网络及节点是否畅通","认为是bug?点击通知反馈","https://t.me/zhangpeifu")
  $done({ response: { status: 404 ,body:{} } });
-}//识别客户端通知
 }else{//以下开始重写及脚本转换
 
 	body = body.match(/[^\r\n]+/g);
@@ -98,15 +95,10 @@ body = `${mods}`
 		.replace(/\n{2,}/g,'\n\n')
 		.replace(/hostname\x20=\x20%APPEND%\x20\n\n安装失败\n\n1、请检查模块商店是否安装\n\n2、请检查是否开启HTTPS解密\n\n小火箭开启HTTPS解密教程https:\/\/t\.me\/h5683577\/3\n\nSurge开启HTTPS解密\(MITM\)教程https:\/\/t\.me\/h5683577\/135/,"hostname = %APPEND% \n\n模块商店已成功安装!!!")
 
-if (isSurgeiOS) {
-         if (body.match("验证结果↓↓↓") != null && body.match("请检查模块商店是否安装") == null)  {
-			 $notification.post("已成功安装模块商店","点击通知跳转模块商店","https://loon-gallery.vercel.app/",{url:modStore})
-		}else{};
-		}else{
+
 			if (body.match("验证结果↓↓↓") != null && body.match("请检查模块商店是否安装") == null)  {
 			 $notification.post("已成功安装模块商店","点击通知跳转模块商店","https://loon-gallery.vercel.app/",modStore)
-		}else{};
-		};				
+		}else{};				
 	
 
  $done({ response: { status: 200 ,body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'} } });
