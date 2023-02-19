@@ -13,7 +13,7 @@ let req = $request.url;
 !(async () => {
   let body = await http(req);
 //判断是否断网
-if(body == null){$notification.post("重写转换：未获取到body","请检查网络及节点是否畅通","认为是bug?点击通知反馈","https://t.me/zhangpeifu")
+if(body == null){$notification.post("插件商店：未获取到body","请检查网络及节点是否畅通","认为是bug?点击通知反馈","https://t.me/zhangpeifu")
  $done({ response: { status: 404 ,body:{} } });
 }else{//以下开始重写及脚本转换
 
