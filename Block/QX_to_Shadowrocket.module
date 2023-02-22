@@ -8,7 +8,7 @@
 QX转换 = type=http-request,pattern=qx$|qx\?(hnadd|hndel|n|y|x|del|i)=,requires-body=1,max-size=0,script-path=https://github.com/chengkongyiban/stash/raw/main/js/QX_Rewrite_Parser.js
 
 #仅需要将Mock转为reject
-Surge转换 = type=http-request,pattern=sg$|sg\?(hnadd|hndel|n|y|x|del|i)=,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Surge_to_Shadowrocket.js
+Surge转换 = type=http-request,pattern=sg$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Surge_to_Shadowrocket.js
 
 规则集转换 = type=http-request,pattern=r_parser.list$|r_parser.list\?.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/stash/main/js/rule_parser.js
 
