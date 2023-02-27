@@ -15,7 +15,6 @@ const isShadowrocket = 'undefined' !== typeof $rocket;
 const isLooniOS = 'undefined' != typeof $loon;
 	
 let req = $request.url.replace(/\.t_read\.txt$/,'');
-console.log(req)
 !(async () => {
   let body = await http(req);
 //判断是否断网
