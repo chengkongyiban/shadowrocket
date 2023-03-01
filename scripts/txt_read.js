@@ -6,7 +6,7 @@
 
 [MITM]
 
-hostname = %APPEND% github.com, raw.githubusercontent.com,gitlab.com,gist.githubusercontent.com,gitlab.com
+hostname = %APPEND% github.com, raw.githubusercontent.com,gitlab.com,gist.githubusercontent.com
 ****************************/
 
 const isStashiOS = 'undefined' !== typeof $environment && $environment['stash-version'];
