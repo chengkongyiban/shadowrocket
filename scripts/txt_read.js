@@ -8,7 +8,7 @@
 
 hostname = %APPEND% github.com, raw.githubusercontent.com,gitlab.com,gist.githubusercontent.com,gitlab.com
 ****************************/
-	
+	console.log("abc")
 let req = $request.url.replace(/\.t_read\.txt$/,'');
 !(async () => {
   let body = await http(req);
