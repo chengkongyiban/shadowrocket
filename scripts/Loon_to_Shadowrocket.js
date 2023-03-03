@@ -17,7 +17,11 @@ if(body == null){$notification.post("模块商店：未获取到body","请检查
  $done({ response: { status: 404 ,body:{} } });
 }else{//以下开始重写及脚本转换
 
-	body = body.match(/[^\r\n]+/g);
+if (body.match(/\/\*+\n[\s\S]*\n\*+\/\n/)){
+body = body.replace(/[\s\S]*(\/\*+\n[\s\S]*\n\*+\/\n)[\s\S]*/,"$1").match(/[^\r\n]+/g);
+}else{
+    body = body.match(/[^\r\n]+/g);};
+	
 let Rule = [];
 let urlRewrite = [];
 let plugin = [];
