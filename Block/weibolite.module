@@ -4,7 +4,7 @@
 #搬运自@ddgksf2013
 
 [Rule]
-#广告联盟，去开屏广告
+
 RULE-SET,https://raw.githubusercontent.com/chengkongyiban/myself-rule-set/main/WeiboLiteAds.list,REJECT-DICT
 
 [URL Rewrite]
