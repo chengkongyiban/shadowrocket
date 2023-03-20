@@ -1,8 +1,5 @@
 #!name=DNF
 #!desc=汉化
-[Rule]
-#分流
-DOMAIN-KEYWORD,nexon,🇰🇷 South Korea 01
 
 [URL Rewrite]
 ^https:\/\/mdnf.dn.nexoncdn.co.kr.*?bdiff-data.json http://un.yusuijun.ga:5201/down/QseIpl0lCkVM?fname=bdiff-data.json 302
