@@ -6,7 +6,7 @@
 
 ***************************/
 
-const modStore = "https://loon-gallery.vercel.app/";
+const modStore = "https://loon-plugin.vercel.app/";
 
 let req = $request.url;
 
