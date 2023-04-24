@@ -11,7 +11,7 @@
 
 [Script]
 
-Loon-Gallery = type=http-request,pattern=https?:\/\/xn--ck8h\.com,script-path=https://raw.githubusercontent.com/Peng-YM/Loon-Gallery/master/backend/gallery.js, requires-body=true, timeout=120
+Loon-Gallery = type=http-request,pattern=https?:\/\/xn--ck8h\.com,script-path=https://raw.githubusercontent.com/Loon0x00/Loon-Gallery/master/backend/gallery.js, requires-body=true, timeout=120
 
 QX转换火箭 = type=http-request,pattern=\/[^/]+\.[^/]+qx$|qx\?(jsc|hnadd|hndel|n|y|x|del|i)=,requires-body=1,max-size=0,script-path=https://github.com/chengkongyiban/stash/raw/main/js/QX_Rewrite_Parser.js, timeout=60
 
