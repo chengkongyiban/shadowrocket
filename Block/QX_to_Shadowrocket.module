@@ -17,4 +17,4 @@ Surge转换 = type=http-request,pattern=\/[^/]+\.[^/]+sg$,requires-body=1,max-si
 脚本转换 = type=http-request,pattern=_script-converter-(stash|surge|loon|shadowrocket)\.js$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/script-converter/script-converter.js, timeout=60
 
 [MITM]
-hostname = %APPEND% github.com:443, raw.githubusercontent.com:443,gist.githubusercontent.com,gitlab.com,ybnet.ga
+hostname = %APPEND% github.com:443, raw.githubusercontent.com:443,gist.githubusercontent.com,gitlab.com,yfamily.ml
