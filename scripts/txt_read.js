@@ -2,7 +2,7 @@
 主要用于预览yaml及snippet 等Safari需要下载的文本
 在需要预览的链接末尾加上.t_read.txt
 [Script]
-文本预览器 = type=http-request,pattern=\.t_read\.txt$,requires-body=1,max-size=3145728,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/Block/txt_read.module,script-update-interval=0
+文本预览器 = type=http-request,pattern=\.t_read\.txt$,requires-body=1,max-size=3145728,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/Block/txt_read.js, script-update-interval=0
 
 [MITM]
 
