@@ -21,7 +21,7 @@ if (loondq !== undefined) {
   region = loondq;
 
 }
-
+console.log("loondq为" + loondq "\region为" + region)
 const query_addr = `http://m.qiyoujiage.com/${region}.shtml`;
 
 const myRequest = {
