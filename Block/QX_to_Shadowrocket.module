@@ -1,5 +1,5 @@
 #!name=QX重写转化&规则集解析
-#!desc=使用方法在qx重写链接末尾加上qx 在surge模块链接末尾加sg 在规则集链接末尾加r_parser.list 支持QX & Clash规则集解析
+#!desc=使用方法在qx重写链接末尾加上qx 在surge模块链接末尾加sg 在loon插件链接末尾加上loon 在规则集链接末尾加r_parser.list 支持QX & Clash规则集解析
 #!author=@小白脸 @chengkongyiban
 #!使用手册https://github.com/chengkongyiban/stash/tree/main/Rewrite_Parser_Wiki
 #!问题反馈https://t.me/zhangpeifu
