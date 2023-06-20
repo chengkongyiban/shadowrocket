@@ -1,5 +1,6 @@
 #!name=流媒体检测
-#!desc=请刷新此模块
+#!desc=添加此模块后，点击小火箭首页右上角➕，类型选Subscribe，在URL填入http://www.stream-allshadow.com 后保存，以后检测只需刷新该订阅即可
 
-[Rule]
-DOMAIN-SUFFIX,baidu.com,DIRECT
+[Script]
+
+流媒体检测 = type =http-request,pattern=https?://(www.)?stream-allshadow.com,script-path=https://github.com/chengkongyiban/shadowrocket/raw/main/scripts/stream-all-shdow.js
