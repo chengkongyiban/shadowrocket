@@ -1,5 +1,6 @@
-#!name=流媒体检测
+#!name=流媒体解锁检测
 #!desc=添加此模块后，点击小火箭首页右上角➕，类型选Subscribe，在URL填入http://www.stream-allshadow.com 后保存，以后检测只需刷新该订阅即可
+#!author=@LucaLin233 @Rabbit-Spec @chengkongyiban
 
 [Script]
 
