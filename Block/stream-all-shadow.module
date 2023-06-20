@@ -4,4 +4,4 @@
 
 [Script]
 
-流媒体检测 = type =http-request,pattern=https?://(www.)?stream-allshadow.com,script-path=https://github.com/chengkongyiban/shadowrocket/raw/main/scripts/stream-all-shdow.js
+流媒体解锁检测 = type =http-request,pattern=https?://(www.)?stream-allshadow.com,script-path=https://github.com/chengkongyiban/shadowrocket/raw/main/scripts/stream-all-shdow.js
