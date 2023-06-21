@@ -3,7 +3,7 @@
  * 原脚本地址：https://raw.githubusercontent.com/LucaLin233/Luca_Conf/main/Surge/JS/stream-all.js
  * 由@Rabbit-Spec修改
  * 由@chengkongyiban 兼容Shadowrocket
- * 更新日期：2022.06.26
+ * 更新日期：2023.06.21
  * 版本：2.2
  */
 
@@ -63,7 +63,7 @@ console.log(result)
         let dts = '"' + result[2] + '"';
         
         let streamTest = `proxies:
-  - {"type":"ssr","server":"abc.com","port":"123","protocol":"origin","cipher":"chacha20-ietf","obfs":"tls1.2_ticket_auth","password":"123","name":${yts},"udp":true}
+  - {"type":"ssr","server":"abc.com","port":"8888","protocol":"auth_aes128_sha1","cipher":"chacha20-ietf","obfs":"plain","password":"qqq","name":${yts},"protocol-param":"178013:n7X7LM","obfs-param":"bilivideo.com","udp":true}
   - {"type":"ssr","server":"qwe.com","port":"8888","protocol":"auth_aes128_sha1","cipher":"chacha20-ietf","obfs":"plain","password":"qqq","name":${nts},"protocol-param":"178013:n7X7LM","obfs-param":"bilivideo.com","udp":true}
   - {"type":"ssr","server":"777.com","port":"666","protocol":"auth_aes128_sha1","cipher":"chacha20-ietf","obfs":"plain","password":"shadow","name":${dts},"protocol-param":"178013:n7X7LM","obfs-param":"bilivideo.com","udp":true}`;
   
