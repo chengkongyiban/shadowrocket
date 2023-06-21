@@ -163,7 +163,6 @@ https:\/\/m5\.amap\.com\/ws\/shield\/nest\/updatable\/v1\/preUpgrade\? - reject
 # 携程广告->ma-adx.ctrip.com,m.ctrip.com
 ^https:\/\/ma-adx\.ctrip\.com\/_ma\.gif - reject
 ^https:\/\/m\.ctrip\.com\/restapi\/.+\/json\/tripAds - reject
-^https:\/\/m\.ctrip\.com\/html5\/webresource\/js\/iscroll\.js$,REJECT
 
 ^https:\/\/mbd\.baidu\.com\/newspage\/api\/getmobads\?page\=landingshare - reject
 
