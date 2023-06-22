@@ -10,8 +10,8 @@ QX转换 = type=http-request,pattern=\/[^/]+\.[^/]+qx$|qx\?(jsc|hnadd|hndel|n|y|
 
 Loon插件转换 = type=http-request, pattern=\/[^/]+\.[^/]+loon$|loon\?(hndel|hnadd|n|y|x|del)=, requires-body=1, max-size=0, script-path=https://github.com/chengkongyiban/stash/raw/main/js/Loon_Rewrite_Parser.js ,timeout=60
 
-#仅需要将Mock转为reject
-Surge转换 = type=http-request,pattern=\/[^/]+\.[^/]+sg$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/Surge_to_Shadowrocket.js, timeout=60
+#对Surge/小火箭模块使用 可自动修正笔误的reject类型，并支持使用参数。
+模块控制器 = type=http-request,pattern=\/[^/]+\.[^/]+sg$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/stash/main/js/Surge_Rewrite_Parser.js, timeout=60
 
 规则集转换 = type=http-request,pattern=r_parser.list$|r_parser.list\?.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/stash/main/js/rule_parser.js, timeout=60
 
