@@ -7,7 +7,7 @@ author=@DecoAri
 !(async () => {
 ids = $persistentStore.read('APP_ID')
 if (ids == '') {
-  $notification.post('所有TF已加入完毕','模块已自动关闭','')
+  $notification.post('所有TF已加入完毕','请手动关闭此模块','')
   $done($httpAPI('POST', '/v1/modules', {'Auto module for JavaScripts': 'false'}))
 } else {
   ids = ids.split(',')
@@ -38,7 +38,7 @@ function autoPost(ID) {
           resolve()
         } else {
 			if (!$persistentStore.read('request_id')){
-        $notification.post('未读取到TF信息','请先获取TF信息再来','上海一九四三')
+        $notification.post('未读取到TF信息','请先获取TF信息再来','')
         $done({})
       }else{
           let jsonData = JSON.parse(data)
