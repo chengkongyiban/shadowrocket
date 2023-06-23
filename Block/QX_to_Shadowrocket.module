@@ -15,7 +15,6 @@ Loon插件转换 = type=http-request, pattern=\/[^/]+\.[^/]+loon$|loon\?(hndel|h
 
 规则集转换 = type=http-request,pattern=r_parser.list$|r_parser.list\?.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/stash/main/js/rule_parser.js, timeout=60
 
-#在QX脚本结尾加上 _script-converter-(stash|surge|loon|shadowrocket).js 根据你自己的app填写
 脚本转换 = type=http-request,pattern=_script-converter-(stash|surge|loon|shadowrocket)\.js$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/script-converter/script-converter.js, timeout=60
 
 [MITM]
