@@ -52,12 +52,6 @@
 # ytb (YouTube)
 ^https:\/\/m\.baidu\.com/s\?from=.+&word=ytb\+([^&]+) https://www.youtube.com/results?search_query=$1 302
 
-# dd （低端影视）
-^https:\/\/m\.baidu\.com/s\?from=.+&word=dd\+([^&]+) https://ddys.art/?s=$1&post_type=post 302
-
-# xb （小宝影院）
-^https:\/\/m\.baidu\.com/s\?from=.+&word=xb\+([^&]+) https://xiaobaotv.net/index.php/vod/search.html?wd=$1&submit= 302
-
 # ph (PornHub)
 ^https:\/\/m\.baidu\.com/s\?from=.+&word=ph\+([^&]+) https://cn.pornhub.com/video/search?search=$1 302
 
