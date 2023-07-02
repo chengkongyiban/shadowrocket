@@ -52,8 +52,8 @@
 # ytb (YouTube)
 ^https:\/\/m\.baidu\.com/s\?from=.+&word=ytb\+([^&]+) https://www.youtube.com/results?search_query=$1 302
 
-#vf（voflix视频网站）
-^https:\/\/m\.baidu\.com/s\?from=.+&word=vf\+([^&]+) https://www.voflix.com/search/-------------.html?wd=$1 302
+#dd（voflix视频网站）
+^https:\/\/m\.baidu\.com/s\?from=.+&word=vf\+([^&]+) https://ddys.art/?s=$1&post_type=post 302
 
 # ph (PornHub)
 ^https:\/\/m\.baidu\.com/s\?from=.+&word=ph\+([^&]+) https://cn.pornhub.com/video/search?search=$1 302
