@@ -52,7 +52,7 @@
 # ytb (YouTube)
 ^https:\/\/m\.baidu\.com/s\?from=.+&word=ytb\+([^&]+) https://www.youtube.com/results?search_query=$1 302
 
-#dd（voflix视频网站）
+#dd（低端影视）
 ^https:\/\/m\.baidu\.com/s\?from=.+&word=dd\+([^&]+) https://ddys.art/?s=$1&post_type=post 302
 
 # ph (PornHub)
