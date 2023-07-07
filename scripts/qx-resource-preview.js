@@ -47,7 +47,6 @@ body = `${qxFilterUrl}
 ${qxRewriteUrl}`.replace(/^\n*/i,``);
 
 $done({ response: { status: 200 ,body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'} } });
-$done()
 
 function http(req) {
   return new Promise((resolve, reject) =>
