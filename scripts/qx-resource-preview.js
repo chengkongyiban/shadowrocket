@@ -14,15 +14,15 @@ hostname = %APPEND% quantumult.app
 const $ = new Env(`预览qx一键导入内容`)
 
 let qxSchemeUrl = decodeURIComponent($request.url);
-
+//$.log(qxSchemeUrl);
 let qxFilterUrl = "";
 let qxRewriteUrl = "";
 
-if (qxSchemeUrl.search(/"filter_remote"/)){
+if (qxSchemeUrl.search(/"filter_remote"/) != -1){
   qxFilterUrl = $.toObj(qxSchemeUrl.split("?remote-resource=")[1]).filter_remote[0].split(",")[0];
 };
 
-if (qxSchemeUrl.search(/"rewrite_remote"/)){
+if (qxSchemeUrl.search(/"rewrite_remote"/) != -1){
   qxRewriteUrl = $.toObj(qxSchemeUrl.split("?remote-resource=")[1]).rewrite_remote[0].split(",")[0];
 };
 
@@ -65,7 +65,7 @@ function Env(name) {
     if (QX) return $prefs.valueForKey(key)
   }
   write = (key, val) => {
-    if (LN || SG_STH_SDR) return $persistentStore.write(String(key), val); 
+    if (LN || SG_STH_SDR) return $persistentStore.write(String(key), val); 
     if (QX) return $prefs.setValueForKey(String(key), val)
   }
   notice = (title, subtitle, message, url) => {
