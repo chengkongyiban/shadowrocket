@@ -15,13 +15,11 @@ const $ = new Env(`预览qx一键导入内容`)
 
 let qxSchemeUrl = decodeURIComponent($request.url);
 $.log(qxSchemeUrl);
-let qxFilterObj
-let qxRewriteObj
 let qxFilterUrl = [];
 let qxRewriteUrl = [];
 
 if (qxSchemeUrl.search(/"filter_remote"/) != -1){
-  qxFilterObj = $.toObj(qxSchemeUrl.split("?remote-resource=")[1]).filter_remote;
+  let qxFilterObj = $.toObj(qxSchemeUrl.split("?remote-resource=")[1]).filter_remote;
   for (let i=0; i < qxFilterObj.length; i++) {
   const elem = qxFilterObj[i];
   qxFilterUrl.push(qxFilterObj[i].split(",")[0]);
@@ -29,16 +27,13 @@ if (qxSchemeUrl.search(/"filter_remote"/) != -1){
 };
 
 if (qxSchemeUrl.search(/"rewrite_remote"/) != -1){
-  qxRewriteObj = $.toObj(qxSchemeUrl.split("?remote-resource=")[1]).rewrite_remote;
+  let qxRewriteObj = $.toObj(qxSchemeUrl.split("?remote-resource=")[1]).rewrite_remote;
   for (let i=0; i < qxRewriteObj.length; i++) {
   const elem = qxRewriteObj[i];
   qxRewriteUrl.push(qxRewriteObj[i].split(",")[0]);
 };//循环结束
 };
 
-!(async () => {
-
-    
 	qxFilterUrl = (qxFilterUrl[0] || '') && `分流链接:\n${qxFilterUrl.join("\n\n")}`;
   
 	qxRewriteUrl = (qxRewriteUrl[0] || '') && `重写链接:\n${qxRewriteUrl.join("\n\n")}`;
@@ -53,12 +48,6 @@ ${qxRewriteUrl}`.replace(/^\n*/i,``);
 
 $done({ response: { status: 200 ,body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'} } });
 $done()
-
-})()
-.catch((e) => {
-		$notification.post(`${e}`,'','');
-		$done()
-	})
 
 function http(req) {
   return new Promise((resolve, reject) =>
