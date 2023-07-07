@@ -17,7 +17,6 @@ let qxSchemeUrl = decodeURIComponent($request.url);
 //$.log(qxSchemeUrl);
 let qxFilterUrl = "";
 let qxRewriteUrl = "";
-let rewriteBody = "";
 
 if (qxSchemeUrl.search(/"filter_remote"/) != -1){
   qxFilterUrl = $.toObj(qxSchemeUrl.split("?remote-resource=")[1]).filter_remote[0].split(",")[0];
@@ -29,16 +28,13 @@ if (qxSchemeUrl.search(/"rewrite_remote"/) != -1){
 
 !(async () => {
 
+let rewriteBody = await http(qxRewriteUrl);
+
 if (qxFilterUrl != ""){
   qxFilterUrl = "分流链接:" + qxFilterUrl + "\n\n";
 };
 if (qxRewriteUrl != ""){
   qxRewriteUrl = "重写链接:" + qxRewriteUrl + "\n\n";
-  rewriteBody = await http(qxRewriteUrl);
-};
-
-if (qxFilterUrl == "" && qxRewriteUrl == ""){
-  rewriteBody = "预览失败请将" + qxSchemeUrl + "反馈到https://t.me/zhangpeifu"
 };
 
 body = `${qxFilterUrl}${qxRewriteUrl}${rewriteBody}`;
