@@ -33,7 +33,7 @@ if (qxSchemeUrl.search(/"rewrite_remote"/) != -1){
   qxRewriteUrl.push(qxRewriteObj[i].split(",")[0]);
 };//循环结束
 };
-
+$.log("测试" + qxFilterUrl)
 	qxFilterUrl = (qxFilterUrl[0] || '') && `分流链接:\n${qxFilterUrl.join("\n\n")}`;
   
 	qxRewriteUrl = (qxRewriteUrl[0] || '') && `重写链接:\n${qxRewriteUrl.join("\n\n")}`;
