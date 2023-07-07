@@ -14,30 +14,42 @@ hostname = %APPEND% quantumult.app
 const $ = new Env(`预览qx一键导入内容`)
 
 let qxSchemeUrl = decodeURIComponent($request.url);
-//$.log(qxSchemeUrl);
-let qxFilterUrl = "";
-let qxRewriteUrl = "";
+$.log(qxSchemeUrl);
+let qxFilterObj
+let qxRewriteObj
+let qxFilterUrl = [];
+let qxRewriteUrl = [];
 
 if (qxSchemeUrl.search(/"filter_remote"/) != -1){
-  qxFilterUrl = $.toObj(qxSchemeUrl.split("?remote-resource=")[1]).filter_remote[0].split(",")[0];
+  qxFilterObj = $.toObj(qxSchemeUrl.split("?remote-resource=")[1]).filter_remote;
+  for (let i=0; i < qxFilterObj.length; i++) {
+  const elem = qxFilterObj[i];
+  qxFilterUrl.push(qxFilterObj[i].split(",")[0]);
+};//循环结束
 };
 
 if (qxSchemeUrl.search(/"rewrite_remote"/) != -1){
-  qxRewriteUrl = $.toObj(qxSchemeUrl.split("?remote-resource=")[1]).rewrite_remote[0].split(",")[0];
+  qxRewriteObj = $.toObj(qxSchemeUrl.split("?remote-resource=")[1]).rewrite_remote;
+  for (let i=0; i < qxRewriteObj.length; i++) {
+  const elem = qxRewriteObj[i];
+  qxRewriteUrl.push(qxRewriteObj[i].split(",")[0]);
+};//循环结束
 };
 
 !(async () => {
 
-let rewriteBody = await http(qxRewriteUrl);
-
-if (qxFilterUrl != ""){
-  qxFilterUrl = "分流链接:" + qxFilterUrl + "\n\n";
+    
+	qxFilterUrl = (qxFilterUrl[0] || '') && `分流链接:\n${qxFilterUrl.join("\n\n")}`;
+  
+	qxRewriteUrl = (qxRewriteUrl[0] || '') && `重写链接:\n${qxRewriteUrl.join("\n\n")}`;
+  
+if (qxFilterUrl == [] && qxRewriteUrl == []){
+  qxRewriteUrl = "预览失败请将" + qxSchemeUrl + "反馈到https://t.me/zhangpeifu"
 };
-if (qxRewriteUrl != ""){
-  qxRewriteUrl = "重写链接:" + qxRewriteUrl + "\n\n";
-};
 
-body = `${qxFilterUrl}${qxRewriteUrl}${rewriteBody}`;
+body = `${qxFilterUrl}
+
+${qxRewriteUrl}`.replace(/^\n*/i,``);
 
 $done({ response: { status: 200 ,body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'} } });
 $done()
