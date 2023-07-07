@@ -14,7 +14,7 @@ hostname = %APPEND% quantumult.app
 const $ = new Env(`预览qx一键导入内容`)
 
 let qxSchemeUrl = decodeURIComponent($request.url);
-//$.log(qxSchemeUrl);
+$.log(qxSchemeUrl);
 let qxFilterUrl = [];
 let qxRewriteUrl = [];
 
