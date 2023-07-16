@@ -70,8 +70,9 @@ if (idx == 3) {
     alert.addAction("下载")
     alert.addCancelAction("取消")
     await alert.presentAlert()
-    url = alert.textFieldValue(1)
+    url = alert.textFieldValue(1).replace(/target=[^&]+?-[^&]+/,"target=shadowrocket-module")
     name = alert.textFieldValue(0)
+    console.log(url)
   }
   if (url) {
     if (!name) {
@@ -129,13 +130,13 @@ for await (const [index, file] of files.entries()) {
           originalDesc = originalDesc.replace(/^🔗.*?]\s*/i, '')
         }
       }
-      const matched = `${content}`.match(/^#!url=(.+)/im)
+      const matched = `${content}`.match(/^(#SUBSCRIBED |#!url=)(.+)/im)
       if (!matched) {
         noUrl = true
         throw new Error('无订阅链接')
       }
-      const subscribed = matched[0]
-      const url = matched[1]
+      const subscribed = "#!url=" + matched[2];
+      const url = matched[2].replace(/target=[^&]+?-[^&]+/,"target=shadowrocket-module")
       if (!url) {
         noUrl = true
         throw new Error('无订阅链接')
@@ -172,7 +173,7 @@ for await (const [index, file] of files.entries()) {
         res = `#!desc=\n${res}`
       }
       // console.log(res);
-      res = `${subscribed.replace(/\n/g, "")}\n` + res;
+      res = `#!url=${url}\n` + res;
       content = `${res}`.replace(/^#!desc *= */mi, `#!desc=`).replace(/^#!name *= */mi, `#!name=🔗`)
       // console.log(content);
       if (filePath) {
@@ -206,7 +207,7 @@ for await (const [index, file] of files.entries()) {
           req.method = 'GET';
           let res = await req.loadString();
         } else if (idx == 1) {
-          Safari.open('surge://')
+          Safari.open('shadowrocket://')
         }
       }
     } catch (e) {
