@@ -1,1 +1,1 @@
-body="const a = 'qqq'" + body;
+body=body.replace(/http:\/\/boxjs.com/,"https:\/\/baidu.com")
