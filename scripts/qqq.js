@@ -1,1 +1,1 @@
-body=body.replace(/http:\/\/boxjs.com/,"https:\/\/baidu.com")
+let urlPrefix = "https://script.hub/convert/_start_/";let urlSuffix = "/_end_/mock_rocket.js?type=plain-text&target=plain-text&evalScriptmodi=body%3D%22const%20isLanceX%20%3D%20'undefined'%20!%3D%20typeof%20%5C%24native%3Bif%20(isLanceX)%7B%24rocket%20%3D%20%7B%7D%7D%3B%22%20%2B%20body";body=body.replace(/(https:\\\/\\\/[^,]+\\\.js)/g,urlPrefix + "$1" + urlSuffix);
