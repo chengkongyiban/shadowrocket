@@ -34,4 +34,4 @@ Bing积分cookie = requires-body=0,type=http-request,pattern=https:\/\/rewards\.
 
 [MITM]
 
-hostname = %APPEND% *.hifini.com,app.bilibili.com,ms.jr.jd.com,me-api.jd.com,api.m.jd.com,mobile.ximalaya.com,180.153.255.10*,180.153.250.*,114.80.99.*,1.62.62.64,miniappcsfw.122.gov.cn:8443,miniappcsfw.122.gov.cn,auth.aliyundrive.com,rewards.bing.com,sytgate.jslife.com.cn
+hostname = %APPEND% *.hifini.com,app.bilibili.com,ms.jr.jd.com,me-api.jd.com,api.m.jd.com,mobile.ximalaya.com,180.153.255.10*,180.153.250.*,114.80.99.*,1.62.62.64,miniappcsfw.122.gov.cn:8443,miniappcsfw.122.gov.cn,auth.aliyundrive.com,rewards.bing.com,sytgate.jslife.com.cn,*.amap.com
