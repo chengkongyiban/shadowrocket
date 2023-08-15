@@ -29,6 +29,9 @@ Bing积分cookie = requires-body=0,type=http-request,pattern=https:\/\/rewards\.
 #捷停车
 捷停车 = type=http-request, pattern=^https:\/\/sytgate\.jslife\.com\.cn\/core-gateway\/order\/carno\/pay\/info, requires-body=true, max-size=3145728, script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/jparking_sign.js, timeout=60
 
+#获取Cookie等信息方法 ，QX开重写，进入【高德地图，打车，福利中心】,如果没提醒，重新打开APP重新进入
+高德地图 = type=http-response, pattern=^https:\/\/m5(-zb)?\.amap\.com\/ws\/yuece\/(act|openapi)\/(activity\/current\/)?query, requires-body=true, max-size=3145728, script-path=https://raw.githubusercontent.com/wf021325/qx/master/task/ampDache.js, timeout=60, script-update-interval=0
+
 [MITM]
 
 hostname = %APPEND% *.hifini.com,app.bilibili.com,ms.jr.jd.com,me-api.jd.com,api.m.jd.com,mobile.ximalaya.com,180.153.255.10*,180.153.250.*,114.80.99.*,1.62.62.64,miniappcsfw.122.gov.cn:8443,miniappcsfw.122.gov.cn,auth.aliyundrive.com,rewards.bing.com,sytgate.jslife.com.cn
