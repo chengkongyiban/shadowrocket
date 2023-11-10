@@ -6,6 +6,7 @@
 force-http-engine-hosts = %APPEND% *.cp31.ott.cibntv.net
 
 [Rule]
+IP-CIDR,192.168.0.1/24,DIRECT
 #爱思去广告
 URL-REGEX,^https?:\/\/d\.image\.i4\.cn\/adInfo\/.+,REJECT
 #酷我9.1.0去广告
