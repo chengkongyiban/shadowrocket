@@ -12,6 +12,7 @@ QX使用请开解析器并加参数#out=request
 hostname = %APPEND% github.com, raw.githubusercontent.com,gitlab.com,gist.githubusercontent.com,gitlab.com
 
 ---------------------------
+
 [rewrite_local]
 
 \.t_read\.txt$ url script-echo-response https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/txt_read.js 
