@@ -23,7 +23,7 @@ let req = $request.url.replace(/\.t_read\.txt$/,'');
   
 let ret = {body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'}};
 
-$done(isQX() ? ret : {response: ret });
+$done(isQX ? ret : {response: ret });
 
 })()
 .catch((e) => {
