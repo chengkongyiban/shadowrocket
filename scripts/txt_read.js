@@ -1,5 +1,6 @@
 /***************************
-主要用于预览yaml及snippet 等Safari需要下载的文本
+#!name=文本预览器
+#!desc=主要用于预览yaml及snippet 等Safari需要下载的文本
 在需要预览的链接末尾加上.t_read.txt
 
 QX使用请开解析器并加参数#out=request
