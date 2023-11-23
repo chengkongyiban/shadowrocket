@@ -14,7 +14,7 @@ hostname = %APPEND% github.com, raw.githubusercontent.com,gitlab.com,gist.github
 ---------------------------
 [rewrite_local]
 
-\.t_read\.txt$ url script-analyze-echo-response https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/txt_read.js 
+\.t_read\.txt$ url script-echo-response https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/txt_read.js 
 
 ****************************/
 const $ = new Env(`文本预览器`)
