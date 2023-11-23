@@ -20,8 +20,10 @@ let req = $request.url.replace(/\.t_read\.txt$/,'');
 
 !(async () => {
   let body = await http(req);
+  
+let ret = {body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'}};
 
-isQX ? $done({  status: 200 ,body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'} } ) : $done({ response: { status: 200 ,body:body ,headers: {'Content-Type': 'text/plain; charset=utf-8'} } });
+$done(isQX() ? ret : {response: ret });
 
 })()
 .catch((e) => {
