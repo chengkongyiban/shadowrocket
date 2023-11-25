@@ -1,20 +1,3 @@
-#!name=测试
-#!desc=测试
+youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence)\?,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.request.beta.js
 
-[Rule]
-
-URL-REGEX, baidu.com, DIRECT
-URL-REGEX, baidu.com, REJECT-TINYGIF
-www\.baidu\.com - reject-dict
-AND,((PROTOCOL,UDP), (DEST-PORT,443)),REJECT-NO-DROP
-#DEST-PORT,2888,REJECT
-
-
-[Script]
-
-B站签到 = type=cron,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/BiliBili.js,cronexpr="30 8 * * *",timeout=30,script-update-interval=0,enable=true
-Hifini签到 = type=cron,script-path=https://raw.githubusercontent.com/lowking/Scripts/master/hifini/hifiniSign.js,cronexpr="0 0 * * *",timeout=10,script-update-interval=0,enable=true
-喜马拉雅签到任务 = type=cron,cronexp=35 8 * * *,script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/xmlySign.js,timeout=15
-10010v4-cron = type=cron,cronexp="0 0 0,12,23 * * *", timeout=60, script-path=https://raw.githubusercontent.com/xream/scripts/main/surge/modules/10010v4/10010.js
-阿里云盘签到 = type=cron,wake-system=1,script-path=https://raw.githubusercontent.com/lowking/Scripts/master/ali/aliYunPanCheckIn.js,cronexp="0 40 8 * * *"
-
+youtube.request = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence)\?,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.request.beta.js
