@@ -18,7 +18,7 @@ $persistentStore.write(session_id, 'session_id')
 $persistentStore.write(session_digest, 'session_digest')
 $persistentStore.write(request_id, 'request_id')
 
-if (!$persistentStore.read('request_id') && $persistentStore.read('request_id') != 0) {
+if (!$persistentStore.read('request_id')) {
 	$notification.post('信息获取失败','请仔细阅读使用方法','')
 console.log('request_id为' + $persistentStore.read('request_id'))
 } else {
