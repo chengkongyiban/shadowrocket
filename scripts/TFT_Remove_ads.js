@@ -7,7 +7,7 @@
 http-response ^http:\/\/jcc\.tftplay\.com\/config\/info\/ requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/TFT_Remove_ads.js
 
 */
-console.log("这里"+$response.url)
+
 if ($response.body) {
 	let qqq = JSON.parse($response.body);
 if (/userResult/.test($response.body)) {
