@@ -10,7 +10,7 @@
 **************************************
 
 [rewrite_local]
-^https?:\/\/tcb-api\.tencentcloudapi\.com\/web url script-response-body https://raw.githubusercontent.com/chengkongyiban/shadowrocket/refs/heads/main/scripts/miaojiexi1.js
+^https?:\/\/tcb-api\.tencentcloudapi\.com\/web url script-response-body https://raw.githubusercontent.com/chengkongyiban/shadowrocket/refs/heads/main/scripts/miaojiexi2.js
 
 [mitm]
 hostname = tcb-api.tencentcloudapi.com
@@ -22,10 +22,9 @@ hostname = tcb-api.tencentcloudapi.com
 var currentTimeStamp = Date.now();
 //获取response_data响应
 console.log($response.body)
-if (JSON.parse($response.body).data.response_data == undefined) {
-    $done({})
-} else {
-var responseData = JSON.parse($response.body).data.response_data;
+var body = $response.body
+if (/response_data/.test(body)) {
+    var responseData = JSON.parse($response.body).data.response_data;
 
 //解析response_data中的data字段
 var data = JSON.parse(responseData).data;
@@ -39,8 +38,12 @@ data[0].qixian = "永久免除所有广告";
 responseData = JSON.stringify({ data: data });
 
 //更新原始数据
-var chxm1023 = JSON.parse($response.body);
+var chxm1023 = JSON.parse(body);
 
 chxm1023.data.response_data = responseData;
 
-$done({ body: JSON.stringify(chxm1023) });}
+$done({ body: JSON.stringify(chxm1023) });
+	
+} else {
+    $done({})
+}
