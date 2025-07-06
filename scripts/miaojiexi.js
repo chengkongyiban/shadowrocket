@@ -21,7 +21,7 @@ hostname = tcb-api.tencentcloudapi.com
 //获取当前时间戳
 var currentTimeStamp = Date.now();
 //获取response_data响应
-if ($response.body == undefined) {
+if (JSON.parse($response.body).data.response_data == undefined) {
     $done({})
 } else {
 var responseData = JSON.parse($response.body).data.response_data;
